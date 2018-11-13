@@ -77,23 +77,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_071215) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cdproducts", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.integer "label_id"
-    t.integer "stock_number"
-    t.integer "release_era_tag_id"
-    t.integer "sale_status_id"
-    t.integer "artist_id"
-    t.text "jacket_image_url"
-    t.date "release_date"
-    t.integer "movie_id"
-    t.integer "dorama_id"
-    t.integer "cm_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string "company"
     t.integer "goods_id"
