@@ -63,9 +63,6 @@ Rails.application.routes.draw do
   resources :companeys, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :doramas, :only => [:new,:create,:index,:edit,:update,:destroy,:feature,:title_search]
   resources :movies, :only =>[:new,:create,:index,:edit,:update,:destroy,:feature,:title_search]
-  namespace :admins do
-    resource :artist, only: [:new,:create,:index,:edit,:update,:destroy]
-  end
   resources :admins
   resources :bag_items, :only =>[:index,:edit,:update,:destroy]
   resources :shopping_bags, :only =>[:new,:create,:index,:show,:destroy]
@@ -73,6 +70,7 @@ Rails.application.routes.draw do
   resources :shopping_carts, :only => [:new,:create,:index,:show,:destroy]
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :favorites, :only =>[:create,:destroy,:index]
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  resources :users,only:[:show,:edit,:update]
 end

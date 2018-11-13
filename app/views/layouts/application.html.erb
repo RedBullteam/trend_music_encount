@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <header id="header">
+      <li class="">
+        <%= link_to 'マイページ', user_path(current_user.id) %>
+      </li>
+    </header><!-- /header -->
     <%= yield %>
   </body>
 </html>

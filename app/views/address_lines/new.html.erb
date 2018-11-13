@@ -1,2 +1,16 @@
 <h1>AddressLines#new</h1>
 <p>Find me in app/views/address_lines/new.html.erb</p>
+<%= form_for(@addressline) do |f| %>
+
+    <h4>郵便番号</h4>
+    <%= f.text_field :postcode %>
+
+    <h4>市・町・村</h4>
+    <%= f.text_field :city %>
+
+    <h4>建物名・番地</h4>
+    <%= f.text_field :address %>
+
+    <%= f.submit '登録' %>
+
+<% end %>
