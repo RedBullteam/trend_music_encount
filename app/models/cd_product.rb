@@ -1,0 +1,2 @@
+class CdProduct < ApplicationRecord
+end

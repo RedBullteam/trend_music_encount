@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  title_head_id: 1
+  dorama_image_url: MyText
+  dorama_start_date: 2018-11-12
+  week_id: 1
+
+two:
+  name: MyString
+  title_head_id: 1
+  dorama_image_url: MyText
+  dorama_start_date: 2018-11-12
+  week_id: 1

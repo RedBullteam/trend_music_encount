@@ -1,0 +1,2 @@
+class AddressLine < ApplicationRecord
+end
