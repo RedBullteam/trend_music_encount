@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'cd_products#index'
   namespace :admin do
     get 'goods/index'
     get 'goods/new'
