@@ -4,9 +4,4 @@ class AdminUser < ApplicationRecord
 	devise :database_authenticatable, 
 	     :recoverable, :rememberable, :validatable
 
-
-	enum delete_flag: {
-		user: 0,
-		registration_user: 1
-	}
 end

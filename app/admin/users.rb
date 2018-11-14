@@ -12,7 +12,8 @@ permit_params :id, :first_name, :last_name, :first_name_kana, :last_name_kana, :
 		    f.input :telephone
 		    f.input :email
 		    f.input :password
-		  
+		  	#create_date,update_atがフォームできなかった。
+		  	#たぶんカラムがないんだと思う。
 		end
 		f.actions
 	end
