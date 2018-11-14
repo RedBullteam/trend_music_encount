@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_14_075425) do
-=======
-ActiveRecord::Schema.define(version: 2018_11_14_064112) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -28,7 +25,6 @@ ActiveRecord::Schema.define(version: 2018_11_14_064112) do
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
->>>>>>> 74843d2daac3790f4f856128386bf04534011be4
 
   create_table "address_lines", force: :cascade do |t|
     t.integer "user_id"
