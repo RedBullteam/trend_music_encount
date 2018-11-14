@@ -1,2 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
 <h1>AddressLines#edit</h1>
 <p>Find me in app/views/address_lines/edit.html.erb</p>
+<%= form_for(@user) do |f| %>
+ 	<div>
+        <label>ユーザーネーム</label>
+        <%= f.text_field :name %>
+    </div>
+ <%= f.submit "変更を保存", class:"btn" %>
+<% end %>
+</body>
+</html>
