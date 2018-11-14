@@ -9,28 +9,27 @@
 	<div class="body">
 		<div class="profile container">
 			<div class="row">
-			<div class="col-xs-8">
+			<div class="col-xs-6">
 					<div class=profile-box>
 						<ul class="list-group">
 							<% @user.address_lines.each do |addressline| %>
-							<li class="list-group-item"><p><strong>ユーザーネーム</strong>        <%= @user.name %></p></li>
-							<li class="list-group-item">メールアドレス <%= @user.email %>
-								
+							<li class="list-group-item list-group-item-info" style="text-align: center"><strong>ユーザープロフィール</strong></li>
+							<li class="list-group-item"><strong>ユーザーネーム</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.full_name %></li>
+							<li class="list-group-item"><strong>ユーザーネーム(カナ)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @user.full_name_kana %></li>
+							<li class="list-group-item"><strong>メールアドレス</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @user.email %></li>
+							<li class="list-group-item"><strong>電話番号</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @user.telephone %></li>
+							<li class="list-group-item"><strong>郵便番号</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;〒<%= addressline.postcode %>
 							</li>
-							<li class="list-group-item">郵便番号 <%= addressline.postcode %>
-							</li>
-							<li class="list-group-item">区・市・町・村 <%= addressline.city %>
-								
-							</li>
-							<li class="list-group-item">建物名・番地 <%= addressline.address %>
-								
-							</li>
+							<li class="list-group-item"><strong>区・市・町・村</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= addressline.city %></li>
+							<li class="list-group-item"><strong>建物名・番地 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= addressline.address %></li>
 							<% end %>
 						</ul>
 					</div>
-					<% if @user.id == current_user.id %>
-		        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn" %></p>
-		        <% end %>
+					<div>
+						<% if @user.id == current_user.id %>
+		        		<p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success " %></p>
+		        		<% end %>
+					</div>
 			</div>
 		</div>
 	</div>
