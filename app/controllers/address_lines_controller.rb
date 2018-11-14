@@ -15,9 +15,14 @@ class AddressLinesController < ApplicationController
   end
 
   def edit
+     @addressline = AddressLine.find(params[:id])
   end
 
   def update
+     @addressline = AddressLine.find(params[:id])
+    @addressline.user_id = current_user.id
+    @addressline.update(addressline_params)
+    redirect_to user_path(current_user.id)
   end
 
   def destroy
