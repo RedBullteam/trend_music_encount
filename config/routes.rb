@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root to: 'cd_products#index'
-  get '/admin' => 'admin/users#top'
   namespace :admin do
     get 'goods/index'
     get 'goods/new'
@@ -59,7 +60,17 @@ Rails.application.routes.draw do
   end
   resources :cms, :only => [:index,:trend,:search]
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    password: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+  }
+
   resources :goods, :only =>[:new,:create,:index,:edite,:update,:destroy]
   resources :companeys, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :doramas, :only => [:new,:create,:index,:edit,:update,:destroy,:feature,:title_search]
@@ -72,6 +83,5 @@ Rails.application.routes.draw do
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :users
   resources :users,only:[:show,:edit,:update]
 end
