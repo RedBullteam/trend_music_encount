@@ -1,12 +1,38 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<div class="profile-container">
-	<label>ユーザーネーム</label>
-    <h3 class="profile-name"><%= @user.name %></h3>
-    <label>郵便番号</label>
-   
-
-	<% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
-    <% end %>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Users#show</h1>
+	<p>Find me in app/views/users/show.html.erb</p>
+	<div class="body">
+		<div class="profile container">
+			<div class="row">
+			<div class="col-xs-8">
+					<div class=profile-box>
+						<ul class="list-group">
+							<% @user.address_lines.each do |addressline| %>
+							<li class="list-group-item"><p><strong>ユーザーネーム</strong>        <%= @user.name %></p></li>
+							<li class="list-group-item">メールアドレス <%= @user.email %>
+								
+							</li>
+							<li class="list-group-item">郵便番号 <%= addressline.postcode %>
+							</li>
+							<li class="list-group-item">区・市・町・村 <%= addressline.city %>
+								
+							</li>
+							<li class="list-group-item">建物名・番地 <%= addressline.address %>
+								
+							</li>
+							<% end %>
+						</ul>
+					</div>
+					<% if @user.id == current_user.id %>
+		        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn" %></p>
+		        <% end %>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
