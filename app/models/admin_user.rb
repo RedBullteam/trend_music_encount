@@ -6,7 +6,7 @@ class AdminUser < ApplicationRecord
 
 
 	enum delete_flag: {
-		登録中ユーザー: 0,
-		退会ユーザー: 1
+		user: 0,
+		registration_user: 1
 	}
 end
