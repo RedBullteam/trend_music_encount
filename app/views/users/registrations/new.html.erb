@@ -26,7 +26,22 @@
    <div class="field">
     <%= f.label :telephone %><br />
     <%= f.text_field :telephone, autofocus: true, autocomplete: "電話番号" %>
-  </div>
+   </div>
+
+  <%= fields_for @address_lines do |f| %>
+  <div>
+        <%= f.label :postcode %><br />
+        <%= f.text_field :postcode ,placeholder: "○○○-○○○○"  %>
+    </div>
+    <div>
+        <%= f.label :city %><br />
+        <%= f.text_field :city ,placeholder: ""  %>
+    </div>
+    <div>
+        <%= f.label :address %><br />
+        <%= f.text_field :address ,placeholder: ""  %>
+    </div>
+  <% end %>
 
 
   <div class="field">
