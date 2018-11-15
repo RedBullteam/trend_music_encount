@@ -9,8 +9,10 @@
 <%= form_for(@addressline) do |f| %>
  	<div>
         <label>郵便番号</label>
-        <%= f.text_field :postcode ,placeholder: "○○○-○○○○"  %>
+        <%= f.text_field :postcode ,placeholder: "○○○-○○○○" %>
     </div>
+    <%= render 'address_lines/form' %>
+    <!-- 都道府県を選択するformです -->
     <div>
         <label>市・町・村</label>
         <%= f.text_field :city ,placeholder: ""  %>

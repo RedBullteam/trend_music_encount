@@ -1,0 +1,4 @@
+<div class="field">
+  <%= f.label :都道府県、検索エンジン用 %><br>
+  <%= f.select :prefecture_id, AddressLine.prefecture_id.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+</div>
