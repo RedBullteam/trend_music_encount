@@ -1,2 +1,110 @@
-<h1>Cms#index</h1>
-<p>Find me in app/views/cms/index.html.erb</p>
+<html>
+<head>
+<style>
+.title_background_image{
+  background-image:  url(/assets/cm_top.jpeg);
+  background-size: cover;
+}
+</style>
+</head>
+<body>
+	<!-- 頭文字検索 -->
+	<div class="btn-toolbar" role="toolbar">
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default">頭文字検索</button>
+			<button type="button" class="btn btn-default">あ</button>
+			<button type="button" class="btn btn-default">か</button>
+			<button type="button" class="btn btn-default">さ</button>
+			<button type="button" class="btn btn-default">た</button>
+			<button type="button" class="btn btn-default">な</button>
+			<button type="button" class="btn btn-default">は</button>
+			<button type="button" class="btn btn-default">ま</button>
+			<button type="button" class="btn btn-default">や</button>
+			<button type="button" class="btn btn-default">ら</button>
+			<button type="button" class="btn btn-default">わ</button>
+		</div>
+	</div>
+	<!-- タイトル部分 -->
+	<div class="jumbotron title_background_image">
+		<h1 style="color:white">CM音楽トップ</h1>
+		<p style="color:white"><%= link_to "最新CM情報はコチラ", root_path %></p>
+	</div>
+	<!-- CMCD一覧 -->
+	<h3>CM音楽CD一覧</h3>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+				<td><img src="/assets/cm_top.jpeg">
+					<p>CD名</p>
+					<p>アーティスト名</p>
+					<p>リリース日</p>
+					<p>会社名</p>
+					<p>商品名</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- ページャー -->
+</body>
+</html>
+
