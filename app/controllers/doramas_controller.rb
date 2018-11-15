@@ -6,6 +6,4 @@ class DoramasController < ApplicationController
   def feature
   end
 
-  module title_search
-  end
 end
