@@ -4,7 +4,6 @@ permit_params :id,:name
 	#artist登録フォーム
 	form do |f|
 		f.inputs "Artist" do
-			f.input :id
 		    f.input :name
 		end
 		f.actions
