@@ -13,4 +13,5 @@ class Admin::CdProductsController < ApplicationController
 
   def destroy
   end
+
 end
