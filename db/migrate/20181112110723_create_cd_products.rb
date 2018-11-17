@@ -8,7 +8,7 @@ class CreateCdProducts < ActiveRecord::Migration[5.2]
       t.integer :release_era_tag_id
       t.integer :sale_status_id
       t.integer :artist_id
-      t.string :jacket_image_url
+      t.text :jacket_image_url
       t.date :release_date
       t.integer :movie_id
       t.integer :dorama_id
