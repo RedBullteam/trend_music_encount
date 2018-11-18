@@ -3,7 +3,6 @@ class CreateCdProducts < ActiveRecord::Migration[5.2]
     create_table :cd_products do |t|
       t.string :name
       t.string :price
-      t.string :integer
       t.integer :label_id
       t.integer :stock_number
       t.integer :release_era_tag_id
