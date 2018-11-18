@@ -1,0 +1,71 @@
+<%= form_for @user, url: {action: "complete"} do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.hidden_field :last_name %>
+    <%= @user.last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.hidden_field :first_name %>
+    <%= @user.first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana %>
+    <%= f.hidden_field :last_name_kana %>
+    <%= @user.last_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>
+    <%= f.hidden_field :first_name_kana %>
+    <%= @user.first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone %>
+    <%= f.hidden_field :telephone %>
+    <%= @user.telephone %>
+  </div>
+
+  <%= fields_for :address_lines do |f| %>
+
+  	<div>
+     	<%= f.label :postcode %>
+     	<%= f.hidden_field :postcode %>
+     	<%= %>
+   	</div>
+
+   	<div>
+     	<%= f.label :city %>
+     	<%= f.hidden_field :city %>
+     	<%=  %>
+   	</div>
+
+   	<div>
+     	<%= f.label :address %>
+     	<%= f.hidden_field :address %>
+     	<%=  %>
+   	</div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.hidden_field :email %>
+    <%= @user.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.hidden_field :password %>
+    <%= @user.password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+
+<% end %>
