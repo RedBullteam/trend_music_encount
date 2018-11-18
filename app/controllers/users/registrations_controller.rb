@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 # 追加アクション
 before_action :create, only: [:complete]
-  def confirm 
+  def confirm
     @user = User.new(sign_up_params)
     if @user.valid?
       render :action => 'confirm'
@@ -22,9 +22,12 @@ before_action :create, only: [:complete]
 
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+   def new
+    build_resource
+    resource.address_lines.build
+    yield resource if block_given?
+    respond_with resource
+   end
 
   # POST /resource
   # def create
