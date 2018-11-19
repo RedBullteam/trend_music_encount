@@ -1,6 +1,6 @@
 ActiveAdmin.register Disc do
 permit_params :id, :disc, :cd_product_id
-
+menu :parent => "Discs"
 form do |f|
 	f.inputs do
 		f.input :disc

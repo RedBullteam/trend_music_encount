@@ -8,7 +8,7 @@
 	<%= form_for(@addressline) do |f| %>
 	<h4>郵便番号</h4>
 	    <%= f.text_field :postcode %>
-	    <%= render 'address_lines/form' %>
+	    <%= render 'address_lines/form',f:f %>
 	    <!-- 都道府県を選択するformです -->
 	    <h4>市・町・村</h4>
 	    <%= f.text_field :city %>

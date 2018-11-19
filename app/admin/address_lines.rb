@@ -1,6 +1,6 @@
 ActiveAdmin.register AddressLine do
 permit_params :user_id, :name, :postcode, :prefecture_id, :city, :address, :created_at, :updated_at
-
+menu :parent => "Users"
 form do |f|
 	f.inputs do
 		f.input :user

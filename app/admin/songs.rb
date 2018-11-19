@@ -1,6 +1,6 @@
 ActiveAdmin.register Song do
 permit_params :id, :name, :genre_id, :track_number_id, :disc_id
-
+menu :parent => "Discs"
 
 form do |f|
 	f.inputs do

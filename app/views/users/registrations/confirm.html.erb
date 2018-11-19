@@ -1,0 +1,82 @@
+<%= form_for(resource, as: resource_name, url: {action: "complete"}) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.hidden_field :last_name %>
+    <%= @user.last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.hidden_field :first_name %>
+    <%= @user.first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana %>
+    <%= f.hidden_field :last_name_kana %>
+    <%= @user.last_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>
+    <%= f.hidden_field :first_name_kana %>
+    <%= @user.first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone %>
+    <%= f.hidden_field :telephone %>
+    <%= @user.telephone %>
+  </div>
+
+  <%= f.fields_for :address_lines do |s| %>
+  	<div>
+     	<%= s.label :postcode %>
+     	<%= s.hidden_field :postcode %>
+     	<%= params[:user][:address_lines_attributes][:"0"][:postcode]%>
+   	</div>
+
+    <div>
+      <%= s.label :prefecture %>
+      <%= s.hidden_field :prefecture_id %>
+      <%= params[:user][:address_lines_attributes][:"0"][:prefecture_id]%>
+    </div>
+
+   	<div>
+     	<%= s.label :city %>
+     	<%= s.hidden_field :city %>
+     	<%= params[:user][:address_lines_attributes][:"0"][:city]%>
+   	</div>
+
+   	<div>
+     	<%= s.label :address %>
+     	<%= s.hidden_field :address %>
+     	<%= params[:user][:address_lines_attributes][:"0"][:address]%>
+   	</div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.hidden_field :email %>
+    <%= @user.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.hidden_field :password %>
+    <%= @user.password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= link_to '戻る', new_user_registration_path %>
+  </div>
+
+<% end %>
