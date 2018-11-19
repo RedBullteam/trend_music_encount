@@ -1,0 +1,362 @@
+[33mcommit 87ad3747b6c178dd0f74ff627038ca7617b374d3[m[33m ([m[1;36mHEAD -> [m[1;32mcd_showpage[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 2c37d82 d80882c
+Author: koike <43737612+yuki-koike@users.noreply.github.com>
+Date:   Mon Nov 19 11:25:08 2018 +0900
+
+    Merge pull request #18 from RedBullteam/topi5
+    
+    Fix Users plofile and make unsubscribe
+
+[33mcommit d80882cb2a5f1125aaab49e337a7fd00b943d4d4[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Sun Nov 18 01:05:57 2018 +0000
+
+    Fix Users plofile and make unsubscribe
+
+[33mcommit 2c37d82f8a8692f90fec07b5344db01dd5d13229[m[33m ([m[1;32mera_search[m[33m)[m
+Merge: 429b0f5 0840784
+Author: tamura <42559686+SumikkoTokage@users.noreply.github.com>
+Date:   Sat Nov 17 20:39:12 2018 +0900
+
+    Merge pull request #17 from RedBullteam/add_admin
+    
+    Add admin
+
+[33mcommit 0840784eebd2fbfc533af02cf2efc5789089efe1[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Sat Nov 17 11:27:03 2018 +0000
+
+    修正
+
+[33mcommit ce8296419423de8a0f7c766d3b807bab75fe42b4[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Sat Nov 17 11:20:32 2018 +0000
+
+    add
+
+[33mcommit 768747e5e498a5335c4141f0bd84c6f2e9c1ef5c[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Sat Nov 17 11:14:05 2018 +0000
+
+    adminページの大枠完成
+
+[33mcommit 429b0f5b7afdd2bd57fc8f84a53bd8f2cdad5169[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: 146afb8 bd18fc0
+Author: pesopeso1234 <43513340+pesopeso1234@users.noreply.github.com>
+Date:   Thu Nov 15 20:59:39 2018 +0900
+
+    Merge pull request #16 from RedBullteam/feature-signup-first
+    
+    Feature signup first
+
+[33mcommit bd18fc06bf0dd39f338ee5adf1071fd001b472a1[m
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Thu Nov 15 11:55:01 2018 +0000
+
+    tentative commit2
+
+[33mcommit ede0202f4d1d710d8449284fc067adcf540d212d[m
+Merge: e4bc5f7 146afb8
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Thu Nov 15 11:49:45 2018 +0000
+
+    tentative commit
+
+[33mcommit 146afb82d5513554e29468abf437831c0274016c[m
+Merge: f9bbc85 e9c33aa
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Thu Nov 15 20:43:06 2018 +0900
+
+    Merge pull request #15 from RedBullteam/topi4
+    
+    Re:route and add enum
+
+[33mcommit f9bbc8552bb12b51f38c0ace8cf30956fae58dc4[m
+Merge: daf5f20 401c50b
+Author: koike <43737612+yuki-koike@users.noreply.github.com>
+Date:   Thu Nov 15 20:34:02 2018 +0900
+
+    Merge pull request #14 from RedBullteam/cd_showpage
+    
+    add_no_imege
+
+[33mcommit 401c50b8c2d8684dbceb40d23ab6a2a3e3118499[m[33m ([m[1;31morigin/cd_showpage[m[33m)[m
+Author: yuki-koike <k0001yuuki@gamil.com>
+Date:   Thu Nov 15 11:30:14 2018 +0000
+
+    add_no_imege
+
+[33mcommit fe411fcbf7b7ac925ed84cbddd09d2d800a7daeb[m
+Author: yuki-koike <k0001yuuki@gamil.com>
+Date:   Thu Nov 15 11:21:27 2018 +0000
+
+    add_no_imege
+
+[33mcommit e9c33aaffc4774fc3e29f4a0df35c767f3c16b1b[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Thu Nov 15 11:20:48 2018 +0000
+
+    Re:route and add enum
+
+[33mcommit e4bc5f764e1213a926c56de262ad50a53f7077c7[m
+Merge: 89e43e4 daf5f20
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Thu Nov 15 11:14:30 2018 +0000
+
+    Merge branch 'master' of github.com:RedBullteam/trend_music_encount into feature-signup-first
+
+[33mcommit 89e43e4ea1b30036d8d717af6f57ac025c954ec8[m
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Thu Nov 15 11:09:40 2018 +0000
+
+    tentative
+
+[33mcommit daf5f20851fdae2fa98b63f9f2fc13af6b55468c[m
+Merge: 90eec41 45b32ea
+Author: tamura <42559686+SumikkoTokage@users.noreply.github.com>
+Date:   Thu Nov 15 20:01:46 2018 +0900
+
+    Merge pull request #13 from RedBullteam/add_admin
+    
+    admin変更
+
+[33mcommit 45b32ea4bd35b3409b861116ea40981258f16791[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Thu Nov 15 10:47:20 2018 +0000
+
+    admin変更
+
+[33mcommit 90eec415d7d4f64f1db75abbff0b6dbd7cc27fd2[m
+Merge: e08a1ee cf1268f
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Thu Nov 15 17:24:15 2018 +0900
+
+    Merge pull request #11 from RedBullteam/feature-signup-first
+    
+    controller and view create
+
+[33mcommit cf1268fd78b6bb3db7c32c324a1b7f4857d5fbaa[m
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Thu Nov 15 08:04:11 2018 +0000
+
+    controller and view create
+
+[33mcommit e08a1eed4f036a1071b08792033650181f7e3c60[m
+Merge: 6e7bf57 9fc4de7
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Thu Nov 15 12:11:42 2018 +0900
+
+    Merge pull request #10 from RedBullteam/feature-movietop
+    
+    Feature movietop
+
+[33mcommit 9fc4de7748b5aaa9dbcceb2d898fe750b6e5d282[m[33m ([m[1;31morigin/feature-movietop[m[33m)[m
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Thu Nov 15 02:22:02 2018 +0000
+
+    tentative complete
+
+[33mcommit 6e7bf57ac8dc3243c98c0acc5d0d4e126e1eddf3[m
+Merge: bd54a29 0ae5636
+Author: tamura <42559686+SumikkoTokage@users.noreply.github.com>
+Date:   Wed Nov 14 21:01:30 2018 +0900
+
+    Merge pull request #9 from RedBullteam/add_admin
+    
+    Add admin
+
+[33mcommit 0ae5636289566bff858a5344d987409f513188ba[m[33m ([m[1;31morigin/add_admin[m[33m)[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Wed Nov 14 11:43:04 2018 +0000
+
+    adminpageno
+
+[33mcommit 427b7428f7999c306248e64995310532845abe41[m
+Merge: c2c2351 bd54a29
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Wed Nov 14 11:40:25 2018 +0000
+
+    fix_adminpage_user
+
+[33mcommit bd54a291582036ca91f47e6f5fbe4a62010bc29f[m
+Merge: 74843d2 bcb124e
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Wed Nov 14 20:26:30 2018 +0900
+
+    Merge pull request #8 from RedBullteam/topic2
+    
+    Topic2
+
+[33mcommit c2c23511cc6b65cf31c603471062ffc6a3fec762[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Wed Nov 14 11:13:43 2018 +0000
+
+    アーティスト追加削除編集実装
+
+[33mcommit bcb124e91b55b224825a1d92c72e8596db063d01[m[33m ([m[1;31morigin/topic2[m[33m)[m
+Merge: cc836a6 74843d2
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Wed Nov 14 11:12:26 2018 +0000
+
+    retake fix user model
+
+[33mcommit cc836a6981d2830446ffa4f393db5233f62e91a4[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Wed Nov 14 11:03:37 2018 +0000
+
+    fix user model
+
+[33mcommit d8848946bdea94e0a6ca5321cdb393ebc0d5e375[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Wed Nov 14 10:53:58 2018 +0000
+
+    fix user model
+
+[33mcommit 1d1b3a0a52c83feb95e57eba340e53798a3b4d4c[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Wed Nov 14 08:03:33 2018 +0000
+
+    Fix User model
+
+[33mcommit 74843d2daac3790f4f856128386bf04534011be4[m
+Merge: 6a01b3a 5eb6ddc
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Wed Nov 14 16:56:11 2018 +0900
+
+    Merge pull request #5 from RedBullteam/add_admin
+    
+    Add admin
+
+[33mcommit 5eb6ddceb3977d901fa144a123e2d212e6014119[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Wed Nov 14 07:18:09 2018 +0000
+
+    いらないadminページviewの削除
+
+[33mcommit b89625447a48051e0a3f70631a66361245a95b64[m
+Merge: 6646d34 6a01b3a
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Wed Nov 14 07:11:24 2018 +0000
+
+    masterとの差分追加
+
+[33mcommit 6646d342cf70f607aa3d5cd6175f9724f476f7d3[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Wed Nov 14 07:04:40 2018 +0000
+
+    add_active_admin
+
+[33mcommit 6a01b3a2473d6360b7a2180d15ee169d3a1da1be[m
+Merge: 34694ba 2d6229c
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Wed Nov 14 15:46:51 2018 +0900
+
+    Merge pull request #4 from RedBullteam/topic1
+    
+    Topic1
+
+[33mcommit 2d6229c54cacea740e60805747046c56abd676c0[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Wed Nov 14 06:07:16 2018 +0000
+
+    Delete header link
+
+[33mcommit d92be62756629b85f39c0717601f753e02652168[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Wed Nov 14 03:50:20 2018 +0000
+
+    Change my page someting
+
+[33mcommit 34694bade59aa92bca9319c3a46c433abfdef355[m
+Merge: 6eeda78 286c23e
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Tue Nov 13 21:00:56 2018 +0900
+
+    Merge pull request #3 from RedBullteam/add_admin
+    
+    管理者トップページ実装途中
+
+[33mcommit 286c23e2127f77c427eb33627b3f0231d39ed112[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Tue Nov 13 11:45:02 2018 +0000
+
+    管理者トップページ実装途中
+
+[33mcommit 6eeda7853941dface158f42f4e357f885b0ee17d[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Tue Nov 13 11:34:41 2018 +0000
+
+    Change bootstlap
+
+[33mcommit e9ad194f58c395e9318e0da244ba2309cd991d40[m
+Merge: 91659e3 6829530
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Tue Nov 13 04:48:42 2018 +0000
+
+    Merge branch 'master' of github.com:RedBullteam/trend_music_encount into feature-movietop
+
+[33mcommit 6829530661228d00d54f0b25834b019df62809f6[m[33m ([m[1;31morigin/koike[m[33m)[m
+Merge: bc3d64a c38b2fd
+Author: aikawa321 <42262654+aikawa321@users.noreply.github.com>
+Date:   Tue Nov 13 13:46:08 2018 +0900
+
+    Merge pull request #2 from RedBullteam/makemypage
+    
+    first commit
+
+[33mcommit c38b2fdc6cbb4f987ddee031b18456f3e61fee14[m[33m ([m[1;31morigin/makemypage[m[33m)[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Tue Nov 13 04:45:06 2018 +0000
+
+    re routes
+
+[33mcommit bc3d64afaa54bb27e7ce1686f71c9fbc32ade158[m
+Merge: 37a4cbb e94f4c3
+Author: tamura <42559686+SumikkoTokage@users.noreply.github.com>
+Date:   Tue Nov 13 13:34:43 2018 +0900
+
+    Merge pull request #1 from RedBullteam/add_admin
+    
+    first commit
+
+[33mcommit 91659e3edf4b65955292d5324509999e0fe09963[m
+Author: pesopeso1234 <ito.taishi.0322@gmail.com>
+Date:   Tue Nov 13 04:23:08 2018 +0000
+
+    first commit
+
+[33mcommit e94f4c3e12b118a8cf84aa44cc5a9cfe0a94762a[m
+Author: SumikkoTokage <tm.nr.smanml@gmail.com>
+Date:   Tue Nov 13 04:07:46 2018 +0000
+
+    first commit
+
+[33mcommit 1f338b753abb72d9e6e0986a5ddc179797fe3eb5[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Tue Nov 13 04:06:09 2018 +0000
+
+    first commit
+
+[33mcommit 37a4cbbeb4dd8809c11cc0ddd4aeef7958ec4862[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Tue Nov 13 03:47:45 2018 +0000
+
+    Initialize commit
+
+[33mcommit 24bb2c5c92a9554f281a5a4ad7484a3c6f37dc7e[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Tue Nov 13 00:07:42 2018 +0000
+
+    Add some controllers and models
+
+[33mcommit 8c5f3fe7f60cbbef4e5634afe5d12496659d4d6a[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Tue Nov 13 00:05:07 2018 +0000
+
+    Add some controllers and models
+
+[33mcommit 1f903f6d141ee4ca4b766301bddbfd6628fbca07[m
+Author: aikawa321 <guilty.gate0619@gmail.com>
+Date:   Mon Nov 12 03:50:13 2018 +0000
+
+    Initialize Commit new app
