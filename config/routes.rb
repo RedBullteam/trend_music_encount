@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
 
+  devise_scope :user do
+ post 'users/sign_up/confirm' => 'users/registrations#confirm'
+ post 'users/sign_up/complete' => 'users/registrations#complete'
+end
+
   resources :goods, :only =>[:new,:create,:index,:edite,:update,:destroy]
   resources :companeys, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :doramas, :only => [:new,:create,:index,:edit,:update,:destroy,:feature,:title_search]
@@ -37,5 +42,7 @@ Rails.application.routes.draw do
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users,:only =>[:show,:edit,:update]
+  get 'users/resignnation'
+  resources :users,:except =>[:new,:create,:destroy]
+
 end
