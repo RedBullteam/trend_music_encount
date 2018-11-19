@@ -37,5 +37,7 @@ Rails.application.routes.draw do
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users,:only =>[:show,:edit,:update]
+  get 'users/resignnation'
+  resources :users,:except =>[:new,:create,:destroy]
+
 end
