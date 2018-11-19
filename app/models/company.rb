@@ -1,3 +1,3 @@
 class Company < ApplicationRecord
-	has_many :goods
+	has_many :goods, dependent: :destroy
 end

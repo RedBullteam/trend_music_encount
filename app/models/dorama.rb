@@ -1,4 +1,5 @@
 class Dorama < ApplicationRecord
+
 	enum week_id:{
 		月曜日:1,
 		火曜日:2,

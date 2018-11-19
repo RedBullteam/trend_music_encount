@@ -1,6 +1,6 @@
 ActiveAdmin.register Good do
 permit_params :id, :company_id, :goods, :video_url, :upload_date
-
+menu :parent => "Goods"
 form do |f|
 	f.inputs do
 		f.input :goods

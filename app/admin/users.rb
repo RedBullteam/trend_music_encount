@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 permit_params :id, :first_name, :last_name, :first_name_kana, :last_name_kana, :telephone, :email, :password, :delete_flag, default: true
-
+menu :parent => "Users"
 	#user登録フォーム
 	form do |f|
 		f.inputs "User" do
