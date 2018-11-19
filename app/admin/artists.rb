@@ -1,5 +1,6 @@
 ActiveAdmin.register Artist do
 permit_params :id,:name
+menu :parent => "Discs"
 
 	#artist登録フォーム
 	form do |f|

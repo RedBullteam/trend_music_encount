@@ -1,4 +1,6 @@
 class Dorama < ApplicationRecord
+	has_attached_file :dorama_image_id,
+                    :styles      => { :medium => "300x300>", :thumb => "100x100>" }
 	enum week_id:{
 		月曜日:1,
 		火曜日:2,

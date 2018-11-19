@@ -1,5 +1,6 @@
 ActiveAdmin.register Label do
 permit_params :id, :name
+menu :parent => "Discs"
 
 	form do |f|
 		f.inputs do
