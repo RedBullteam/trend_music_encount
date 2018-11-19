@@ -14,7 +14,7 @@
 						<ul class="list-group">
 							<% @user.address_lines.each do |addressline| %>
 							<li class="list-group-item list-group-item-info" style="text-align: center"><strong>ユーザープロフィール</strong></li>
-							<li class="list-group-item"><strong>ユーザーネーム</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.full_name %></li>
+							<li class="list-group-item"><strong>ユーザーネーム</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @user.full_name %></li>
 							<li class="list-group-item"><strong>ユーザーネーム(カナ)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @user.full_name_kana %></li>
 							<li class="list-group-item"><strong>メールアドレス</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @user.email %></li>
 							<li class="list-group-item"><strong>電話番号</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= @user.telephone %></li>
@@ -26,9 +26,7 @@
 						</ul>
 					</div>
 					<div>
-						<% if @user.id == current_user.id %>
 		        		<p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success " %></p>
-		        		<% end %>
 					</div>
 			</div>
 		</div>

@@ -4,23 +4,28 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
+    @user = User.active
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.active
   end
 
   def update
-      @user = User.find(params[:id])
-      # @user.id = current_user.id
+      @user = User.active
+      # @user.id = current_user.
     @user.update(user_params)
     redirect_to @user
   end
 
   def resignnation
      @user = current_user
-     @user.update(delete_flag:true)
+     p session.to_hash
+     @user.update(delete_flag: true)
+     @user.errors.full_messages
+  end
+
+  def complete
   end
 end
 
