@@ -70,26 +70,6 @@
         <div class="col-md-1"></div>
     </div>
 
-  <% @discs.each do |disc| %>
-    <table class="table table-hover">
-            <thead>
-              <tr>
-              <h4>収録曲</h4>
-              </tr>
-            </thead>
-            <tbody>
-              <% @songs.sort_by(&:track_number_id).each do |song| %>
-              <tr>
-                <td><%= song.track_number_id %></td>
-                <td><%= song.name %></td>
-              </tr>
-               <% end %>
-            </tbody>
-          </table>
-     <% end %>
-
-
-
           <table class="table table-hover">
             <thead>
               <tr>
