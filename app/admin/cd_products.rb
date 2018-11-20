@@ -1,5 +1,5 @@
 ActiveAdmin.register CdProduct do
-permit_params :artist_id, :name, :label_id, :stock_number, :release_era_tag_id, :sale_status_id, :release_date, :movie_id, :dorama_id, :goods_id
+permit_params :artist_id, :name, :label_id, :stock_number, :release_era_tag_id, :sale_status_id, :release_date, :movie_id, :dorama_id, :goods_id, :jacket_image
 menu :parent => "Discs"
 
 form do |f|
@@ -14,6 +14,7 @@ form do |f|
 		f.input :movie_id
 		f.input :dorama_id
 		f.input :goods_id
+		f.input :jacket_image, :as => :file, :hint => f.object.new_record? ? "" : f.template.image_tag(f.object.jacket_image.url(:thumb))
 	end
 	actions
 end
@@ -34,6 +35,17 @@ index do
 end
 menu if:
 show do |cd_product|
+	attributes_table do
+		row :artist
+    	row :name
+    	row :label
+    	row :stock_number
+    	row :sale_status_id
+    	row :release_date
+    	row :jacket_image do
+      		image_tag(cd_product.jacket_image.url(:medium))
+    	end
+	end
 	attributes_table(*cd_product.class.columns.collect { |column| column.name.to_sym })
 	panel "映画情報" do
 		table_for cd_product.movies do
