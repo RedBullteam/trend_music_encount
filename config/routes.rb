@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :artists, :only =>[:new,:create,:index,:edit,:update,:destroy]
   end
   resources :cms, :only => [:index,:trend,:search]
+  get '/era_search' => 'cd_products#era_search'
+  get '/era_search/list' => 'cd_products#era_search_list'
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
