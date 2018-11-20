@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_075425) do
+ActiveRecord::Schema.define(version: 2018_11_20_092451) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -88,19 +88,21 @@ ActiveRecord::Schema.define(version: 2018_11_14_075425) do
   create_table "cd_products", force: :cascade do |t|
     t.string "name"
     t.string "price"
-    t.string "integer"
     t.integer "label_id"
     t.integer "stock_number"
     t.integer "release_era_tag_id"
     t.integer "sale_status_id"
     t.integer "artist_id"
-    t.text "jacket_image_url"
     t.date "release_date"
     t.integer "movie_id"
     t.integer "dorama_id"
     t.integer "goods_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jacket_image_file_name"
+    t.string "jacket_image_content_type"
+    t.integer "jacket_image_file_size"
+    t.datetime "jacket_image_updated_at"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -120,11 +122,14 @@ ActiveRecord::Schema.define(version: 2018_11_14_075425) do
   create_table "doramas", force: :cascade do |t|
     t.string "name"
     t.integer "title_head_id"
-    t.text "dorama_image_url"
     t.date "dorama_start_date"
     t.integer "week_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dorama_image_file_name"
+    t.string "dorama_image_content_type"
+    t.integer "dorama_image_file_size"
+    t.datetime "dorama_image_updated_at"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -143,7 +148,6 @@ ActiveRecord::Schema.define(version: 2018_11_14_075425) do
   create_table "goods", force: :cascade do |t|
     t.integer "company_id"
     t.string "goods"
-    t.text "video_url"
     t.date "upload_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -158,10 +162,13 @@ ActiveRecord::Schema.define(version: 2018_11_14_075425) do
   create_table "movies", force: :cascade do |t|
     t.string "movie_name"
     t.integer "title_head_id"
-    t.text "movie_image_url"
     t.date "movie_release"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "movie_image_file_name"
+    t.string "movie_image_content_type"
+    t.integer "movie_image_file_size"
+    t.datetime "movie_image_updated_at"
   end
 
   create_table "release_era_tags", force: :cascade do |t|
