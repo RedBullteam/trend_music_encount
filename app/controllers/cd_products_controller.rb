@@ -9,6 +9,7 @@ class CdProductsController < ApplicationController
   end
 
   def era_search_list
+    @cd_products = CdProduct.search(params[:search])
   end
 
   def search

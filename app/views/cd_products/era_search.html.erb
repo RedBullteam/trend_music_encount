@@ -1,2 +1,41 @@
-<h1>CdProducts#era_search</h1>
-<p>Find me in app/views/cd_products/era_search.html.erb</p>
+<html>
+<head>
+	<style>
+		.era_search_btn {
+		  width: 320px;
+		  height: 150px;
+		  font-size: 50px;
+		  line-height: 130px;
+		}
+		.era_search_table {
+		  margin: auto;
+		}
+		.era_search_td {
+          padding: 15px;
+		}
+        .era_search_title {
+        	text-align: center;
+        	font-size: 20px;
+        	font-weight: 500;
+        }
+	</style>
+</head>
+<body>
+
+<table class="era_search_table">
+  <thead>
+    <div class="well well-sm era_search_title"><span class="glyphicon glyphicon-headphones"></span> 楽曲の年代を選択</div>
+  </thead>
+  <tbody>
+	<tr>
+      <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 1980年代</a></td>
+	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 1990年代</a></td>
+	</tr>
+	<tr>
+	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 2000年代</a></td>
+	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 2010年代</a></td>
+	</tr>
+  </tbody>
+</table>
+</body>
+</html>

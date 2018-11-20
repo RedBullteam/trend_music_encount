@@ -1,16 +1,26 @@
 <html>
   <head>
+    <style>
+    .cd_position {
+      padding-right: 10px;
+    }
+    </style>
   </head>
   <body>
 <!-- CD詳細 -->
+  <div class="container">
     <div class="row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-3">
-            <img src="/assets/no_image.jpeg", width="350px" height="350px">
-          </div>
-        <div class="col-xs-7">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <img src="/assets/no_image.jpeg", width="300px" height="300px">
+        </div>
+        <div class="col-md-6">
           <table class="table table-striped">
-  	          <thead></thead>
+  	          <thead>
+              <tr>
+                <h4>シングル/アルバム</h4>
+              </tr>
+              </thead>
   	          <tbody>
   	  	        <tr>
   	  	          <td>タイトル</td>
@@ -32,8 +42,12 @@
           <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
           <button type="button" class="btn btn-warning btn-lg">お気に入りに追加</button>
           <table class="table table-bordered">
-          	  <thead></thead>
-          	  <tbody>
+              <thead>
+             <tr>
+              <h4>商品情報</h4>
+              </tr>
+            </thead>
+              <tbody>
           	  	<tr>
           	  	  <td>発売日</td>
           	  	  <td>2018/11/11</td>
@@ -49,15 +63,12 @@
           	  </tbody>
           </table>
           </div>
-        <div class="col-xs-1"></div>
+        <div class="col-md-1"></div>
     </div>
-    <div class="row">
-      <div class="col-xs-1"></div>
-        <div class="col-xs-10">
           <table class="table table-hover">
             <thead>
               <tr>
-            	<th>収録曲</th>
+            	<h4>収録曲</h4>
               </tr>
             </thead>
             <tbody>
@@ -83,6 +94,25 @@
 
 <!-- 映画、ドラマ、CM情報 -->
           <div class="well well-sm">アーティスト関連情報</div>
+              <div class="row">
+                <div class="col-md-4">
+                  <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                </div>
+              <div class="col-md-8">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>映画、ドラマ、CM会社名</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>公開日、放送開始日、放送曜日、youtubeアップ日</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
 <!-- 映画、ドラマ、CM情報ここまで -->
 
 <!-- 関連楽曲 -->
@@ -91,28 +121,28 @@
               <thead></thead>
               <tbody>
             	<tr>
-              	  <td>
-              	  	<img src="/assets/no_image.jpeg", width="200px" height="200px">
+              	  <td class="cd_position">
+              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
 					<p>CD名</p>
 					<p>アーティスト名</p>
 				  </td>
-	         	  <td>
-              	  	<img src="/assets/no_image.jpeg", width="200px" height="200px">
+	         	  <td  class="cd_position">
+              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
 					<p>CD名</p>
 					<p>アーティスト名</p>
 				  </td>
-				  <td>
-              	  	<img src="/assets/no_image.jpeg", width="200px" height="200px">
+				  <td  class="cd_position">
+              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
 					<p>CD名</p>
 					<p>アーティスト名</p>
 				  </td>
-	         	  <td>
-              	  	<img src="/assets/no_image.jpeg", width="200px" height="200px">
+	         	  <td  class="cd_position">
+              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
 					<p>CD名</p>
 					<p>アーティスト名</p>
 				  </td>
-				  <td>
-              	  	<img src="/assets/no_image.jpeg", width="200px" height="200px">
+				  <td class="cd_position">
+              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
 					<p>CD名</p>
 					<p>アーティスト名</p>
 				  </td>
@@ -120,9 +150,8 @@
               </tbody>
             </table>
 <!-- 関連楽曲ここまで -->
-
         </div>
-        <div class="col-xs-1"></div>
       </div>
+    </div>
   </body>
 </html>
