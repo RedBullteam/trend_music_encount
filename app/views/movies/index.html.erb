@@ -28,23 +28,6 @@
 		</div>
 	<% end %>
 
-
-
-	<!-- <div class="btn-toolbar" role="toolbar">
-		<div class="btn-group" role="group">
-			<button type="button" class="btn btn-default">頭文字検索</button>
-			<button type="button" class="btn btn-default">あ</button>
-			<button type="button" class="btn btn-default">か</button>
-			<button type="button" class="btn btn-default">さ</button>
-			<button type="button" class="btn btn-default">た</button>
-			<button type="button" class="btn btn-default">な</button>
-			<button type="button" class="btn btn-default">は</button>
-			<button type="button" class="btn btn-default">ま</button>
-			<button type="button" class="btn btn-default">や</button>
-			<button type="button" class="btn btn-default">ら</button>
-			<button type="button" class="btn btn-default">わ</button>
-		</div>
-	</div> -->
 	<!-- タイトル部分 -->
 	<div class="jumbotron title_background_image">
 		<h1 style="color:white">映画音楽トップ</h1>
@@ -53,7 +36,7 @@
 	<!-- 映画CD一覧 -->
 	<h3>映画音楽CD一覧</h3>
 	<% if@cd_products.present? %>
-		<table class="table">
+		<table class="table table-bordered">
 			<tbody>
 				<tr>
 					<% @cd_products.each_with_index do |cd_product, i| %>
@@ -62,12 +45,12 @@
 						<% end %>
 						<td>
 							<img src="/assets/movie_top.jpeg">
-							<p><%= cd_product.name %></p>
+							<p>CD名：<%= cd_product.name %></p>
 							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
-							<p><%= selected_artist.name %></p>
-							<p><%= cd_product.release_date %></p>
+							<p>アーティスト名：<%= selected_artist.name %></p>
+							<p>リリース日：<%= cd_product.release_date %></p>
 							<% selected_movie = Movie.find_by(id: cd_product.movie_id) %>
-							<p><%= selected_movie.movie_name %></p>
+							<p>映画名：<%= selected_movie.movie_name %></p>
 						</td>
 						<% if (i + 1) % 3 == 0 %>
 						  	</tr>
