@@ -22,7 +22,7 @@
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<% @movies.where(title_head_id: title_head_num).each do |movie| %>
-					<li role="presentation"><a href="#"><%= movie.movie_name %></a></li>
+					<li role="presentation"><%= link_to movie.movie_name, movie_title_search_path(id: movie.id) %></li>
 				<% end %>
 			</ul>
 		</div>
