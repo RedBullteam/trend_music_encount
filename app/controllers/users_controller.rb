@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
 # @user.address_lines.build ←newのときは書いたほうがいい
-
+  def guide
+  end
 
   def show
     @user = User.find(params[:id])

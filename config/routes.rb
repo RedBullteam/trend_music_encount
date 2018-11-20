@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'cd_products#index'
+  get '/guide' => 'users#guide'
  namespace :admin do
     resources :goods, :only =>[:new,:create,:index,:edite,:update,:destroy]
     resources :companeys, :only =>[:new,:create,:index,:edit,:update,:destroy]
