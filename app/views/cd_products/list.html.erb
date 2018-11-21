@@ -1,17 +1,28 @@
 <html>
   <head>
     <style>
-    .cd_position {
-      padding-right: 10px;
-    }
-    .cd_position:last-child {
-     padding-right: 0px;
-    }
+		.inline-block{
+			display:inline-block;
+		}
     </style>
   </head>
 <body>
   <div class="container">
-    <div class="well well-sm">XXXを含む検索結果Y件</div>
+  	<% if @path.is('movies#title_search') %>
+  		<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>
+    	<div class="well well-sm">映画名：<%= params[:movie_name] %> のCD検索結果<%= @match_records %>件</div>
+	<% elsif @path.is('doramas#title_search') %>
+		<%= render partial: 'doramas/dorama_title_search', locals: { doramas: @doramas } %>
+    	<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果<%= @match_records %>件</div>
+    <% elsif @path.is('cms#goods_search') %>
+		<%=form_tag(cm_search_path, method: :get) do %>
+			<%= label_tag "商品名検索" %>
+			<%= text_field_tag :search_name %>
+			<%= submit_tag "検索" %>
+	<% end %>
+    	<div class="well well-sm"> 商品名 <%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
+    <% end %>
+
 <!-- CD一覧 -->
 	<% if@cd_products.present? %>
 		<table class="table table-bordered">
@@ -27,8 +38,6 @@
 							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
 							<p>アーティスト名：<%= selected_artist.name %></p>
 							<p>リリース日：<%= cd_product.release_date %></p>
-							<% selected_movie = Movie.find_by(id: cd_product.movie_id) %>
-							<p>映画名：<%= selected_movie.movie_name %></p>
 						</td>
 						<% if (i + 1) % 3 == 0 %>
 						  	</tr>

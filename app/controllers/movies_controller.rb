@@ -9,7 +9,13 @@ include Search
 
   def title_search
   	id = params[:id]
-  	@cd_products = title_search_function(id)
+    @match_records = movie_match_record_function(id)
+  	@cd_products = movie_title_search_function(id)
+    @movies = Movie.all
+    @path = controller_path + '#' + action_name
+    def @path.is(*str)
+        str.map{|s| self.include?(s)}.include?(true)
+    end
   	render template: "cd_products/list"
   end
 
