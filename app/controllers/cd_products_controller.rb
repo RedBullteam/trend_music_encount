@@ -1,4 +1,7 @@
 class CdProductsController < ApplicationController
+
+include Search
+
   def index
   end
 
@@ -13,11 +16,14 @@ class CdProductsController < ApplicationController
   end
 
   def era_search_list
+
   end
 
   def search
+
   end
 
   def list
+
   end
 end
