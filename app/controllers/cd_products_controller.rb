@@ -4,9 +4,10 @@ class CdProductsController < ApplicationController
 
   def show
     @cd_product = CdProduct.find(params[:id])
-    @artist = Artist.find(params[:id])
-    @label = Label.find(params[:id])
-    @genre = Genre.find(params[:id])
+    @discs = Disc.where(cd_product_id: (params[:id]))
+    @songs = Song.where(disc_id: @discs.ids)
+    @artist = Artist.where(cd_product: artist.id)
+
   end
 
   def era_search
