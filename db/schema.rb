@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_035516) do
     t.string "jacket_image_content_type"
     t.integer "jacket_image_file_size"
     t.datetime "jacket_image_updated_at"
+    t.string "integer"
   end
 
   create_table "companies", force: :cascade do |t|
