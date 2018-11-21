@@ -6,14 +6,17 @@ include Search
   end
 
   def show
+    @cd_product = CdProduct.find(params[:id])
+    @artist = Artist.find(params[:id])
+    @label = Label.find(params[:id])
+    @genre = Genre.find(params[:id])
   end
 
   def era_search
   end
 
   def era_search_list
-    @cd_products = CdProduct.search(params[:search])
-    redirect to search_list_path(@cd_products)
+
   end
 
   def search

@@ -15,9 +15,7 @@ Rails.application.routes.draw do
   resources :cms, :only => [:index,:trend,:search]
   get '/era_search' => 'cd_products#era_search'
   get '/era_search/list' => 'cd_products#era_search_list'
-  get '/search/list' => 'cd_products#list', as: :search_list
-  get '/doramas/title_search' => "doramas#title_search", as: :dorama_title_search
-  get '/movies/title_search/:id' => "movies#title_search", as: :movie_title_search
+  get '/cd_products/:id' => 'cd_products#show', as: 'cd_product'
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
