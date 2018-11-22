@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   get '/movies/title_search/:id/:movie_name' => "movies#title_search", as: :movie_title_search
   get '/cms/goods_search' => "cms#goods_search", as: :cm_goods_search
   get '/cms/comany_search' => "cms#company_search", as: :cm_company_search
+  resources :cd_products do
+    post 'add' => 'favorites#create'
+    delete '/add' => 'favorites#destroy'
+  end
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -48,7 +52,6 @@ end
   resources :cart_item, :only =>[:add,:destroy,:update]
   resources :shopping_carts, :only => [:new,:create,:index,:show,:destroy]
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
-  resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'users/resignnation'
   get 'users/complete'

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
           has_many :address_lines, dependent: :destroy
           has_many :favorites, dependent: :destroy
+          has_many :cd_products, through: :favorites
           accepts_nested_attributes_for :address_lines
           # 親モデルとネストしたいときに必須
   def full_name

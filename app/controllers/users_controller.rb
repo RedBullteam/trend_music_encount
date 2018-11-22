@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-# before_action :login_check, except: :complete
+before_action :login_check, except: :complete
 # @user.address_lines.build ←newのときは書いたほうがいい
 
 
