@@ -1,1 +1,64 @@
-guide.html.erb
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="guide.css">
+	<title>初めての方はこちら</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>はじめてガイド</h1>
+			<div class="guide1">
+			<h2>trend_music_encountとは</h2>
+				<div class="caption">
+					<p>映画やドラマ、CMなどに使われた曲情報をメインとしたCDショップです。</p>
+					<p>あの映画やドラマのエンディング、オープニングが知りたいけど曲名がわからない・・・</p>
+					<p>CMで使われてるあの曲が知りたいけど、商品名や会社名しかわからない・・・</p>
+					<p>そんなときはこのサイトから検索して見ましょう！曲検索から商品購入までサポート致します。</p>
+				</div>
+			</div>
+			<div class="guide2">
+				<h2>購入までの流れ</h2>
+				<div class="sub">
+					<h3>step1.欲しい楽曲を検索</h3>
+					<div class="caption">
+						<p>映画、ドラマ、CM(商品名、会社名)から曲を検索できます。曲名やアーティスト名がわからなくても大丈夫！</p>
+						<p>テレビや映画で流れていた曲情報を素早くキャッチできます。</p>
+					</div>
+				</div>
+				<div class="sub">
+					<h3>step2.ショッピングカートに商品を追加</h3>
+					<div class="caption">
+						<p>曲が見つかったあと、そのまま購入したいときはショッピングカートへ追加してください。</p>
+						<p>忙しくて時間がないときも、近くにCDショップがない時でもお買い求め頂けます！</p>
+					</div>
+				</div>
+				<div class="sub">
+					<h3>step3.購入ボタンをクリック！</h3>
+					<div class="caption">
+						<p>ショッピングが終わり、購入したいCDをカゴに入れたら、購入ボタンをクリック！</p>
+						<p>商品の発送状況はマイページからご確認頂けます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="guide3">
+				<h2>ユーザーだけのおすすめ機能</h2>
+				<div class="sub">
+					<h3>お気に入り</h3>
+					<div class="caption">
+						<p>検索した曲情報をまとめておける機能です。</p>
+						<p>画面にあるハートボタンをクリックし、色がつくとお気に入り登録完了！</p>
+						<p>追加したものはマイページにあるお気に入りページからご確認することができます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="guide4">
+				<p>ユーザー専用機能は随時追加予定！</p>
+				<p>登録はこちら</p>
+				<p><%= link_to "新規登録", new_user_session_path %></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
