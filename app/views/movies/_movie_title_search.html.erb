@@ -1,0 +1,16 @@
+
+	<p style = "display:inline-block;">頭文字検索</p>
+	<% @title_heads = [ "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ"] %>
+	<% for title_head_num in 1..10 do %>
+		<div class="dropdown" style = "display:inline-block;">
+			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+				<%= @title_heads[title_head_num - 1] %>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<% movies.where(title_head_id: title_head_num).each do |movie| %>
+					<li role="presentation"><%= link_to movie.movie_name, movie_title_search_path(id: movie.id, movie_name: movie.movie_name) %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
