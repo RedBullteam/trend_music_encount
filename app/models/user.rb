@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
           has_many :address_lines, dependent: :destroy
+          has_many :favorites, dependent: :destroy
           accepts_nested_attributes_for :address_lines
           # 親モデルとネストしたいときに必須
   def full_name
@@ -17,4 +18,5 @@ class User < ApplicationRecord
     ユーザー: false,
     退会ユーザー: true
   }
+  scope :active, -> { find_by(delete_flag: false) }
 end

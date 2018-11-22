@@ -18,24 +18,28 @@
           <table class="table table-striped">
   	          <thead>
               <tr>
-                <h4>シングル/アルバム</h4>
+                <h4>CD情報</h4>
               </tr>
               </thead>
   	          <tbody>
   	  	        <tr>
   	  	          <td>タイトル</td>
-  	  	          <td>ピースサイン＜通常盤＞</td>
+  	  	          <td><p><%= @cd_product.name %><p></td>
   	  	          <td></td>
   	  	        </tr>
   	  	        <tr>
   	  	          <td>アーティスト</td>
-  	  	          <td>米津玄師</td>
+  	  	          <td><%= @artist.name %></td>
   	  	          <td></td>
   	  	        </tr>
   	            <tr>
   	  	          <td>価格（税込）</td>
-  	  	          <td>￥1080</td>
-  	  	          <td>在庫あり/soldout</td>
+  	  	          <td>￥<%= @cd_product.price %></td>
+  	  	          <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
+                      <% else %>
+                      <% @cd_product.stock_number >= 1  %>在庫あり
+                      <% end %>
+                  </td>
   	  	        </tr>
   	        </tbody>
           </table>
@@ -50,21 +54,22 @@
               <tbody>
           	  	<tr>
           	  	  <td>発売日</td>
-          	  	  <td>2018/11/11</td>
+          	  	  <td><%= @cd_product.release_date %></td>
           	  	</tr>
             	<tr>
           	  	  <td>ジャンル</td>
-          	  	  <td>J-POP</td>
+          	  	  <td><%= @genre.name %></td>
           	  	</tr>
            	  	<tr>
           	  	  <td>レーベル</td>
-          	  	  <td>Sony Music</td>
+          	  	  <td><%= @label.name %></td>
           	  	</tr>
           	  </tbody>
           </table>
           </div>
         <div class="col-md-1"></div>
     </div>
+
           <table class="table table-hover">
             <thead>
               <tr>

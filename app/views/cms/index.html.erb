@@ -8,22 +8,10 @@
 </style>
 </head>
 <body>
-	<!-- 頭文字検索 -->
-	<div class="btn-toolbar" role="toolbar">
-		<div class="btn-group" role="group">
-			<button type="button" class="btn btn-default">頭文字検索</button>
-			<button type="button" class="btn btn-default">あ</button>
-			<button type="button" class="btn btn-default">か</button>
-			<button type="button" class="btn btn-default">さ</button>
-			<button type="button" class="btn btn-default">た</button>
-			<button type="button" class="btn btn-default">な</button>
-			<button type="button" class="btn btn-default">は</button>
-			<button type="button" class="btn btn-default">ま</button>
-			<button type="button" class="btn btn-default">や</button>
-			<button type="button" class="btn btn-default">ら</button>
-			<button type="button" class="btn btn-default">わ</button>
-		</div>
-	</div>
+	<!-- 商品名検索 -->
+	<%= render partial: 'cms/goods_name_search' %>
+	<!-- 会社名検索 -->
+	<%= render partial: 'cms/company_name_search' %>
 	<!-- タイトル部分 -->
 	<div class="jumbotron title_background_image">
 		<h1 style="color:white">CM音楽トップ</h1>
@@ -31,80 +19,36 @@
 	</div>
 	<!-- CMCD一覧 -->
 	<h3>CM音楽CD一覧</h3>
-	<table class="table">
-		<tbody>
-			<tr>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-			</tr>
-			<tr>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-			</tr>
-			<tr>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-				<td><img src="/assets/cm_top.jpeg">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-					<p>リリース日</p>
-					<p>会社名</p>
-					<p>商品名</p>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<!-- ページャー -->
+		<% if@cd_products.present? %>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<% @cd_products.each_with_index do |cd_product, i| %>
+						<% if  i % 3 ==0 %>
+						  	<tr>
+						<% end %>
+						<td>
+							<img src="/assets/cm_top.jpeg">
+							<p>CD名：<%= cd_product.name %></p>
+							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+							<p>アーティスト名：<%= selected_artist.name %></p>
+							<p>リリース日：<%= cd_product.release_date %></p>
+							<% selected_goods = Good.find_by(id: cd_product.goods_id) %>
+							<p>商品名：<%= selected_goods.goods %></p>
+							<% selected_company = Company.find_by(id: selected_goods.company_id) %>
+							<p>会社名：<%= selected_company.company %></p>
+						</td>
+						<% if (i + 1) % 3 == 0 %>
+						  	</tr>
+						<% end %>
+						<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
+							</tr>
+						<% end %>
+					<% end %>
+			</tbody>
+		</table>
+		<%= paginate @cd_products %>
+	<% end %>
 </body>
 </html>
 

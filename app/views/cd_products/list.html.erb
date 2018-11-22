@@ -1,95 +1,66 @@
 <html>
   <head>
-    <style>
-    .cd_position {
-      padding-right: 10px;
-    }
-    .cd_position:last-child {
-     padding-right: 0px;
-    }
-    </style>
   </head>
 <body>
   <div class="container">
-<!-- 検索フォーム -->
-  	<div class="input-group">
-  <input type="text" class="form-control" placeholder="アーティスト、曲名を入力">
-  <span class="input-group-btn">
-    <button class="btn btn-primary" type="submit">
-      <i class='glyphicon glyphicon-search'></i>
-    </button>
-  </span>
-</div>
-    <div class="well well-sm">XXXを含む検索結果Y件</div>
+  	<% if @path.is('movies#title_search') %>
+  		<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>
+  		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">映画名：<%= params[:dorama_name] %> のCD検索結果は0件</div>
+  		<% else %>
+  			<div class="well well-sm">映画名：<%= params[:movie_name] %> のCD検索結果<%= @match_records %>件</div>
+  		<% end %>
+	<% elsif @path.is('doramas#title_search') %>
+		<%= render partial: 'doramas/dorama_title_search', locals: { doramas: @doramas } %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
+    <% elsif @path.is('cms#goods_search') %>
+		<%= render partial: 'cms/goods_name_search' %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
+	<% elsif @path.is('cms#company_search') %>
+		<%= render partial: 'cms/company_name_search' %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">会社名：<%= params[:search_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">会社名：<%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
+    <% end %>
+
 <!-- CD一覧 -->
-	<table>
-		<tbody>
-			<tr>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p
-					<p>アーティスト名</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-				<td class="cd_position"><img src="/assets/no_image.jpeg", width="200px" height="200px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-<!-- ペジャー -->
-  <ul class="pagination, pager">
-    <li><a href="#"><</a></li>
-    <li><a href="#">1</a></li>
-    <li class="active"><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">></a></li>
-  </ul>
+	<% if@cd_products != "no-matched" %>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<% @cd_products.each_with_index do |cd_product, i| %>
+						<% if  i % 3 ==0 %>
+						  	<tr>
+						<% end %>
+						<td>
+							<img src="/assets/movie_top.jpeg">
+							<p>CD名：<%= cd_product.name %></p>
+							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+							<p>アーティスト名：<%= selected_artist.name %></p>
+							<p>リリース日：<%= cd_product.release_date %></p>
+						</td>
+						<% if (i + 1) % 3 == 0 %>
+						  	</tr>
+						<% end %>
+						<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
+							</tr>
+						<% end %>
+					<% end %>
+			</tbody>
+		</table>
+		<%= paginate @cd_products %>
+	<% end %>
+<!-- ペ-ジャー -->
 </div>
 </body>
 </html>
