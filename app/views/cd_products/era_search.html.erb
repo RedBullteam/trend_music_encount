@@ -22,46 +22,20 @@
 </head>
 <body>
 
-
-<table class="era_search_table">
-  <thead>
-    <div class="well well-sm era_search_title"><span class="glyphicon glyphicon-headphones"></span> 楽曲の年代を選択</div>
-  </thead>
-  <tbody>
-  	<% @release_era_tags = [ "1980年代", "1990年代", "2000年代", "2010年代", ] %>
-  	<% for release_era_tag_num in 1..4 do %>
-	<tr>
-      <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span>1980年代</a></td>
-	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
-	</tr>
-	<tr>
-	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
-	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
-	</tr>
-	<% end %>
-  </tbody>
-</table>
-
-
-
-
-
-
 <table class="era_search_table">
   <thead>
     <div class="well well-sm era_search_title"><span class="glyphicon glyphicon-headphones"></span> 楽曲の年代を選択</div>
   </thead>
   <tbody>
 	<tr>
-      <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 1980年代</a></td>
-	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 1990年代</a></td>
+      <td class="era_search_td"><%= link_to "1980年代", era_search_list_path, class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
+	  <td class="era_search_td"><%= link_to "1990年代", era_search_list_path, class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
 	</tr>
 	<tr>
-	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 2000年代</a></td>
-	  <td class="era_search_td"><a href="#" class="btn btn-lg btn-info era_search_btn"><span class="glyphicon glyphicon-zoom-in"></span> 2010年代</a></td>
+	  <td class="era_search_td"><%= link_to "2000年代", era_search_list_path, class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
+	  <td class="era_search_td"><%= link_to "2010年代", era_search_list_path, class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
 	</tr>
   </tbody>
 </table>
-
 </body>
 </html>

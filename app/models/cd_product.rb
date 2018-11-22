@@ -1,4 +1,5 @@
 class CdProduct < ApplicationRecord
+	belongs_to :release_era_tag
 	belongs_to :artist
 	belongs_to :label
 	has_many :discs, dependent: :destroy

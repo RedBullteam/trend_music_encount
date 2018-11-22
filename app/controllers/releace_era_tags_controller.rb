@@ -1,2 +1,0 @@
-class ReleaceEraTagsController < ApplicationController
-end

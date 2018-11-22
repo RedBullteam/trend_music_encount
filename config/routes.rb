@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :cms, :only => [:index,:trend,:search]
   get '/era_search' => 'cd_products#era_search'
+  get '/release_era_tag/:id' => 'release_era_tags#show', as: 'release_era_tag'
   get '/era_search/list' => 'cd_products#era_search_list'
   get '/cd_products/:id' => 'cd_products#show', as: 'cd_product'
   get '/search/list' => 'cd_products#list', as: :search_list

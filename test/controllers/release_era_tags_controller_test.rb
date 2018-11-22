@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ReleaceEraTagsControllerTest < ActionDispatch::IntegrationTest
+class ReleaseEraTagsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
