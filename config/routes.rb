@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get '/search/list' => 'cd_products#list', as: :search_list
   get '/doramas/title_search/:id/:dorama_name' => "doramas#title_search", as: :dorama_title_search
   get '/movies/title_search/:id/:movie_name' => "movies#title_search", as: :movie_title_search
-  post '/cms/search' => "cms#goods_search", as: :cm_search
+  get '/cms/goods_search' => "cms#goods_search", as: :cm_goods_search
+  get '/cms/comany_search' => "cms#company_search", as: :cm_company_search
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',

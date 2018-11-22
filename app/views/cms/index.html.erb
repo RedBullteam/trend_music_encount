@@ -9,19 +9,9 @@
 </head>
 <body>
 	<!-- 商品名検索 -->
-	<%=form_tag(cm_search_path, method: :post) do %>
-		<%= label_tag "商品名検索" %>
-		<%= text_field_tag :search_name %>
-		<%= submit_tag "検索" %>
-	<% end %>
+	<%= render partial: 'cms/goods_name_search' %>
 	<!-- 会社名検索 -->
-	<div class="input-group">
-		<span class="input-group-addon">会社名検索</span>
-		<input type="text" class="form-control" placeholder="テキスト入力欄">
-		<span class="input-group-btn">
-			<button type="button" class="btn btn-default"></button>
-		</span>
-	</div>
+	<%= render partial: 'cms/company_name_search' %>
 	<!-- タイトル部分 -->
 	<div class="jumbotron title_background_image">
 		<h1 style="color:white">CM音楽トップ</h1>

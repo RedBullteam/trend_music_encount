@@ -1,30 +1,40 @@
 <html>
   <head>
-    <style>
-		.inline-block{
-			display:inline-block;
-		}
-    </style>
   </head>
 <body>
   <div class="container">
   	<% if @path.is('movies#title_search') %>
   		<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>
-    	<div class="well well-sm">映画名：<%= params[:movie_name] %> のCD検索結果<%= @match_records %>件</div>
+  		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">映画名：<%= params[:dorama_name] %> のCD検索結果は0件</div>
+  		<% else %>
+  			<div class="well well-sm">映画名：<%= params[:movie_name] %> のCD検索結果<%= @match_records %>件</div>
+  		<% end %>
 	<% elsif @path.is('doramas#title_search') %>
 		<%= render partial: 'doramas/dorama_title_search', locals: { doramas: @doramas } %>
-    	<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果<%= @match_records %>件</div>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
     <% elsif @path.is('cms#goods_search') %>
-		<%=form_tag(cm_search_path, method: :get) do %>
-			<%= label_tag "商品名検索" %>
-			<%= text_field_tag :search_name %>
-			<%= submit_tag "検索" %>
-	<% end %>
-    	<div class="well well-sm"> 商品名 <%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
+		<%= render partial: 'cms/goods_name_search' %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
+	<% elsif @path.is('cms#company_search') %>
+		<%= render partial: 'cms/company_name_search' %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">会社名：<%= params[:search_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">会社名：<%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
     <% end %>
 
 <!-- CD一覧 -->
-	<% if@cd_products.present? %>
+	<% if@cd_products != "no-matched" %>
 		<table class="table table-bordered">
 			<tbody>
 				<tr>

@@ -1,0 +1,5 @@
+<%=form_tag(cm_goods_search_path, method: :get) do %>
+	<%= label_tag "商品名検索" %>
+	<%= text_field_tag :search_name %>
+	<%= submit_tag "検索" %>
+<% end %>
