@@ -19,9 +19,7 @@ Rails.application.routes.draw do
   get '/search/list' => 'cd_products#list', as: :search_list
   get '/doramas/title_search' => "doramas#title_search", as: :dorama_title_search
   get '/movies/title_search/:id' => "movies#title_search", as: :movie_title_search
-  resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list] do
-    resource :favorites, :only =>[:create,:destroy,:index]
-  end
+  resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     password: 'admins/passwords',
@@ -48,6 +46,7 @@ end
   resources :cart_item, :only =>[:add,:destroy,:update]
   resources :shopping_carts, :only => [:new,:create,:index,:show,:destroy]
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
+  resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'users/resignnation'
   get 'users/complete'
