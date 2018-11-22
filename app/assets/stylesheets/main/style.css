@@ -1,0 +1,185 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body:after {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: rgb(150, 215, 247);
+    background: -moz-linear-gradient(top, rgb(221, 202, 251) 0%,rgb(150, 215, 247) 100%);
+    background: -webkit-linear-gradient(top, rgb(221, 202, 251) 0%,rgb(150, 215, 247) 100%);
+    background: linear-gradient(to bottom, rgb(221, 202, 251) 0%,rgb(150, 215, 247) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbcacb', endColorstr='#f79697',GradientType=0 );
+    z-index: -1;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.header-top{
+  width: 100%;
+  padding: 20px 0 10px 0;
+  margin: 0;
+  text-align: center;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 60px;
+  color:#20b2aa;
+}
+
+.nav-list{
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px 0;
+  margin: 0 auto;
+
+}
+.nav-list-item {
+  list-style: none;
+  margin: 0 20px;
+  display: inline-block;
+  border-top: solid 2px lightcyan;
+  border-bottom: solid 2px lightcyan;
+}
+
+.nav-list-item a{
+  color:#668ad8;
+}
+
+.header-bottom{
+  width:85%;
+  text-align: right;
+}
+ .square_btn a{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+}
+
+.main-visual {
+  width: 100%;
+  height: 400px;
+  padding: 10px 0;
+}
+.slide_1{
+background-color: skyblue;
+}
+.slide_2{
+background-color: gray;
+}
+.slide_3{
+background-color: lightblue;
+}
+.slide_4{
+background-color: pink;
+}
+.slide_5{
+background-color: lightpink;
+}
+
+.main {
+  width: 80%; /* 横幅 */
+  font-family: 'メイリオ', Meiryo,'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','ヒラギノ角ゴシック','Hiragino Sans','Arial','Arial Black',sans-serif;
+  margin: 0 auto;
+}
+.main-content {
+  width: 78%;
+  height: 1300px;
+  float: left;
+}
+.movie-content, .cm-content, .dorama-content {
+  width: 100%;
+  height: 400px;
+  border: solid 2px gray;
+  margin-bottom: 10px;
+}
+
+.sidebar {
+  width: 20%;
+  height: 200px;
+  float: right;
+}
+
+.side-columns {
+  width:100%;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background-color: #668ad8;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.side-columns a{
+  color:#fff;
+}
+
+.side-columns:active {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+}
+
+.footer {
+  width: 100%;
+  height:300px;
+  border-top: solid 2px #fff;
+}
+
+.footer p{
+  padding-top:10px;
+  margin:0;
+  color:gray;
+}
+
+.footer-nav{
+  width:80%;
+  margin: 0 auto;
+}
+
+.footer-nav-list{
+  text-align: left;
+  vertical-align: middle;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+
+.footer-nav-item{
+  list-style: none;
+  margin-right:20px;
+  display: inline-block;
+}
+
+.footer-nav-item a{
+  color:#668ad8;
+}
+
+.footer-text{
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Segoe Script','Bradley Hand',sans-serif;
+  font-size: 30px;
+  color:#20b2aa;
+}

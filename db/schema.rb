@@ -107,9 +107,9 @@ ActiveRecord::Schema.define(version: 2018_11_22_092830) do
 
   create_table "companies", force: :cascade do |t|
     t.string "company"
+    t.integer "goods_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "goods_id"
   end
 
   create_table "discs", force: :cascade do |t|
@@ -174,7 +174,6 @@ ActiveRecord::Schema.define(version: 2018_11_22_092830) do
   end
 
   create_table "release_era_tags", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
