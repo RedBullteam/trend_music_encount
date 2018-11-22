@@ -17,4 +17,5 @@ class User < ApplicationRecord
     ユーザー: false,
     退会ユーザー: true
   }
+  scope :active, -> { find_by(delete_flag: false) }
 end

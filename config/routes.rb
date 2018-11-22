@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/era_search' => 'cd_products#era_search'
   get '/era_search/list' => 'cd_products#era_search_list'
   get '/cd_products/:id' => 'cd_products#show', as: 'cd_product'
+  get '/search/list' => 'cd_products#list', as: :search_list
+  get '/doramas/title_search' => "doramas#title_search", as: :dorama_title_search
+  get '/movies/title_search/:id' => "movies#title_search", as: :movie_title_search
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -46,6 +49,7 @@ end
   resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'users/resignnation'
+  get 'users/complete'
   resources :users,:except =>[:new,:create,:destroy]
 
 end

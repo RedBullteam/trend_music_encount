@@ -1,4 +1,7 @@
 class CdProductsController < ApplicationController
+
+include Search
+
   def index
   end
 
@@ -11,16 +14,16 @@ class CdProductsController < ApplicationController
   end
 
   def era_search
-
   end
 
   def era_search_list
-@cd_products = CdProduct.where("dorama_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).page(params[:page]).per(12)
   end
 
   def search
+
   end
 
   def list
+
   end
 end
