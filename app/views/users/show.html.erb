@@ -30,6 +30,14 @@
 		        		<p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success " %></p>
 		        		<% end %>
 					</div>
+					<div class="favorit-box">
+						<ul class="list-group">
+							<li  class="list-group-item list-group-item-info">お気に入り商品リスト</li>
+							<% @favorites.each do |favorite| %>
+							<li class="list-group-item"><strong>商品名：</strong><%=favorite.cd_product.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>価格：</strong>￥<%=favorite.cd_product.price %>(税込み)</li>
+						</ul>
+						<% end %>
+					</div>
 			</div>
 		</div>
 	</div>
