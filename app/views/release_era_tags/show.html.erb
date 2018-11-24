@@ -13,13 +13,15 @@
 <div class="container">
  <% @release_era_tags.each do |release_era_tag| %>
    <button class= "btn btn-lg btn-info era_search_btn">
+
   	  <%= link_to release_era_tag.name,  release_era_tag_path(release_era_tag) %>
   	  	<% @cd_products.each do |cd_product| %>
   		<% end %>
   </button>
- <% end %>
- <div class="well well-sm">XXXを含む検索結果Y件</div>
- 	<% if @cd_products.present? %>
+
+<% end %>
+<div class="well well-sm">XXXを含む検索結果Y件</div>
+	<% if @cd_products.present? %>
 		<table>
 			<tbody>
 				<tr>
@@ -43,8 +45,11 @@
 			</tbody>
 		</table>
 		<%= paginate @cd_products %>
- 	<% end %>
- </div>
+	<% end %>
+
+
+</div>
 </body>
 </html>
+
 
