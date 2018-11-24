@@ -1,2 +1,87 @@
-<h1>CdProducts#index</h1>
-<p>Find me in app/views/cd_products/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="skippr.css">
+	<link rel="stylesheet" href="style.css">
+	<title>trend_music_encount</title>
+</head>
+<body>
+	<div class="header">
+		<h1 class="header-top">
+			Trend Music Encount
+		</h1>
+		<nav>
+			<ul class="nav-list">
+				<li class="nav-list-item"><a href="/">HOME</a></li>
+				<li class="nav-list-item"><a href="/movies">映画</a></li>
+				<li class="nav-list-item"><a href="/cms">ＣＭ</a></li>
+				<li class="nav-list-item"><a href="/doramas">ドラマ</a></li>
+				<li class="nav-list-item"><a href="#">曲検索</a></li>
+				<li class="nav-list-item"><a href="#">アーティスト検索</a></li>
+				<li class="nav-list-item"><a href="#">マイページ</a></li>
+			</ul>
+		</nav>
+		<div class="header-bottom">
+			<button class="square_btn"><a href="#" class="cart-button">ショッピングカート</a></button>
+		</div>
+	</div>
+
+	<div class="main-visual">
+        <div class="theTarget">
+            <div class="slide_1"></div>
+            <div class="slide_2"></div>
+            <div class="slide_3"></div>
+            <div class="slide_4"></div>
+            <div class="slide_5"></div>
+        </div>
+	</div>
+	<div class="main clearfix">
+		<div class="main-content">
+			<div class="movie-content">
+				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
+			</div>
+			<div class="cm-content">
+				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
+			</div>
+			<div class="dorama-content">
+				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
+			</div>
+		</div>
+		<div class="sidebar">
+			<button class="side-columns"><a href="/users/sign_in">ログイン</a></button>
+			<button class="side-columns"><a href="/users/sign_up">新規登録</a></button>
+			<button class="side-columns"><a href="/guide">初めての方はこちら</a></button>
+			<button class="side-columns"><a href="#">あの頃検索</a></button>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer-nav">
+			<p>trend music encountについて</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/users/sign_in">ログイン</a></li>
+				<li class="footer-nav-item"><a href="/users/sign_up">新規登録</a></li>
+				<li class="footer-nav-item"><a href="/guide">初めての方はこちら</a></li>
+				<li class="footer-nav-item"><a href="#">あの頃検索</a></li>
+			</ul>
+			<p>映画関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/movies">映画関連トップ</a></li>
+			</ul>
+			<p>ＣＭ関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/cms">ＣＭ関連トップ</a></li>
+			</ul>
+			<p>ドラマ関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/doramas">ドラマ関連トップ</a></li>
+			</ul>
+		</div>
+		<p class="footer-text">TREND MUSIC ENCOUNT</p>
+	</div>
+
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="skippr.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

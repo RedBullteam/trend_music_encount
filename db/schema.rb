@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_125613) do
+ActiveRecord::Schema.define(version: 2018_11_22_092830) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_125613) do
     t.string "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "goods_id"
   end
 
   create_table "discs", force: :cascade do |t|
@@ -133,10 +132,12 @@ ActiveRecord::Schema.define(version: 2018_11_21_125613) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "cd_product_id"
+    t.integer "user_id", null: false
+    t.integer "cd_product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cd_product_id"], name: "index_favorites_on_cd_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|

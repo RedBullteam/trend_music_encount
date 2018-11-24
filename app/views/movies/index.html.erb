@@ -5,29 +5,11 @@
   	background-image:  url(/assets/movie_top.jpeg);
   	background-size: cover;
 }
-.inline-block{
-	display:inline-block;
-}
 </style>
 </head>
 <body>
 	<!-- 頭文字検索 -->
-	<p class = "inline-block">頭文字検索</p>
-	<% @title_heads = [ "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ"] %>
-	<% for title_head_num in 1..10 do %>
-		<div class="dropdown inline-block">
-			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-				<%= @title_heads[title_head_num - 1] %>
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<% @movies.where(title_head_id: title_head_num).each do |movie| %>
-					<li role="presentation"><%= link_to movie.movie_name, movie_title_search_path(id: movie.id) %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-
+	<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>
 	<!-- タイトル部分 -->
 	<div class="jumbotron title_background_image">
 		<h1 style="color:white">映画音楽トップ</h1>

@@ -12,5 +12,14 @@ include Search
   end
 
   def title_search
+  	id = params[:id]
+    @match_records = dorama_match_record_function(id)
+  	@cd_products = dorama_title_search_function(id)
+    @doramas = Dorama.all
+    @path = controller_path + '#' + action_name
+    def @path.is(*str)
+        str.map{|s| self.include?(s)}.include?(true)
+    end
+  	render template: "cd_products/list"
   end
 end
