@@ -1,9 +1,9 @@
 class CdProduct < ApplicationRecord
-	belongs_to :user
 	belongs_to :artist
 	belongs_to :label
 	has_many :discs, dependent: :destroy
 	has_many :favorites, dependent: :destroy
+	has_many :users,through: :favorites
     enum sale_status_id: {
 		準備中:1, 販売中:2
     }
