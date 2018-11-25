@@ -23,7 +23,15 @@
 			</ul>
 		</nav>
 		<div class="header-bottom">
-			<button class="square_btn"><a href="#" class="cart-button">ショッピングカート</a></button>
+			 <% if  user = current_user %>
+				<button class="square_btn">
+					<a href="/shopping_carts" class="cart-button">ショッピングカート</a>
+				</button>
+			<% else %>
+				<div class="balloonoya square_btn" onclick="showBalloon()">ショッピングカート
+					<span class="balloon1" id="makeImg">ログインすると閲覧できます</span>
+				</div>
+			<%end%>
 		</div>
 	</div>
 
@@ -49,7 +57,12 @@
 			</div>
 		</div>
 		<div class="sidebar">
-			<button class="side-columns"><a href="/users/sign_in">ログイン</a></button>
+			<% if user_signed_in? %>
+				<button class="side-columns"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+			<%else%>
+				<button class="side-columns"><a href="/users/sign_in">ログイン</a></button>
+			<%end%>
+
 			<button class="side-columns"><a href="/users/sign_up">新規登録</a></button>
 			<button class="side-columns"><a href="/guide">初めての方はこちら</a></button>
 			<button class="side-columns"><a href="#">あの頃検索</a></button>
@@ -59,7 +72,11 @@
 		<div class="footer-nav">
 			<p>trend music encountについて</p>
 			<ul class="footer-nav-list">
+				<% if user_signed_in? %>
+				<li class="footer-nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+				<% else %>
 				<li class="footer-nav-item"><a href="/users/sign_in">ログイン</a></li>
+				<% end %>
 				<li class="footer-nav-item"><a href="/users/sign_up">新規登録</a></li>
 				<li class="footer-nav-item"><a href="/guide">初めての方はこちら</a></li>
 				<li class="footer-nav-item"><a href="#">あの頃検索</a></li>
@@ -83,5 +100,15 @@
 	<script src="jquery-3.2.1.min.js"></script>
 	<script src="skippr.min.js"></script>
 	<script src="script.js"></script>
+	<script>
+		function showBalloon(){
+			var wObjballoon	= document.getElementById("makeImg");
+			if (wObjballoon.className == "balloon1"){
+				wObjballoon.className = "balloon";
+			}else{
+				wObjballoon.className = "balloon1";
+			}
+		}
+	</script>
 </body>
 </html>
