@@ -29,7 +29,7 @@
   	  	        </tr>
   	  	        <tr>
   	  	          <td>アーティスト</td>
-  	  	          <td><%= @artist.name %></td>
+  	  	          <td><%= @cd_product.artist.name %></td>
   	  	          <td></td>
   	  	        </tr>
   	            <tr>
@@ -45,6 +45,11 @@
           </table>
           <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
           <button type="button" class="btn btn-warning btn-lg">お気に入りに追加</button>
+           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:cd_product.id) %>
+            <%= link_to "お気に入り",cd_product_add_path(cd_product),method: :post %>
+            <% else %>
+            <%= link_to "お気に入り解除",cd_product_add_path(cd_product),method: :delete %>
+            <% end %>
           <table class="table table-bordered">
               <thead>
              <tr>
@@ -56,13 +61,9 @@
           	  	  <td>発売日</td>
           	  	  <td><%= @cd_product.release_date %></td>
           	  	</tr>
-            	<tr>
-          	  	  <td>ジャンル</td>
-          	  	  <td><%= @genre.name %></td>
-          	  	</tr>
            	  	<tr>
           	  	  <td>レーベル</td>
-          	  	  <td><%= @label.name %></td>
+          	  	  <td><%= @cd_product.label.name %></td>
           	  	</tr>
           	  </tbody>
           </table>
@@ -70,91 +71,74 @@
         <div class="col-md-1"></div>
     </div>
 
-          <table class="table table-hover">
-            <thead>
-              <tr>
-            	<h4>収録曲</h4>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-            	  <td>1</td>
-            	  <td>ピースサイン</td>
-              </tr>
-              <tr>
-            	<td>2</td>
-            	<td>Neighbourhood</td>
-              </tr>
-              <tr>
-            	<td>3</td>
-            	<td>ゆめくいしょうじょ</td>
-              </tr>
-              <tr>
-            	<td>4</td>
-            	<td>ピースサイン (Instrumental)</td>
-              </tr>
-            </tbody>
-          </table>
-<!-- CD詳細ここまで -->
 
-<!-- 映画、ドラマ、CM情報 -->
-          <div class="well well-sm">アーティスト関連情報</div>
-              <div class="row">
-                <div class="col-md-4">
-                  <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
-                </div>
-              <div class="col-md-8">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>映画、ドラマ、CM会社名</th>
-                    </tr>
-                  </thead>
+
+    <h4>収録曲</h4>
+      <% @discs.each do |disc| %>
+        <table class="table table-hover">
+                <thead>
+                  <tr>
+                  <p>Disc<%= disc.disc %></p>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @songs.each do |song| %>
+                    <% if song.disc_id == disc.id %>
+                      <tr>
+                        <td><%= song.track_number_id %></td>
+                        <td><%= song.name %></td>
+                        <td>
+                          <% selected_genre = Genre.find_by(id: song.genre_id) %>
+                          <%= selected_genre.name %>
+                        </td>
+                      </tr>
+                    <% else %>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+         <% end %>
+    <!-- CD詳細ここまで -->
+
+    <!-- 映画、ドラマ、CM情報 -->
+              <div class="well well-sm">アーティスト関連情報</div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                    </div>
+                  <div class="col-md-8">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>映画、ドラマ、CM会社名</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>公開日、放送開始日、放送曜日、youtubeアップ日</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+    <!-- 映画、ドラマ、CM情報ここまで -->
+
+    <!-- 関連楽曲 -->
+              <div class="well well-sm">このアーティストの関連楽曲</div>
+                <table>
                   <tbody>
-                    <tr>
-                      <td>公開日、放送開始日、放送曜日、youtubeアップ日</td>
-                    </tr>
+                	<tr>
+                    <% @cd_products.each do |cd_product| %>
+                    <td class="cd_position">
+                  	  <img src="/assets/no_image.jpeg", width="220px" height="220px">
+    					        <p><%= cd_product.name %></p>
+    				        </td>
+                    <% end %>
+                	</tr>
                   </tbody>
                 </table>
-              </div>
-          </div>
-<!-- 映画、ドラマ、CM情報ここまで -->
-
-<!-- 関連楽曲 -->
-          <div class="well well-sm">このアーティストの関連楽曲</div>
-            <table>
-              <thead></thead>
-              <tbody>
-            	<tr>
-              	  <td class="cd_position">
-              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				  </td>
-	         	  <td  class="cd_position">
-              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				  </td>
-				  <td  class="cd_position">
-              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				  </td>
-	         	  <td  class="cd_position">
-              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				  </td>
-				  <td class="cd_position">
-              	  	<img src="/assets/no_image.jpeg", width="220px" height="220px">
-					<p>CD名</p>
-					<p>アーティスト名</p>
-				  </td>
-            	</tr>
-              </tbody>
-            </table>
-<!-- 関連楽曲ここまで -->
+                <%= paginate @cd_products %>
+    <!-- 関連楽曲ここまで -->
         </div>
       </div>
     </div>

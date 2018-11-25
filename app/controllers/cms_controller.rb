@@ -15,7 +15,7 @@ include Search
       return redirect_to cms_path
     end
   	@goods = goods_name_search_function(search_name)
-    binding.pry
+    @goods_cd_products = CdProduct.where(goods_id:@goods.ids).page(params[:page]).per(12)
     @path = controller_path + '#' + action_name
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)

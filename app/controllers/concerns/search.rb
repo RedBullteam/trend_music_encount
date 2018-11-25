@@ -25,8 +25,7 @@ module Search
 
 	def goods_name_search_function(search_name)
 		@search_cd_products = "no-matched"
-		@search_cd_products = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).order("cd_products.release_date desc").page(params[:page]).per(12)
-		puts @search_cd_products.inspect
+		@search_cd_products = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).order("cd_products.release_date desc")
 		return @search_cd_products
 	end
 

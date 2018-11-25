@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <style>
+    .cd_position {
+      padding-right: 10px;
+    }
+    .cd_position:last-child {
+     padding-right: 0px;
+    }
+    </style>
+  </head>
+<body>
+<div class="container">
+ <% @release_era_tags.each do |release_era_tag| %>
+   <button class= "btn btn-lg btn-info era_search_btn">
+
+  	  <%= link_to release_era_tag.name,  release_era_tag_path(release_era_tag) %>
+  	  	<% @cd_products.each do |cd_product| %>
+  		<% end %>
+  </button>
+
+<% end %>
+<div class="well well-sm">XXXを含む検索結果Y件</div>
+	<% if @cd_products.present? %>
+		<table>
+			<tbody>
+				<tr>
+					<% @cd_products.each_with_index do |cd_product, i| %>
+						<% if  i % 4 ==0 %>
+						  	<tr>
+						<% end %>
+						<td class="cd_position">
+			              <img src="/assets/no_image.jpeg", width="200px" height="200px">
+			              <p><%= cd_product.name %></p>
+			              <p><%= cd_product.artist.name %></p>
+			              <p><%= cd_product.release_date %></p>
+			            </td>
+						<% if (i + 1) % 4 == 0 %>
+						  	</tr>
+						<% end %>
+						<% if (i == @cd_products.size - 1) && ((i + 1) % 4 == 2)%>
+							</tr>
+						<% end %>
+					<% end %>
+			</tbody>
+		</table>
+		<%= paginate @cd_products %>
+	<% end %>
+
+
+</div>
+</body>
+</html>
+
+

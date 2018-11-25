@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :cms, :only => [:index,:trend,:search]
   get '/era_search' => 'cd_products#era_search'
+  get '/release_era_tag/:id' => 'release_era_tags#show', as: 'release_era_tag'
   get '/era_search/list' => 'cd_products#era_search_list'
   get '/cd_products/:id' => 'cd_products#show', as: 'cd_product'
   get '/search/list' => 'cd_products#list', as: :search_list
@@ -53,7 +54,6 @@ end
   resources :cart_item, :only =>[:add,:destroy,:update]
   resources :shopping_carts, :only => [:new,:create,:index,:show,:destroy]
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
-  resources :favorites, :only =>[:create,:destroy,:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'users/resignnation'
   get 'users/complete'
