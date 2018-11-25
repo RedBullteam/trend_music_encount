@@ -10,6 +10,32 @@
   		<% else %>
   			<div class="well well-sm">映画名：<%= params[:movie_name] %> のCD検索結果<%= @match_records %>件</div>
   		<% end %>
+  		<% if@cd_products != "no-matched" %>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<% @cd_products.each_with_index do |cd_product, i| %>
+							<% if  i % 3 ==0 %>
+						  		<tr>
+							<% end %>
+							<td>
+								<img src="/assets/movie_top.jpeg">
+								<p>CD名：<%= cd_product.name %></p>
+								<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+								<p>アーティスト名：<%= selected_artist.name %></p>
+								<p>リリース日：<%= cd_product.release_date %></p>
+							</td>
+							<% if (i + 1) % 3 == 0 %>
+						  		</tr>
+							<% end %>
+							<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
+								</tr>
+							<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		<%= paginate @cd_products %>
+		<% end %>
 	<% elsif @path.is('doramas#title_search') %>
 		<%= render partial: 'doramas/dorama_title_search', locals: { doramas: @doramas } %>
 		<% if @cd_products == "no-matched"%>
@@ -17,13 +43,52 @@
   		<% else %>
     		<div class="well well-sm">ドラマ名：<%= params[:dorama_name] %> のCD検索結果<%= @match_records %>件</div>
     	<% end %>
+    	<% if@cd_products != "no-matched" %>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<% @cd_products.each_with_index do |cd_product, i| %>
+							<% if  i % 3 ==0 %>
+						  		<tr>
+							<% end %>
+							<td>
+								<img src="/assets/movie_top.jpeg">
+								<p>CD名：<%= cd_product.name %></p>
+								<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+								<p>アーティスト名：<%= selected_artist.name %></p>
+								<p>リリース日：<%= cd_product.release_date %></p>
+							</td>
+							<% if (i + 1) % 3 == 0 %>
+						  		</tr>
+							<% end %>
+							<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
+								</tr>
+							<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		<%= paginate @cd_products %>
+		<% end %>
     <% elsif @path.is('cms#goods_search') %>
 		<%= render partial: 'cms/goods_name_search' %>
-		<% if @cd_products == "no-matched"%>
+		<% if @goods == "no-matched"%>
   			<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果は0件</div>
   		<% else %>
-    		<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果<%= @match_records %>件</div>
+    		<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果<%= @goods.count %>件</div>
     	<% end %>
+    	<% if @goods != "no-matched" %>
+						<% @goods_cd_products.each do |cd_product| %>
+							<div class="col-xs-4">
+									<img src="/assets/movie_top.jpeg">
+									<p>CD名：<%= cd_product.name %></p>
+									<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+									<p>アーティスト名：<%= selected_artist.name %></p>
+									<p>リリース日：<%= cd_product.release_date %></p>
+							</div>
+						<% end %>
+						<%= paginate @goods_cd_products %>
+
+		<% end %>
 	<% elsif @path.is('cms#company_search') %>
 		<%= render partial: 'cms/company_name_search' %>
 		<% if @cd_products == "no-matched"%>
@@ -31,35 +96,24 @@
   		<% else %>
     		<div class="well well-sm">会社名：<%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
     	<% end %>
+	<% elsif @path.is('cd_products#artists_search') %>
+		<%= render partial: 'cd_products/artists_search' %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">アーティスト名：<%= params[:search_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">アーティスト名：<%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
+    <% elsif @path.is('cd_products#songs_search') %>
+		<%= render partial: 'cd_products/songs_search' %>
+		<% if @cd_products == "no-matched"%>
+  			<div class="well well-sm">曲名：<%= params[:search_name] %> のCD検索結果は0件</div>
+  		<% else %>
+    		<div class="well well-sm">曲名：<%= params[:search_name] %>のCD検索結果<%= @match_records %>件</div>
+    	<% end %>
     <% end %>
 
 <!-- CD一覧 -->
-	<% if@cd_products != "no-matched" %>
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<% @cd_products.each_with_index do |cd_product, i| %>
-						<% if  i % 3 ==0 %>
-						  	<tr>
-						<% end %>
-						<td>
-							<img src="/assets/movie_top.jpeg">
-							<p>CD名：<%= cd_product.name %></p>
-							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
-							<p>アーティスト名：<%= selected_artist.name %></p>
-							<p>リリース日：<%= cd_product.release_date %></p>
-						</td>
-						<% if (i + 1) % 3 == 0 %>
-						  	</tr>
-						<% end %>
-						<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
-							</tr>
-						<% end %>
-					<% end %>
-			</tbody>
-		</table>
-		<%= paginate @cd_products %>
-	<% end %>
+
 <!-- ペ-ジャー -->
 </div>
 </body>
