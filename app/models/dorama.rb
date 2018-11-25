@@ -1,5 +1,5 @@
 class Dorama < ApplicationRecord
-
+    has_many :cd_products
 	enum week_id:{
 		月曜日:1,
 		火曜日:2,

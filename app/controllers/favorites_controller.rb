@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
   def destroy
           user = current_user
             cd_product = CdProduct.find(params[:cd_product_id])
-         if favorite = Favorites.find_by(user_id: user.id,cd_product_id:cd_product.id)
+         if favorite = Favorite.find_by(user_id: user.id,cd_product_id:cd_product.id)
             favorite.destroy
             redirect_to cd_product_path(cd_product)
           else
@@ -19,6 +19,6 @@ class FavoritesController < ApplicationController
           end
   end
   def index
-  	@favorites = Favorites.all
+  	favorites = current_user.favorites
   end
 end

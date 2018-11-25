@@ -1,5 +1,8 @@
 class CdProduct < ApplicationRecord
 	belongs_to :release_era_tag
+	belongs_to :movie,optional: true
+	belongs_to :dorama,optional: true
+	belongs_to :good,optional: true
 	belongs_to :artist
 	belongs_to :label
 	belongs_to :good
