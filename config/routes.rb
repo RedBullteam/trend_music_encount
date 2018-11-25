@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   get '/doramas/title_search/:id/:dorama_name' => "doramas#title_search", as: :dorama_title_search
   get '/movies/title_search/:id/:movie_name' => "movies#title_search", as: :movie_title_search
   get '/cms/goods_search' => "cms#goods_search", as: :cm_goods_search
-  get '/cms/comany_search' => "cms#company_search", as: :cm_company_search
+  get '/cms/company_search' => "cms#company_search", as: :cm_company_search
+  get '/cd_products/search/artists_search_form' => "cd_products#artists_search_form", as: :artists_search_form
+  get '/cd_products/search/songs_search_form' => "cd_products#songs_search_form", as: :songs_search_form
+  get '/cd_products/search/artists_search' => "cd_products#artists_search", as: :artists_search
+  get '/cd_products/search/songs_search' => "cd_products#songs_search", as: :songs_search
   resources :cd_products do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
