@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :users, :only =>[:new,:create,:index,:edit,:update,:destroy]
     resources :artists, :only =>[:new,:create,:index,:edit,:update,:destroy]
   end
-  resources :cms, :only => [:index,:trend,:search]
+   get '/trend' =>'cms#trend'
+ resources :cms, :only => [:index,:search]
   get '/era_search' => 'cd_products#era_search'
   get '/release_era_tag/:id' => 'release_era_tags#show', as: 'release_era_tag'
   get '/era_search/list' => 'cd_products#era_search_list'

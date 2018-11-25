@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_11_25_170833) do
     t.integer "company_id"
     t.string "commodity"
     t.date "upload_date"
+    t.text "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

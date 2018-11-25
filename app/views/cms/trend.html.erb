@@ -1,2 +1,53 @@
-<h1>Cms#trend</h1>
-<p>Find me in app/views/cms/trend.html.erb</p>
+<div class="body">
+    <div class="container">
+        <div class="row">
+            <div class="cm-header col-xs-12">
+                <h1>最新CM音楽情報</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="main col-xs-4">
+                <!-- 動画に合わせたcdproductを表示 -->
+                <% puts @cd_products.inspect %>
+                <h3>CM音楽CD一覧</h3>
+        <% if@cd_products.present? %>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <% @cd_products.each_with_index do |cd_product, i| %>
+                        <% if  i % 3 ==0 %>
+                              <tr>
+                        <% end %>
+                        <td>
+                            <img src="/assets/cm_top.jpeg">
+                            <p>CD名：<%= cd_product.name %></p>
+                            <% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+                            <p>アーティスト名：<%= selected_artist.name %></p>
+                            <p>リリース日：<%= cd_product.release_date %></p>
+                            <% selected_commodities = Commodity.find_by(id: cd_product.commodities_id) %>
+                            <p>商品名：<%= selected_commodities.commodities %></p>
+                            <% selected_company = Company.find_by(id: selected_commodities.company_id) %>
+                            <p>会社名：<%= selected_company.company %></p>
+                        </td>
+                        <% if (i + 1) % 3 == 0 %>
+                              </tr>
+                        <% end %>
+                        <% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
+                            </tr>
+                        <% end %>
+                    <% end %>
+            </tbody>
+        </table>
+        <%= paginate @cd_products %>
+    <% end %>
+            </div>
+            <div class="video col-xs-8">
+                <!-- 動画を表示 -->
+                <% @commodities.video_url.each do |video| %>
+                <iframe width="560" height="315" src=<%= video.url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

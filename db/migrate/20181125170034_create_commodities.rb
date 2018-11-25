@@ -4,6 +4,7 @@ class CreateCommodities < ActiveRecord::Migration[5.2]
     	 t.integer :company_id
    		 t.string :commodity
    		 t.date :upload_date
+   		 t.text :video_url
       t.timestamps
     end
   end
