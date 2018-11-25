@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   get '/cd_products/search/songs_search_form' => "cd_products#songs_search_form", as: :songs_search_form
   get '/cd_products/search/artists_search' => "cd_products#artists_search", as: :artists_search
   get '/cd_products/search/songs_search' => "cd_products#songs_search", as: :songs_search
+  resources :cd_products do
+    post 'add' => 'favorites#create'
+    delete '/add' => 'favorites#destroy'
+  end
   resources :cd_products, :only =>[:index,:show,:era_search,:era_search_list,:search,:list]
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
