@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_113201) do
+ActiveRecord::Schema.define(version: 2018_11_25_170833) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2018_11_24_113201) do
   end
 
   create_table "bag_items", force: :cascade do |t|
-    t.integer "cd_product"
+    t.integer "cd_product_id"
     t.integer "shopping_bag_id"
     t.integer "delivery_status_id"
     t.integer "quantity"
@@ -96,13 +96,21 @@ ActiveRecord::Schema.define(version: 2018_11_24_113201) do
     t.date "release_date"
     t.integer "movie_id"
     t.integer "dorama_id"
-    t.integer "good_id"
+    t.integer "commodity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "jacket_image_file_name"
     t.string "jacket_image_content_type"
     t.integer "jacket_image_file_size"
     t.datetime "jacket_image_updated_at"
+  end
+
+  create_table "commodities", force: :cascade do |t|
+    t.integer "company_id"
+    t.string "commodity"
+    t.date "upload_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -123,17 +131,18 @@ ActiveRecord::Schema.define(version: 2018_11_24_113201) do
     t.integer "title_head_id"
     t.date "dorama_start_date"
     t.integer "week_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "dorama_image_file_name"
     t.string "dorama_image_content_type"
     t.integer "dorama_image_file_size"
     t.datetime "dorama_image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "cd_product_id", null: false
+    t.text "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cd_product_id"], name: "index_favorites_on_cd_product_id"
@@ -156,12 +165,12 @@ ActiveRecord::Schema.define(version: 2018_11_24_113201) do
     t.string "movie_name"
     t.integer "title_head_id"
     t.date "movie_release"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "movie_image_file_name"
     t.string "movie_image_content_type"
     t.integer "movie_image_file_size"
     t.datetime "movie_image_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "release_era_tags", force: :cascade do |t|
@@ -180,7 +189,6 @@ ActiveRecord::Schema.define(version: 2018_11_24_113201) do
   create_table "shopping_carts", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
-    t.datetime "updatede_at"
     t.datetime "updated_at", null: false
   end
 
@@ -206,7 +214,6 @@ ActiveRecord::Schema.define(version: 2018_11_24_113201) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.string "first_name"
     t.string "last_name"
     t.string "first_name_kana"
