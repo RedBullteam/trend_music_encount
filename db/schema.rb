@@ -146,14 +146,6 @@ ActiveRecord::Schema.define(version: 2018_11_22_092830) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "goods", force: :cascade do |t|
-    t.integer "company_id"
-    t.string "goods"
-    t.date "upload_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "labels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
