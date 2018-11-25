@@ -44,7 +44,13 @@
   	        </tbody>
           </table>
           <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
-          <button type="button" class="btn btn-warning btn-lg">お気に入りに追加</button>
+          <button type="button" class="btn btn-warning btn-lg">
+           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
+            <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
+            <% else %>
+            <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
+            <% end %>
+            </button>
           <table class="table table-bordered">
               <thead>
              <tr>
@@ -99,7 +105,21 @@
               <div class="well well-sm">アーティスト関連情報</div>
                   <div class="row">
                     <div class="col-md-4">
+                      <% if  @cd_product.movie.present? %>
                       <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <% else %>
+                      <% end %>
+
+                      <% if  @cd_product.dorama.present? %>
+                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <% else %>
+                      <% end %>
+
+                      <% if  @cd_product.good.present? %>
+                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <% else %>
+                      <% end %>
+
                     </div>
                   <div class="col-md-8">
                     <table class="table">
