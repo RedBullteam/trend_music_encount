@@ -33,7 +33,7 @@
 							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
 							<p>アーティスト名：<%= selected_artist.name %></p>
 							<p>リリース日：<%= cd_product.release_date %></p>
-							<% selected_goods = Good.find_by(id: cd_product.goods_id) %>
+							<% selected_goods = Good.find_by(id: cd_product.good_id) %>
 							<p>商品名：<%= selected_goods.goods %></p>
 							<% selected_company = Company.find_by(id: selected_goods.company_id) %>
 							<p>会社名：<%= selected_company.company %></p>

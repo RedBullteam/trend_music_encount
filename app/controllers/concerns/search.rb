@@ -17,78 +17,30 @@ module Search
 		CdProduct.where(dorama_id: id).where(sale_status_id: 2).order(release_date: :desc).page(params[:page]).per(12)
 	end
 
-	def goods_match_record_function(search_name)
-		@search_cd_products = "no-matched"
-		@search_cd_products = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).count
-		return @search_cd_products
-	end
-
 	def goods_name_search_function(search_name)
-		@search_cd_products = "no-matched"
-		@search_cd_products = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).order("cd_products.release_date desc")
-		return @search_cd_products
+		@search_goods = "no-matched"
+		@search_goods = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").order("cd_products.release_date desc")
+		return 	@search_goods
 	end
 
-	def company_match_record_function(search_name)
-		@search_cd_products = "no-matched"
-		@search_cd_products = CdProduct.joins({:goods => :companies}).where("company LIKE ?", "%" + search_name + "%").where(sale_status_id: 2).count
-		return @search_cd_products
-	end
 
 	def company_name_search_function(search_name)
-		@search_cd_products = "no-matched"
-		@search_cd_products = CdProduct.joins({:goods => :companies}).where("company LIKE ?", "%" + search_name + "%").where(sale_status_id: 2).order(:cd_products => {:release_date => :desc}).page(params[:page]).per(12)
-		return @search_cd_products
+		@search_companies = "no-matched"
+		@search_companies = Company.includes({:goods => :cd_products}).where("company LIKE ?", "%" + search_name + "%").order("cd_products.release_date desc")
+		return 	@search_companies
 	end
 
-	def artists_match_record_function(search_name)
-		@search_cd_products = "no-matched"
-		matched_artists = Artist.where("name LIKE ?", "%" + search_name + "%")
-		matched_artists.each do |artist|
-		  	@search_cd_products = CdProduct.where(artist_id: artist.id).where(sale_status_id: 2).count
-		end
-		return @search_cd_products
-	end
 
 	def artists_name_search_function(search_name)
-		@search_cd_products = "no-matched"
-		matched_artists = Artist.where("name LIKE ?", "%" + search_name + "%")
-		matched_artists.each do |artist|
-			@@search_cd_products = CdProduct.where(artist_id: artist.id).where(sale_status_id: 2).order(release_date: :desc).page(params[:page]).per(12)
-		end
-		return @@search_cd_products
-	end
-
-	def songs_match_record_function(search_name)
-		@@search_cd_products = "no-matched"
-		@@search_discs = "no-matched"
-		matched_songs = Song.where("name LIKE ?", "%" + search_name + "%")
-		if matched_songs.size ==  0
-			return @@search_cd_products
-		end
-		matched_songs.each do |song|
-		  	@@search_discs = Disc.where(id: song.disc_id)
-		end
-		@@search_discs.each do |disc|
-		  	@@search_cd_products = CdProduct.where(id: disc.cd_product_id).where(sale_status_id: 2).count
-		end
-		return @@search_cd_products
+		@search_artists = "no-matched"
+		@search_artists = Artist.includes(:cd_products).where("artists.name LIKE ?", "%" + search_name + "%").order("cd_products.release_date desc")
+		return @search_artists
 	end
 
 	def songs_name_search_function(search_name)
-		@@search_cd_products = "no-matched"
-		@@search_discs = "no-matched"
-		matched_songs = Song.where("name LIKE ?", "%" + search_name + "%")
-		if matched_songs.size ==  0
-			return @@search_cd_products
-		end
-		matched_songs.each do |song|
-		  	@@search_discs = Disc.where(id: song.disc_id)
-		end
-		@@search_discs.each do |disc|
-			@@search_cd_products = CdProduct.where(id: disc.cd_product_id).where(sale_status_id: 2).order(release_date: :desc).page(params[:page]).per(12)
-		end
-		return @@search_cd_products
+		@search_cd_products = "no-matched"
+		@search_cd_products = CdProduct.eager_load({:discs => :songs}).where("songs.name LIKE ?", "%" + search_name + "%").order("cd_products.release_date desc").page(params[:page]).per(12)
+		return 	@search_cd_products
 	end
 
 end
