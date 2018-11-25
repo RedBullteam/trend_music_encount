@@ -105,20 +105,83 @@
               <div class="well well-sm">アーティスト関連情報</div>
                   <div class="row">
                     <div class="col-md-4">
+                      <% if  @cd_product.movie.present? %>
                       <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <% else %>
+                      <% end %>
+
+                      <% if  @cd_product.dorama.present? %>
+                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <% else %>
+                      <% end %>
+
+                      <% if  @cd_product.good.present? %>
+                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <% else %>
+                      <% end %>
+
                     </div>
                   <div class="col-md-8">
                     <table class="table">
+
+                    <!-- 映画詳細-->
+                    <% if  @cd_product.movie.present? %>
                       <thead>
                         <tr>
-                          <th>映画、ドラマ、CM会社名</th>
+                          <th>
+                            映画名:<%= @cd_product.movie.movie_name %>
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>公開日、放送開始日、放送曜日、youtubeアップ日</td>
+                          <td>
+                            映画公開日:<%= @cd_product.movie.movie_release %>
+                          </td>
                         </tr>
                       </tbody>
+                      <% else %>
+                      <% end %>
+
+                    <!-- ドラマ詳細-->
+                      <% if  @cd_product.dorama.present? %>
+                      <thead>
+                        <tr>
+                          <th>
+                            ドラマ名ー<%= @cd_product.dorama.name %>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>放送開始日:<%= @cd_product.dorama.dorama_start_date %></td>
+                        </tr>
+                        <tr>
+                          <td>放送曜日:<%= @cd_product.dorama.week_id %></td>
+                        </tr>
+                      </tbody>
+                      <% else %>
+                      <% end %>
+
+　　　　　　　　　　　　　<!-- CM詳細 -->
+                      <% if  @cd_product.good.present? %>
+                      <thead>
+                        <tr>
+                          <th>
+                            商品名:<%= @cd_product.good.goods %>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            動画公開日:<%= @cd_product.good.upload_date %>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <% else %>
+                      <% end %>
+
                     </table>
                   </div>
               </div>
@@ -129,16 +192,16 @@
                 <table>
                   <tbody>
                 	<tr>
-                    <% @cd_products.each do |cd_product| %>
+                    <% @cds.each do |cds| %>
                     <td class="cd_position">
                   	  <img src="/assets/no_image.jpeg", width="220px" height="220px">
-    					        <p><%= cd_product.name %></p>
+    					        <p><%= cds.name %></p>
     				        </td>
                     <% end %>
                 	</tr>
                   </tbody>
                 </table>
-                <%= paginate @cd_products %>
+                <%= paginate @cds %>
     <!-- 関連楽曲ここまで -->
         </div>
       </div>
