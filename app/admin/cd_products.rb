@@ -1,5 +1,5 @@
 ActiveAdmin.register CdProduct do
-permit_params :artist_id, :name, :label_id, :stock_number, :release_era_tag_id, :sale_status_id, :release_date, :movie_id, :dorama_id, :goods_id, :jacket_image
+permit_params :artist_id, :name, :label_id, :stock_number, :release_era_tag_id, :sale_status_id, :release_date, :movie_id, :dorama_id, :jacket_image
 menu :parent => "Discs"
 
 form do |f|
@@ -13,7 +13,6 @@ form do |f|
 		f.input :release_date, as: :date_picker
 		f.input :movie_id
 		f.input :dorama_id
-		f.input :goods_id
 		f.input :jacket_image, :as => :file, :hint => f.object.new_record? ? "" : f.template.image_tag(f.object.jacket_image.url(:thumb))
 	end
 	actions
@@ -30,7 +29,6 @@ index do
 	column :release_date
 	column :movie_id
 	column :dorama_id
-	column :goods_id
 	actions
 end
 menu if:
