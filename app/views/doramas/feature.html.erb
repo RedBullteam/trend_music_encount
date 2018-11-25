@@ -1,2 +1,35 @@
-<h1>Doramas#feature</h1>
-<p>Find me in app/views/doramas/feature.html.erb</p>
+<html>
+  <head>
+    <style>
+    .cd_position {
+      padding-right: 10px;
+    }
+    .cd_position:last-child {
+     padding-right: 0px;
+    }
+    </style>
+  </head>
+<body>
+<div class="container">
+    <table>
+    	<% @doramas.each do |dorama| %>
+    	<thead>
+    		<tr class="cd_position">
+              <img src="/assets/no_image.jpeg", width="200px" height="200px">
+    		  <th>ドラマ名:<%= dorama.name %></th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<td><%= doramas.cd_product.name %></td>
+    		</tr>
+    	</tbody>
+    	<% end %>
+    </table>
+
+    </div>
+
+
+</body>
+</html>
+
