@@ -14,8 +14,8 @@ include Search
     if search_name == ""
       return redirect_to cms_path
     end
-    @match_records = goods_match_record_function(search_name)
-  	@cd_products = goods_name_search_function(search_name)
+  	@goods = goods_name_search_function(search_name)
+    binding.pry
     @path = controller_path + '#' + action_name
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)

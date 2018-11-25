@@ -1,0 +1,5 @@
+<%=form_tag(artists_search_path, method: :get) do %>
+	<%= label_tag "アーティスト名検索" %>
+	<%= text_field_tag :search_name %>
+	<%= submit_tag "検索" %>
+<% end %>

@@ -2,6 +2,7 @@ class CdProduct < ApplicationRecord
 	belongs_to :user
 	belongs_to :artist
 	belongs_to :label
+	belongs_to :good
 	has_many :discs, dependent: :destroy
 	has_many :favorites, dependent: :destroy
     enum sale_status_id: {
