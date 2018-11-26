@@ -27,7 +27,7 @@ show do |disc|
 	end
 
 	panel "CDの商品詳細" do
-		table_for disc.cd_product do
+		table_for disc.cd_products do
 		column :artist
 		column :name
 		column :label
@@ -38,7 +38,7 @@ show do |disc|
 		column :release_date
 		column :movie_id
 		column :dorama_id
-		column :goods_id
+		column :commodity_id
 		end
 	end
 	active_admin_comments
