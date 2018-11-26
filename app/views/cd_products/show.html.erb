@@ -115,7 +115,7 @@
                       <% else %>
                       <% end %>
 
-                      <% if  @cd_product.good.present? %>
+                      <% if  @cd_product.commodity.present? %>
                       <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
                       <% else %>
                       <% end %>
@@ -164,18 +164,18 @@
                       <% end %>
 
 　　　　　　　　　　　　　<!-- CM詳細 -->
-                      <% if  @cd_product.good.present? %>
+                      <% if  @cd_product.commodity.present? %>
                       <thead>
                         <tr>
                           <th>
-                            商品名:<%= @cd_product.good.goods %>
+                            商品名:<%= @cd_product.commodity.commodities %>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
-                            動画公開日:<%= @cd_product.good.upload_date %>
+                            動画公開日:<%= @cd_product.commodity.upload_date %>
                           </td>
                         </tr>
                       </tbody>
