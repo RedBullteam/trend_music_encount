@@ -1,5 +1,6 @@
 class CdProduct < ApplicationRecord
 
+	belongs_to :dorama,optional: true
 	belongs_to :artist
 	belongs_to :label
 	has_many :discs, dependent: :destroy

@@ -11,20 +11,50 @@
   </head>
 <body>
 <div class="container">
-    <% @doramas.each do |dorama| %>
-    <table>
-    	<tbody>
-    		<tr class="cd_position">
-                <img src="/assets/no_image.jpeg", width="200px" height="200px">  
-                <td>ドラマ名:<%= dorama.name %></td>
-                <td>CD:<%= dorama.cd_product.name %>
-    		</tr>
-    	</tbody>
-    </table>
+
+
+<div class="well well-sm">月曜日</div>
+<% if @doramas.present? %>
+<% if @doramas.week_ids ==  %>
+<%= Dorama.week_ids  %>
+      <table>
+            <tbody>
+                <tr>
+                    <% @doramas.each_with_index do |dorama, i| %>
+                        <% if  i % 4 ==0 %>
+                              <tr>
+                        <% end %>
+                        <td class="cd_position">
+                          <% @cds.each do |cd| %>
+                          <% if cd.dorama_id == dorama.id %>
+                            <img src="/assets/no_image.jpeg", width="200px" height="200px">
+                            <p>CD名:<%= cd.name %></p>
+                            <p>ドラマ:<%= dorama.name %></p>
+                          <% end %>
+                          <% end %>
+                        </td>
+                        <% if (i + 1) % 4 == 0 %>
+                              </tr>
+                        <% end %>
+                        <% if (i == @cds.size - 1) && ((i + 1) % 4 == 2)%>
+                </tr>
+                        <% end %>
+                    <% end %>
+            </tbody>
+        </table>
+<%= paginate @doramas %>
 <% end %>
-    </div>
+<% end %>
 
 
+<div class="well well-sm">火曜日</div>
+<div class="well well-sm">水曜日</div>
+<div class="well well-sm">木曜日</div>
+<div class="well well-sm">金曜日</div>
+<div class="well well-sm">土曜日</div>
+<div class="well well-sm">日曜日</div>
+
+</div>
 </body>
 </html>
 

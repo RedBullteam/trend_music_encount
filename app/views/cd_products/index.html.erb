@@ -52,8 +52,32 @@
 			<div class="cm-content">
 				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
 			</div>
+			<!-- ドラマコンテンツ -->
 			<div class="dorama-content">
-				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
+			  <% if @doramas.present? %>
+                <table class="table table-bordered">
+                  <tbody>
+                      <tr>
+                          <% @doramas.each_with_index do |cd_product, i| %>
+                              <% if  i % 3 ==0 %>
+                                    <tr>
+                              <% end %>
+                              <td>
+                                  <img src="/assets/no_image.jpeg", width="200px" height="200px">
+                                  <p>CD名：<%= cd_product.name %></p>
+                                  <p>ドラマ:<%= cd_product.dorama.name %></p>
+                              </td>
+                              <% if (i + 1) % 3 == 0 %>
+                                    </tr>
+                              <% end %>
+                              <% if (i == @doramas.size - 1) && ((i + 1) % 3 == 2)%>
+                                  </tr>
+                              <% end %>
+                          <% end %>
+                  </tbody>
+                </table>
+              <% end %>
+			  <%= link_to "もっと見る",doramas_path %>
 			</div>
 		</div>
 		<div class="sidebar">
