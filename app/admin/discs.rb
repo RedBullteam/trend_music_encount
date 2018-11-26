@@ -27,7 +27,7 @@ show do |disc|
 	end
 
 	panel "CDの商品詳細" do
-		table_for disc.cd_products do
+		table_for disc.cd_product do
 		column :artist
 		column :name
 		column :label

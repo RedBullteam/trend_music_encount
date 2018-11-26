@@ -1,6 +1,6 @@
 ActiveAdmin.register Company do
 permit_params :id, :company
- menu :parent => "Commodities"
+menu :parent => "Commodities"
 
 form do |f|
 	f.inputs do
