@@ -9,7 +9,7 @@
 </head>
 <body>
 	<!-- 商品名検索 -->
-	<%= render partial: 'cms/goods_name_search' %>
+	<%= render partial: 'cms/commodity_name_search' %>
 	<!-- 会社名検索 -->
 	<%= render partial: 'cms/company_name_search' %>
 	<!-- タイトル部分 -->
@@ -33,9 +33,9 @@
 							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
 							<p>アーティスト名：<%= selected_artist.name %></p>
 							<p>リリース日：<%= cd_product.release_date %></p>
-							<% selected_goods = Good.find_by(id: cd_product.good_id) %>
-							<p>商品名：<%= selected_goods.goods %></p>
-							<% selected_company = Company.find_by(id: selected_goods.company_id) %>
+							<% selected_commodity = Commodity.find_by(id: cd_product.commodity_id) %>
+							<p>商品名：<%= selected_commodity.commodity %></p>
+							<% selected_company = Company.find_by(id: selected_commodity.company_id) %>
 							<p>会社名：<%= selected_company.company %></p>
 						</td>
 						<% if (i + 1) % 3 == 0 %>

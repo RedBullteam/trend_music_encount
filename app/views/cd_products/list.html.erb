@@ -69,24 +69,24 @@
 			</table>
 		<%= paginate @cd_products %>
 		<% end %>
-    <% elsif @path.is('cms#goods_search') %>
-		<%= render partial: 'cms/goods_name_search' %>
-		<% if @goods == "no-matched"%>
+    <% elsif @path.is('cms#commodity_search') %>
+		<%= render partial: 'cms/commodity_name_search' %>
+		<% if @commodity == "no-matched"%>
   			<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果は0件</div>
   		<% else %>
-    		<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果<%=  @match_records %>件</div>
+    		<div class="well well-sm">商品名：<%= params[:search_name] %> のCD検索結果<%= @commodities.count %>件</div>
     	<% end %>
-    	<% if @goods != "no-matched" %>
-				<% @goods_cd_products.each do |cd_product| %>
-					<div class="col-xs-4">
-						<img src="/assets/movie_top.jpeg">
-						<p>CD名：<%= cd_product.name %></p>
-						<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
-						<p>アーティスト名：<%= selected_artist.name %></p>
-						<p>リリース日：<%= cd_product.release_date %></p>
-					</div>
-				<% end %>
-			<%= paginate @goods_cd_products %>
+    	<% if @commodity != "no-matched" %>
+						<% @commodity_cd_products.each do |cd_product| %>
+							<div class="col-xs-4">
+									<img src="/assets/movie_top.jpeg">
+									<p>CD名：<%= cd_product.name %></p>
+									<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+									<p>アーティスト名：<%= selected_artist.name %></p>
+									<p>リリース日：<%= cd_product.release_date %></p>
+							</div>
+						<% end %>
+						<%= paginate @commodity_cd_products %>
 		<% end %>
 	<% elsif @path.is('cms#company_search') %>
 		<%= render partial: 'cms/company_name_search' %>

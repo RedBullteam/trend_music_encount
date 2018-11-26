@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'cd_products#index'
   get '/guide' => 'users#guide'
  namespace :admin do
-    resources :goods, :only =>[:new,:create,:index,:edite,:update,:destroy]
+    resources :commodities, :only =>[:new,:create,:index,:edite,:update,:destroy]
     resources :companeys, :only =>[:new,:create,:index,:edit,:update,:destroy]
     resources :doramas, :only =>[:new,:create,:index,:edit,:update,:destroy]
     resources :movies, :only =>[:new,:create,:index,:edit,:update,:destroy]
@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :users, :only =>[:new,:create,:index,:edit,:update,:destroy]
     resources :artists, :only =>[:new,:create,:index,:edit,:update,:destroy]
   end
-  resources :cms, :only => [:index,:trend,:search]
+   get '/trend' =>'cms#trend'
+ resources :cms, :only => [:index,:search]
   get '/era_search' => 'cd_products#era_search'
   get '/release_era_tag/:id' => 'release_era_tags#show', as: 'release_era_tag'
   get '/era_search/list' => 'cd_products#era_search_list'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   get '/doramas/title_search/:id/:dorama_name' => "doramas#title_search", as: :dorama_title_search
   get '/movies/title_search/:id/:movie_name' => "movies#title_search", as: :movie_title_search
   get '/movies/feature' => "movies#feature", as: :movie_feature
-  get '/cms/goods_search' => "cms#goods_search", as: :cm_goods_search
+  get '/cms/commodity_search' => "cms#commodity_search", as: :cm_commodity_search
   get '/cms/company_search' => "cms#company_search", as: :cm_company_search
   get '/cd_products/search/artists_search_form' => "cd_products#artists_search_form", as: :artists_search_form
   get '/cd_products/search/songs_search_form' => "cd_products#songs_search_form", as: :songs_search_form
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
  post 'users/sign_up/complete' => 'users/registrations#complete'
 end
 
-  resources :goods, :only =>[:new,:create,:index,:edite,:update,:destroy]
+  resources :commodities, :only =>[:new,:create,:index,:edite,:update,:destroy]
   resources :companeys, :only =>[:new,:create,:index,:edit,:update,:destroy]
   resources :doramas, :only => [:new,:create,:index,:edit,:update,:destroy]
   resources :movies, :only =>[:new,:create,:index,:edit,:update,:destroy]
