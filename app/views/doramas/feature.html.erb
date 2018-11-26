@@ -11,22 +11,17 @@
   </head>
 <body>
 <div class="container">
+    <% @doramas.each do |dorama| %>
     <table>
-    	<% @doramas.each do |dorama| %>
-    	<thead>
-    		<tr class="cd_position">
-              <img src="/assets/no_image.jpeg", width="200px" height="200px">
-    		  <th>ドラマ名:<%= dorama.name %></th>
-    		</tr>
-    	</thead>
     	<tbody>
-    		<tr>
-    			<td><%= doramas.cd_product.name %></td>
+    		<tr class="cd_position">
+                <img src="/assets/no_image.jpeg", width="200px" height="200px">  
+                <td>ドラマ名:<%= dorama.name %></td>
+                <td>CD:<%= dorama.cd_product.name %>
     		</tr>
     	</tbody>
-    	<% end %>
     </table>
-
+<% end %>
     </div>
 
 
