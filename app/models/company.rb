@@ -1,3 +1,3 @@
 class Company < ApplicationRecord
-	has_many :goods, primary_key: "id", foreign_key: "goods_id"
+	has_many :commodity, primary_key: "id", foreign_key: "commodity_id"
 end

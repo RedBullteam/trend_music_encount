@@ -17,27 +17,27 @@ module Search
 		CdProduct.where(dorama_id: id).where(sale_status_id: 2).order(release_date: :desc).page(params[:page]).per(12)
 	end
 
-	def goods_match_record_function(search_name)
+	def commodity_match_record_function(search_name)
 		@search_cd_products = "no-matched"
-		@search_cd_products = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).count
+		@search_cd_products = Commodity.includes(:cd_products).where("commodity LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).count
 		return @search_cd_products
 	end
 
-	def goods_name_search_function(search_name)
+	def commodity_name_search_function(search_name)
 		@search_cd_products = "no-matched"
-		@search_cd_products = Good.includes(:cd_products).where("goods LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).order("cd_products.release_date desc")
+		@search_cd_products = Commodity.includes(:cd_products).where("commodity LIKE ?", "%" + search_name + "%").where(:cd_products => {:sale_status_id => 2}).order("cd_products.release_date desc")
 		return @search_cd_products
 	end
 
 	def company_match_record_function(search_name)
 		@search_cd_products = "no-matched"
-		@search_cd_products = CdProduct.joins({:goods => :companies}).where("company LIKE ?", "%" + search_name + "%").where(sale_status_id: 2).count
+		@search_cd_products = CdProduct.joins({:commodity => :companies}).where("company LIKE ?", "%" + search_name + "%").where(sale_status_id: 2).count
 		return @search_cd_products
 	end
 
 	def company_name_search_function(search_name)
 		@search_cd_products = "no-matched"
-		@search_cd_products = CdProduct.joins({:goods => :companies}).where("company LIKE ?", "%" + search_name + "%").where(sale_status_id: 2).order(:cd_products => {:release_date => :desc}).page(params[:page]).per(12)
+		@search_cd_products = CdProduct.joins({:commodities => :companies}).where("company LIKE ?", "%" + search_name + "%").where(sale_status_id: 2).order(:cd_products => {:release_date => :desc}).page(params[:page]).per(12)
 		return @search_cd_products
 	end
 
