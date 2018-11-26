@@ -20,6 +20,6 @@ include Search
   end
 
   def feature
-
+    @cd_products = CdProduct.where("movie_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(5)
   end
 end

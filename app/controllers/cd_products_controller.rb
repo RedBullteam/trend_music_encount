@@ -29,8 +29,9 @@ include Search
     if search_name == ""
       return redirect_to artists_search_form_path
     end
-    @match_records = artists_match_record_function(search_name)
-    @cd_products = artists_name_search_function(search_name)
+    @artists = artists_name_search_function(search_name)
+    @match_records = CdProduct.where(artist_id:@artists.ids).where(sale_status_id: 2).count
+    @artists_cd_products = CdProduct.where(artist_id:@artists.ids).where(sale_status_id: 2).page(params[:page]).per(12)
     @path = controller_path + '#' + action_name
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)
@@ -47,8 +48,8 @@ include Search
     if search_name == ""
       return redirect_to songs_search_form_path
     end
-    @match_records = songs_match_record_function(search_name)
     @cd_products = songs_name_search_function(search_name)
+    @match_records = CdProduct.eager_load({:discs => :songs}).where("songs.name LIKE ?", "%" + search_name + "%").count
     @path = controller_path + '#' + action_name
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)
