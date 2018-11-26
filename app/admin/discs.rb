@@ -38,7 +38,7 @@ show do |disc|
 		column :release_date
 		column :movie_id
 		column :dorama_id
-		column :goods_id
+		column :commodity_id
 		end
 	end
 	active_admin_comments
