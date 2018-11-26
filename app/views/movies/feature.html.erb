@@ -1,2 +1,22 @@
-<h1>Movies#feature</h1>
-<p>Find me in app/views/movies/feature.html.erb</p>
+	<!-- 映画CD一覧 -->
+	<h3>最新映画音楽CD</h3>
+		<% if@cd_products.present? %>
+			<% @cd_products.each_with_index do |cd_product, i| %>
+				<div class="row">
+					<div class="col-xs-6">
+						<img src="/assets/movie_top.jpeg">
+						<p>CD名：<%= cd_product.name %></p>
+						<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
+						<p>アーティスト名：<%= selected_artist.name %></p>
+						<p>リリース日：<%= cd_product.release_date %></p>
+					</div>
+					<div class="col-xs-6">
+						<% selected_movie = Movie.find_by(id: cd_product.movie_id) %>
+						<img src="/assets/movie_top.jpeg">
+						<p>映画名：<%= selected_movie.movie_name %></p>
+						<p>公開日：<%= selected_movie.movie_release %></p>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+
