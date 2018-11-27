@@ -12,35 +12,25 @@
 	<!-- 映画CD一覧 -->
 	<h3>映画音楽CD一覧</h3>
 	<% if@cd_products.present? %>
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<% @cd_products.each_with_index do |cd_product, i| %>
-						<% if  i % 3 ==0 %>
-						  	<tr>
-						<% end %>
-						<td>
-							<img src="/assets/movie_top.jpeg">
-							<p>CD名：<%= cd_product.name %></p>
-							<% selected_artist = Artist.find_by(id: cd_product.artist_id) %>
-							<p>アーティスト名：<%= selected_artist.name %></p>
-							<p>リリース日：<%= cd_product.release_date %></p>
-							<% selected_movie = Movie.find_by(id: cd_product.movie_id) %>
-							<p>映画名：<%= selected_movie.movie_name %></p>
-						</td>
-						<% if (i + 1) % 3 == 0 %>
-						  	</tr>
-						<% end %>
-						<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
-							</tr>
-						<% end %>
+		<% @cd_products.each_with_index do |cd_product, i| %>
+			<div class="col-xs-4">
+				<% if cd_product.jacket_image.present? %>
+					<%= link_to cd_product_path(cd_product.id) do %>
+						<%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
 					<% end %>
-			</tbody>
-		</table>
-		<%= paginate @cd_products %>
+				<% else %>
+					<%= link_to cd_product_path(cd_product.id) do %>
+						<img src="/assets/no_image.jpg", width="250", height="250">
+					<% end %>
+				<% end %>
+				<p>CD名：<%= cd_product.name %></p>
+				<p>アーティスト名：<%= cd_product.artist.name %></p>
+				<p>リリース日：<%= cd_product.release_date %></p>
+				<p>映画名：<%= cd_product.movie.movie_name %></p>
+			</div>
+		<% end %>
 	<% end %>
-	<br />
-	<%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout"  %>
+	<div class="col-xs-12"><%= paginate @cd_products %><div class="col-xs-12">
 </body>
 </html>
 
