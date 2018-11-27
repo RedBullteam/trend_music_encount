@@ -4,13 +4,29 @@
 			<% @cd_products.each_with_index do |cd_product, i| %>
 				<div class="row">
 					<div class="col-xs-6">
-						<%= image_tag "#{cd_product.jacket_image}" %>
+						<% if cd_product.jacket_image.present? %>
+							<%= link_to cd_product_path(cd_product.id) do %>
+								<%= image_tag "#{cd_product.jacket_image}", :size =>'300x300' %>
+							<% end %>
+						<% else %>
+							<%= link_to cd_product_path(cd_product.id) do %>
+								<img src="/assets/no_image.jpg", width="300", height="300">
+							<% end %>
+						<% end %>
 						<p>CD名：<%= cd_product.name %></p>
 						<p>アーティスト名：<%= cd_product.artist.name %></p>
 						<p>リリース日：<%= cd_product.release_date %></p>
 					</div>
 					<div class="col-xs-6">
-						<%= image_tag "#{cd_product.movie.movie_image}" %>
+						<% if cd_product.jacket_image.present? %>
+							<%= link_to cd_product_path(cd_product.id) do %>
+								<%= image_tag "#{cd_product.movie.movie_image}", :size =>'300x300' %>
+							<% end %>
+						<% else %>
+							<%= link_to cd_product_path(cd_product.id) do %>
+								<img src="/assets/no_image.jpg", width="300", height="300">
+							<% end %>
+						<% end %>
 						<p>映画名：<%= cd_product.movie.movie_name %></p>
 						<p>公開日：<%= cd_product.movie.movie_release %></p>
 					</div>
