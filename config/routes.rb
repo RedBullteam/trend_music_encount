@@ -17,7 +17,7 @@ Rails.application.routes.draw do
  resources :cms, :only => [:index,:search]
   get '/era_search' => 'cd_products#era_search'
   get '/release_era_tag/:id' => 'release_era_tags#show', as: 'release_era_tag'
-  get '/cd_products/:id' => 'cd_products#show', as: 'cd_product'
+  get '/cd_products/:id' => 'cd_products#show'
   get '/search/list' => 'cd_products#list', as: :search_list
   get '/doramas/title_search/:id/:dorama_name' => "doramas#title_search", as: :dorama_title_search
   get '/doramas/feature' => 'doramas#feature', as: 'doramas_feature'

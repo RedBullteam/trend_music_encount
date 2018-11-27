@@ -15,35 +15,40 @@
 
 <div class="well well-sm">月曜日</div>
 <% if @doramas.present? %>
-<% if @doramas.week_ids ==  %>
-<%= Dorama.week_ids  %>
       <table>
-            <tbody>
-                <tr>
-                    <% @doramas.each_with_index do |dorama, i| %>
-                        <% if  i % 4 ==0 %>
-                              <tr>
-                        <% end %>
-                        <td class="cd_position">
-                          <% @cds.each do |cd| %>
-                          <% if cd.dorama_id == dorama.id %>
-                            <img src="/assets/no_image.jpeg", width="200px" height="200px">
-                            <p>CD名:<%= cd.name %></p>
-                            <p>ドラマ:<%= dorama.name %></p>
-                          <% end %>
-                          <% end %>
-                        </td>
-                        <% if (i + 1) % 4 == 0 %>
-                              </tr>
-                        <% end %>
-                        <% if (i == @cds.size - 1) && ((i + 1) % 4 == 2)%>
-                </tr>
-                        <% end %>
-                    <% end %>
-            </tbody>
-        </table>
-<%= paginate @doramas %>
-<% end %>
+        <tbody>
+          <tr>
+            <% @doramas.each_with_index do |dorama, i| %>
+              <% if  i % 4 ==0 %>
+            <tr>
+            <% end %>
+            <td class="cd_position">
+              <% @cds.each do |cd_product| %>
+                <% if cd_product.dorama_id == dorama.id %>
+                  <% if cd_product.jacket_image.present? %>
+                      <%= link_to cd_product_path(cd_product.id) do %>
+                        <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+                      <% end %>
+                  <% else %>
+                      <%= link_to cd_product_path(cd_product.id) do %>
+                        <img src="/assets/no_image.jpg", width="250", height="250">
+                      <% end %>
+                  <% end %>
+                  <p>CD名:<%= cd_product.name %></p>
+                  <p>ドラマ:<%= dorama.name %></p>
+                  <% end %>
+              <% end %>
+            </td>
+              <% if (i + 1) % 4 == 0 %>
+            </tr>
+              <% end %>
+              <% if (i == @cds.size - 1) && ((i + 1) % 4 == 2)%>
+          </tr>
+              <% end %>
+            <% end %>
+        </tbody>
+      </table>
+      <%= paginate @doramas %>
 <% end %>
 
 

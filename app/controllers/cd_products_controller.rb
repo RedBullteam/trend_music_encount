@@ -13,7 +13,7 @@ include Search
     @cd_product = CdProduct.find(params[:id])
     @discs = Disc.where(cd_product_id: (params[:id]))
     @songs = Song.where(disc_id: @discs.ids)
-    @cds = CdProduct.where(artist_id: @cd_product.artist_id).page(params[:page]).per(5)
+    @cds = CdProduct.where(artist_id: @cd_product.artist_id).where(sale_status_id: 2).page(params[:page]).per(4)
 
   end
 
