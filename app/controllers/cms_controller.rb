@@ -7,7 +7,6 @@ include Search
   end
 
   def trend
-     @videos = Video.all
    @cd_products = CdProduct.where("commodity_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).page(params[:page]).per(9)
   end
 
