@@ -46,11 +46,60 @@
 	</div>
 	<div class="main clearfix">
 		<div class="main-content">
+			<!-- 映画コンテンツ -->
 			<div class="movie-content">
-				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
+			  <% if @movies.present? %>
+                <table class="table table-bordered">
+                  <tbody>
+                      <tr>
+                          <% @movies.each_with_index do |cd_product, i| %>
+                              <% if  i % 3 ==0 %>
+                                    <tr>
+                              <% end %>
+                              <td>
+                                  <img src="/assets/no_image.jpeg", width="200px" height="200px">
+                                  <p>CD名:<%= cd_product.name %></p>
+                                  <p>映画名:<%= cd_product.movie.movie_name %></p>
+                              </td>
+                              <% if (i + 1) % 3 == 0 %>
+                                    </tr>
+                              <% end %>
+                              <% if (i == @movies.size - 1) && ((i + 1) % 3 == 2)%>
+                                  </tr>
+                              <% end %>
+                          <% end %>
+                  </tbody>
+                </table>
+              <% end %>
+			  <%= link_to "もっと見る",movies_path %>
 			</div>
+
+            <!-- CMコンテンツ -->
 			<div class="cm-content">
-				<p>ここには映画、CM、ドラマそれぞれのコンテンツが入るよ</p>
+			   <% if @commodities.present? %>
+                <table class="table table-bordered">
+                  <tbody>
+                      <tr>
+                          <% @commodities.each_with_index do |cd_product, i| %>
+                              <% if  i % 3 ==0 %>
+                                    <tr>
+                              <% end %>
+                              <td>
+                                  <img src="/assets/no_image.jpeg", width="200px" height="200px">
+                                  <p>CD名：<%= cd_product.name %></p>
+                                  <p>商品:<%= cd_product.commodity.commodity %></p>
+                              </td>
+                              <% if (i + 1) % 3 == 0 %>
+                                    </tr>
+                              <% end %>
+                              <% if (i == @commodities.size - 1) && ((i + 1) % 3 == 2)%>
+                                  </tr>
+                              <% end %>
+                          <% end %>
+                  </tbody>
+                </table>
+              <% end %>
+			  <%= link_to "もっと見る",cms_path %>
 			</div>
 			<!-- ドラマコンテンツ -->
 			<div class="dorama-content">
