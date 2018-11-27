@@ -9,7 +9,7 @@ form do |f|
  		f.input :price
  		f.input :label
  		f.input :stock_number
- 		f.input :release_era_tag_id, as: :select, collection: ['1980年代', '1990年代', '2000年代', '2010年代']
+ 		f.input :release_era_tag_id, as: :select, collection: {'1980年代' => 1, '1990年代'  => 2, '2000年代'  => 3, '2010年代' => 4}
  		f.input :sale_status_id
  		f.input :release_date, as: :date_picker
 		f.input :movie_id
