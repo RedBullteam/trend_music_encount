@@ -16,11 +16,11 @@ Rails.application.routes.draw do
    get '/trend' =>'cms#trend'
  resources :cms, :only => [:index,:search]
   get '/era_search' => 'cd_products#era_search'
-  get '/release_era_tag/:id' => 'release_era_tags#show', as: :release_era_tag
-  get '/era_search/list' => 'cd_products#era_search_list'
+  get '/release_era_tag/:id' => 'release_era_tags#show', as: 'release_era_tag'
   get '/cd_products/:id' => 'cd_products#show'
   get '/search/list' => 'cd_products#list', as: :search_list
   get '/doramas/title_search/:id/:dorama_name' => "doramas#title_search", as: :dorama_title_search
+  get '/doramas/feature' => 'doramas#feature', as: 'doramas_feature'
   get '/movies/title_search/:id/:movie_name' => "movies#title_search", as: :movie_title_search
   get '/movies/feature' => "movies#feature", as: :movie_feature
   get '/cms/commodity_search' => "cms#commodity_search", as: :cm_commodity_search
