@@ -16,9 +16,8 @@ include Search
     if search_name == ""
       return redirect_to cms_path
     end
-  	@commodities = commodity_name_search_function(search_name)
-    @match_records = CdProduct.where(commodity_id:@commodities.ids).where(sale_status_id: 2).count
-    @commodities_cd_products = CdProduct.where(commodity_id:@commodities.ids).where(sale_status_id: 2).page(params[:page]).per(12)
+  	@commodities = commodities_name_search_function(search_name)
+    @commodities_cd_product = CdProduct.where(commodity_id:@commodity.ids).page(params[:page]).per(12)
     @path = controller_path + '#' + action_name
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)
@@ -31,10 +30,8 @@ include Search
     if search_name == ""
       return redirect_to cms_path
     end
-    @companies = company_name_search_function(search_name)
-    @companies_commodities = Commodity.where(company_id:@companies.ids)
-    @match_records = CdProduct.where(commodity_id:@companies_commodities.ids).where(sale_status_id: 2).count
-    @companies_cd_products = CdProduct.where(commodity_id:@companies_commodities.ids).where(sale_status_id: 2).page(params[:page]).per(12)
+    @match_records = company_match_record_function(search_name)
+    @cd_products = company_name_search_function(search_name)
     @path = controller_path + '#' + action_name
     def @path.is(*str)
         str.map{|s| self.include?(s)}.include?(true)
