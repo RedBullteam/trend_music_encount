@@ -12,7 +12,11 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4">
-          <img src="/assets/no_image.jpeg", width="300px" height="300px">
+          <% if @cd_product.jacket_image.present? %>
+                    <%= @cd_product.image_tag "#{cd_product.jacket_image}", :size =>'300x300' %>
+                <% else %>
+                    <img src="/assets/no_image.jpg", width="300", height="300">
+                <% end %>
         </div>
         <div class="col-md-6">
           <table class="table table-striped">
@@ -44,13 +48,7 @@
   	        </tbody>
           </table>
           <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
-          <button type="button" class="btn btn-warning btn-lg">
-           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
-            <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
-            <% else %>
-            <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
-            <% end %>
-            </button>
+
           <table class="table table-bordered">
               <thead>
              <tr>
@@ -106,18 +104,16 @@
                   <div class="row">
                     <div class="col-md-4">
                       <% if  @cd_product.movie.present? %>
-                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <%= image_tag "#{@cd_product.movie.movie_image}" %>
                       <% else %>
                       <% end %>
 
                       <% if  @cd_product.dorama.present? %>
-                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
+                      <%= image_tag "#{@cd_product.dorama.dorama_image}" %>
                       <% else %>
                       <% end %>
 
                       <% if  @cd_product.commodity.present? %>
-                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
-                      <% else %>
                       <% end %>
 
                     </div>
@@ -168,7 +164,7 @@
                       <thead>
                         <tr>
                           <th>
-                            商品名:<%= @cd_product.commodity.commodities %>
+                            商品名:<%= @cd_product.commodity.commodity %>
                           </th>
                         </tr>
                       </thead>
@@ -192,17 +188,21 @@
                 <table>
                   <tbody>
                 	<tr>
-                    <% @cds.each do |cds| %>
+                    <% @cds.each do |cd_product| %>
                     <td class="cd_position">
-                  	  <img src="/assets/no_image.jpeg", width="220px" height="220px">
-    					        <p><%= cds.name %></p>
+                        <% if cd_product.jacket_image.present? %>
+                            <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+                        <% else %>
+                            <img src="/assets/no_image.jpg", width="250", height="250">
+                        <% end %>
+    					        <p><%= cd_product.name %></p>
     				        </td>
                     <% end %>
                 	</tr>
                   </tbody>
                 </table>
                 <%= paginate @cds %>
-    <!-- 関連楽曲ここまで -->
+     <!-- 関連楽曲ここまで -->
         </div>
       </div>
     </div>

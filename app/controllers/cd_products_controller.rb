@@ -3,13 +3,17 @@ class CdProductsController < ApplicationController
 include Search
 
   def index
+    @movies = CdProduct.where("movie_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(3)
+    @commodities = CdProduct.where("commodity_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(3)
+    @doramas = CdProduct.where("dorama_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(3)
+
   end
 
   def show
     @cd_product = CdProduct.find(params[:id])
     @discs = Disc.where(cd_product_id: (params[:id]))
     @songs = Song.where(disc_id: @discs.ids)
-    @cds = CdProduct.where(artist_id: @cd_product.artist_id).page(params[:page]).per(5)
+    @cds = CdProduct.where(artist_id: @cd_product.artist_id).where(sale_status_id: 2).page(params[:page]).per(4)
 
   end
 

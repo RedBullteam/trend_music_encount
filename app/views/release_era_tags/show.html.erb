@@ -26,19 +26,27 @@
 			<tbody>
 				<tr>
 					<% @cd_products.each_with_index do |cd_product, i| %>
-						<% if  i % 4 ==0 %>
+						<% if  i % 3 ==0 %>
 						  	<tr>
 						<% end %>
 						<td class="cd_position">
-			              <img src="/assets/no_image.jpeg", width="200px" height="200px">
+			              <% if cd_product.jacket_image.present? %>
+                            <%= link_to cd_product_path(cd_product.id) do %>
+                              <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+                            <% end %>
+                          <% else %>
+                            <%= link_to cd_product_path(cd_product.id) do %>
+                              <img src="/assets/no_image.jpg", width="250", height="250">
+                            <% end %>
+                          <% end %>
 			              <p><%= cd_product.name %></p>
 			              <p><%= cd_product.artist.name %></p>
 			              <p><%= cd_product.release_date %></p>
 			            </td>
-						<% if (i + 1) % 4 == 0 %>
+						<% if (i + 1) % 3 == 0 %>
 						  	</tr>
 						<% end %>
-						<% if (i == @cd_products.size - 1) && ((i + 1) % 4 == 2)%>
+						<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
 							</tr>
 						<% end %>
 					<% end %>
