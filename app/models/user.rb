@@ -20,4 +20,7 @@ class User < ApplicationRecord
     退会ユーザー: true
   }
   scope :active, -> { find_by(delete_flag: false) }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :telephone, presence: true, format: {with: /\A[0-9]{1,4}-[0-9]{1,4}-[0-9]{1,4}\z/}
 end
