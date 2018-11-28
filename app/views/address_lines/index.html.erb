@@ -1,20 +1,30 @@
-<h1>AddressLines#index</h1>
-<p>アドレスライン一覧</p>
-<% @addresslines.each do |addressline| %>
-<table>
-	<thead>
-		<tr>
-			<th>郵便番号</th>
-			<th>区・市・町・村</th>
-			<th>建物名・番地</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><%= addressline.postcode %></td>
-			<td><%= addressline.city %></td>
-			<td><%= addressline.address %></td>
-		</tr>
-	</tbody>
-</table>
-<% end %>
+<h1>住所一覧</h1>
+<div class="container">
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>郵便番号</th>
+					<th>都道府県</th>
+					<th>区・市・町・村</th>
+					<th>建物名・番地</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @addresslines.each do |address_line| %>
+				<tr>
+					<td><%= address_line.postcode %></td>
+					<td><%= address_line.prefecture_id %></td>
+					<td><%= address_line.city %></td>
+					<td><%= address_line.address %></td>
+					<td><%= link_to "edit", edit_address_line_path(address_line.id) %></td>
+					<td><%= link_to "destroy", address_line_path(address_line.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<%= link_to "住所を新しく追加する", new_address_line_path %><br>
+		<%= link_to "元いたページに戻る", :back %>
+	</div>
+</div>

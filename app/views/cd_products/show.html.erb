@@ -43,7 +43,7 @@
   	  	        </tr>
   	        </tbody>
           </table>
-          <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
+          <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
           <button type="button" class="btn btn-warning btn-lg">
            <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
             <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
@@ -102,90 +102,7 @@
     <!-- CD詳細ここまで -->
 
     <!-- 映画、ドラマ、CM情報 -->
-              <div class="well well-sm">アーティスト関連情報</div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <% if  @cd_product.movie.present? %>
-                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
-                      <% else %>
-                      <% end %>
-
-                      <% if  @cd_product.dorama.present? %>
-                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
-                      <% else %>
-                      <% end %>
-
-                      <% if  @cd_product.commodity.present? %>
-                      <img src="/assets/dorama_top.jpeg", width="300px" height="150px">
-                      <% else %>
-                      <% end %>
-
-                    </div>
-                  <div class="col-md-8">
-                    <table class="table">
-
-                    <!-- 映画詳細-->
-                    <% if  @cd_product.movie.present? %>
-                      <thead>
-                        <tr>
-                          <th>
-                            映画名:<%= @cd_product.movie.movie_name %>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            映画公開日:<%= @cd_product.movie.movie_release %>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <% else %>
-                      <% end %>
-
-                    <!-- ドラマ詳細-->
-                      <% if  @cd_product.dorama.present? %>
-                      <thead>
-                        <tr>
-                          <th>
-                            ドラマ名ー<%= @cd_product.dorama.name %>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>放送開始日:<%= @cd_product.dorama.dorama_start_date %></td>
-                        </tr>
-                        <tr>
-                          <td>放送曜日:<%= @cd_product.dorama.week_id %></td>
-                        </tr>
-                      </tbody>
-                      <% else %>
-                      <% end %>
-
-　　　　　　　　　　　　　<!-- CM詳細 -->
-                      <% if  @cd_product.commodity.present? %>
-                      <thead>
-                        <tr>
-                          <th>
-                            商品名:<%= @cd_product.commodity.commodities %>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            動画公開日:<%= @cd_product.commodity.upload_date %>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <% else %>
-                      <% end %>
-
-                    </table>
-                  </div>
-              </div>
-    <!-- 映画、ドラマ、CM情報ここまで -->
+              
 
     <!-- 関連楽曲 -->
               <div class="well well-sm">このアーティストの関連楽曲</div>

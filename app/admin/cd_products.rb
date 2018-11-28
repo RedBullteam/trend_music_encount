@@ -23,6 +23,7 @@ end
 
 index do
  	selectable_column
+ 	column :id
  	column :artist
  	column :name
  	column :price

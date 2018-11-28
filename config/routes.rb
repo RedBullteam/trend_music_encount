@@ -57,8 +57,9 @@ end
   resources :admins
   resources :bag_items, :only =>[:index,:edit,:update,:destroy]
   resources :shopping_bags, :only =>[:new,:create,:index,:show,:destroy]
-  resources :cart_item, :only =>[:add,:destroy,:update]
+  resources :cart_items, :only =>[:create,:destroy,:update]
   resources :shopping_carts, :only => [:new,:create,:index,:show,:destroy]
+  get '/confirmation' => "shopping_carts#purchase"
   resources :address_lines, :only =>[:new,:create,:index,:edit,:update,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'users/resignnation'

@@ -30,9 +30,14 @@ before_action :create, only: [:complete]
    end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     super
+     if user_signed_in?
+      shopping_cart = ShoppingCart.new
+      shopping_cart.user_id = current_user.id
+      shopping_cart.save
+     end
+   end
 
   # GET /resource/edit
   # def edit
