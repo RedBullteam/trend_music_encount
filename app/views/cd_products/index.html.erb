@@ -27,7 +27,7 @@
 		<div class="header-bottom">
 			 <% if  user = current_user %>
 				<button class="square_btn">
-					<a href="/shopping_carts" class="cart-button">ショッピングカート</a>
+					<%=link_to "ショッピングカート", shopping_cart_path(current_user.shopping_cart.id) %>
 				</button>
 			<% else %>
 				<div class="balloonoya square_btn" onclick="showBalloon()">ショッピングカート
