@@ -17,9 +17,11 @@
 				<li class="nav-list-item"><a href="/movies">映画</a></li>
 				<li class="nav-list-item"><a href="/cms">ＣＭ</a></li>
 				<li class="nav-list-item"><a href="/doramas">ドラマ</a></li>
-				<li class="nav-list-item"><a href="#">曲検索</a></li>
-				<li class="nav-list-item"><a href="#">アーティスト検索</a></li>
-				<li class="nav-list-item"><a href="#">マイページ</a></li>
+				<li class="nav-list-item"><a href="/cd_products/search/songs_search_form">曲検索</a></li>
+				<li class="nav-list-item"><a href="/cd_products/search/artists_search_form">アーティスト検索</a></li>
+				<% if user_signed_in? %>
+                  <li class="nav-list-item"><%= link_to 'マイページ', user_path(current_user.id) %></a></li>
+                <% end %>
 			</ul>
 		</nav>
 		<div class="header-bottom">
@@ -161,7 +163,7 @@
 
 			<button class="side-columns"><a href="/users/sign_up">新規登録</a></button>
 			<button class="side-columns"><a href="/guide">初めての方はこちら</a></button>
-			<button class="side-columns"><a href="#">あの頃検索</a></button>
+			<button class="side-columns"><a href="/era_search">あの頃検索</a></button>
 		</div>
 	</div>
 	<div class="footer">
@@ -179,8 +181,8 @@
 			</ul>
 			<p>検索関連</p>
 			<ul class="footer-nav-list">
-				<li class="footer-nav-item"><a href="/cd_products/search/artists_search">アーティスト検索トップ</a></li>
-				<li class="footer-nav-item"><a href="/cd_products/search/songs_search">曲名検索トップ</a></li>
+				<li class="footer-nav-item"><a href="/cd_products/search/artists_search_form">アーティスト検索トップ</a></li>
+				<li class="footer-nav-item"><a href="/cd_products/search/songs_search_form">曲名検索トップ</a></li>
 			</ul>
 			<p>映画関連</p>
 			<ul class="footer-nav-list">
