@@ -33,6 +33,12 @@
 
   <%= f.fields_for :address_lines do |s| %>
   	<div>
+      <%= s.label "addressname" %>
+      <%= s.hidden_field :name %>
+      <%= params[:user][:address_lines_attributes][:"0"][:name]%>
+    </div>
+
+    <div>
      	<%= s.label :postcode %>
      	<%= s.hidden_field :postcode %>
      	<%= params[:user][:address_lines_attributes][:"0"][:postcode]%>
