@@ -31,6 +31,11 @@
   <%= f.fields_for :address_lines do |s| %>
 
     <div>
+        <%= s.label "addressname"%><br />
+        <%= s.text_field :name ,placeholder: "例：自宅"  %>
+    </div>
+
+    <div>
         <%= s.label :postcode %><br />
         <%= s.text_field :postcode ,placeholder: "○○○-○○○○"  %>
     </div>

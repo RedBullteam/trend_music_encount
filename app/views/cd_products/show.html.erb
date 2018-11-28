@@ -12,7 +12,11 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4">
-          <img src="/assets/no_image.jpeg", width="300px" height="300px">
+          <% if @cd_product.jacket_image.present? %>
+                    <%= image_tag "#{@cd_product.jacket_image}", :size =>'300x300' %>
+                <% else %>
+                    <img src="/assets/no_image.jpg", width="300", height="300">
+                <% end %>
         </div>
         <div class="col-md-6">
           <table class="table table-striped">
@@ -43,7 +47,12 @@
   	  	        </tr>
   	        </tbody>
           </table>
+<<<<<<< HEAD
           <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
+=======
+          <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
+        <% if user_signed_in? %>
+>>>>>>> de03ec37cbf41401a504227f4ac92264bd595a64
           <button type="button" class="btn btn-warning btn-lg">
            <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
             <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
@@ -51,6 +60,10 @@
             <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
             <% end %>
             </button>
+        <% else %>
+        <button type="button" class="btn btn-warning btn-lg">お気に入り</button>
+        <% end %>
+
           <table class="table table-bordered">
               <thead>
              <tr>
@@ -102,24 +115,115 @@
     <!-- CD詳細ここまで -->
 
     <!-- 映画、ドラマ、CM情報 -->
+<<<<<<< HEAD
               
+=======
+              <div class="well well-sm">アーティスト関連情報</div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <% if  @cd_product.movie.present? %>
+                      <%= image_tag "#{@cd_product.movie.movie_image}" %>
+                      <% else %>
+                      <% end %>
+
+                      <% if  @cd_product.dorama.present? %>
+                      <%= image_tag "#{@cd_product.dorama.dorama_image}" %>
+                      <% else %>
+                      <% end %>
+
+                      <% if  @cd_product.commodity.present? %>
+                       <iframe width="300" height="180" src=<%= @cd_product.commodity.video_url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                      <% end %>
+
+                    </div>
+                  <div class="col-md-8">
+                    <table class="table">
+
+                    <!-- 映画詳細-->
+                    <% if  @cd_product.movie.present? %>
+                      <thead>
+                        <tr>
+                          <th>
+                            映画名:<%= @cd_product.movie.movie_name %>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            映画公開日:<%= @cd_product.movie.movie_release %>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <% else %>
+                      <% end %>
+
+                    <!-- ドラマ詳細-->
+                      <% if  @cd_product.dorama.present? %>
+                      <thead>
+                        <tr>
+                          <th>
+                            ドラマ名ー<%= @cd_product.dorama.name %>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>放送開始日:<%= @cd_product.dorama.dorama_start_date %></td>
+                        </tr>
+                        <tr>
+                          <td>放送曜日:<%= @cd_product.dorama.week_id %></td>
+                        </tr>
+                      </tbody>
+                      <% else %>
+                      <% end %>
+
+　　　　　　　　　　　　　<!-- CM詳細 -->
+                      <% if  @cd_product.commodity.present? %>
+                      <thead>
+                        <tr>
+                          <th>
+                            商品名:<%= @cd_product.commodity.commodity %>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            動画公開日:<%= @cd_product.commodity.upload_date %>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <% else %>
+                      <% end %>
+
+                    </table>
+                  </div>
+              </div>
+    <!-- 映画、ドラマ、CM情報ここまで -->
+>>>>>>> de03ec37cbf41401a504227f4ac92264bd595a64
 
     <!-- 関連楽曲 -->
               <div class="well well-sm">このアーティストの関連楽曲</div>
                 <table>
                   <tbody>
                 	<tr>
-                    <% @cds.each do |cds| %>
+                    <% @cds.each do |cd_product| %>
                     <td class="cd_position">
-                  	  <img src="/assets/no_image.jpeg", width="220px" height="220px">
-    					        <p><%= cds.name %></p>
+                        <% if cd_product.jacket_image.present? %>
+                            <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+                        <% else %>
+                            <img src="/assets/no_image.jpg", width="250", height="250">
+                        <% end %>
+    					        <p><%= cd_product.name %></p>
     				        </td>
                     <% end %>
                 	</tr>
                   </tbody>
                 </table>
                 <%= paginate @cds %>
-    <!-- 関連楽曲ここまで -->
+     <!-- 関連楽曲ここまで -->
         </div>
       </div>
     </div>
