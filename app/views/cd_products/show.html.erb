@@ -48,6 +48,17 @@
   	        </tbody>
           </table>
           <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
+        <% if user_signed_in? %>
+          <button type="button" class="btn btn-warning btn-lg">
+           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
+            <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
+            <% else %>
+            <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
+            <% end %>
+            </button>
+        <% else %>
+        <button type="button" class="btn btn-warning btn-lg">お気に入り</button>
+        <% end %>
 
           <table class="table table-bordered">
               <thead>
@@ -114,6 +125,8 @@
                       <% end %>
 
                       <% if  @cd_product.commodity.present? %>
+                       <iframe width="300" height="180" src=<%= @cd_product.commodity.video_url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
                       <% end %>
 
                     </div>
