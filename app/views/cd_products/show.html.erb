@@ -115,12 +115,12 @@
                   <div class="row">
                     <div class="col-md-4">
                       <% if  @cd_product.movie.present? %>
-                      <%= image_tag "#{@cd_product.movie.movie_image}" %>
+                      <%= image_tag "#{@cd_product.movie.movie_image}", :size =>'250x250' %>
                       <% else %>
                       <% end %>
 
                       <% if  @cd_product.dorama.present? %>
-                      <%= image_tag "#{@cd_product.dorama.dorama_image}" %>
+                      <%= image_tag "#{@cd_product.dorama.dorama_image}", :size =>'250x250' %>
                       <% else %>
                       <% end %>
 
