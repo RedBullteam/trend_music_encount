@@ -33,7 +33,7 @@ end
 
 private
   def user_params
-      params.require(:user).permit(:first_name, :last_name, :first_name_kana,:last_name_kana, :email, :telephone, address_lines_attributes:[:id,:postcode, :prefecture_id,:city,:address])
+      params.require(:user).permit(:first_name, :last_name, :first_name_kana,:last_name_kana, :email, :telephone, address_lines_attributes:[:id, :name, :postcode, :prefecture_id,:city,:address])
   end
 
   def login_check
