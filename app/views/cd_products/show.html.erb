@@ -47,12 +47,12 @@
   	  	        </tr>
   	        </tbody>
           </table>
-<<<<<<< HEAD
-          <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
-=======
-          <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
+          <% if user_signed_in? %>
+            <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
+          <% else %>
+            <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
+          <%end%>
         <% if user_signed_in? %>
->>>>>>> de03ec37cbf41401a504227f4ac92264bd595a64
           <button type="button" class="btn btn-warning btn-lg">
            <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
             <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
