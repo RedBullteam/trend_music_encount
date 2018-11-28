@@ -47,11 +47,7 @@
   	  	        </tr>
   	        </tbody>
           </table>
-          <% if user_signed_in? %>
-            <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
-          <% else %>
-            <button type="button" class="btn btn-danger btn-lg">カートに入れる</button>
-          <%end%>
+          <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
         <% if user_signed_in? %>
           <button type="button" class="btn btn-warning btn-lg">
            <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
