@@ -115,12 +115,12 @@
                   <div class="row">
                     <div class="col-md-4">
                       <% if  @cd_product.movie.present? %>
-                      <%= image_tag "#{@cd_product.movie.movie_image}" %>
+                      <%= image_tag "#{@cd_product.movie.movie_image}", :size =>'250x250' %>
                       <% else %>
                       <% end %>
 
                       <% if  @cd_product.dorama.present? %>
-                      <%= image_tag "#{@cd_product.dorama.dorama_image}" %>
+                      <%= image_tag "#{@cd_product.dorama.dorama_image}", :size =>'250x250' %>
                       <% else %>
                       <% end %>
 
@@ -203,11 +203,15 @@
                 	<tr>
                     <% @cds.each do |cd_product| %>
                     <td class="cd_position">
-                        <% if cd_product.jacket_image.present? %>
-                            <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
-                        <% else %>
-                            <img src="/assets/no_image.jpg", width="250", height="250">
+                      <% if cd_product.jacket_image.present? %>
+                        <%= link_to cd_product_path(cd_product.id) do %>
+                          <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
                         <% end %>
+                      <% else %>
+                        <%= link_to cd_product_path(cd_product.id) do %>
+                          <img src="/assets/no_image.jpg", width="250", height="250">
+                        <% end %>
+                      <% end %>
     					        <p><%= cd_product.name %></p>
     				        </td>
                     <% end %>
