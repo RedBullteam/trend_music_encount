@@ -31,12 +31,25 @@
 		        		<% end %>
 					</div>
 					<div class="container">
-							<ul class="list-group">
+						<ul class="list-group">
+							<li  class="list-group-item list-group-item-info">
+								購入済みの商品
+							</li>
+							<% @shopping_bags.each do |shopping_bag| %>
+							<li class="list-group-item"><strong>送付先：</strong><%= shopping_bag.address_line.name %>
+								<%= shopping_bag.address_line.postcode %>
+								
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<strong>価格：</strong>￥<%= shopping_bag.bag_item.cd_product%>(税込み)</li>
+							<% end %>
+						</ul>
+					</div>
+					<div class="container">
+						<ul class="list-group">
 							<li  class="list-group-item list-group-item-info">お気に入り商品リスト</li>
-							</ul>
+						</ul>
 							<div class="main-visual">
         						<div class="theTarget">
-        							
           							<% @favorites.each_with_index do |favorite,i| %>
           							<% if i % 4 == 0 %>
           								<div class="slide">

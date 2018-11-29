@@ -7,6 +7,7 @@ class User < ApplicationRecord
           has_many :favorites, dependent: :destroy
           has_many :cd_products, through: :favorites
           has_one :shopping_cart
+          has_many :shopping_bags
           accepts_nested_attributes_for :address_lines
           # 親モデルとネストしたいときに必須
   def full_name

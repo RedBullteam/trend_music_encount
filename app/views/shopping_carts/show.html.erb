@@ -56,20 +56,21 @@
 						<th>以下住所</th>
 						<th>宛先氏名</th>
 					</tr>
-					<% @address_lines.each do |address_line| %>
-						<tr>
-							<%= form_for(address_line) do |f| %>
+					<%= form_tag('/confirmation', :method => :get) do %>
+						<% @address_lines.each do |address_line| %>
+							<tr>
 								<div class="field">
-									<td><%= f.check_box 'address_line_id', {:checked => false}, true, false %></td>
+									<td><%= check_box 'address_line','address_line_id', {:checked => false}, address_line.id, false %></td>
 								</div>
-							<%end%>
-							<td><%= address_line.user.first_name %><%= address_line.user.last_name %></td>
-						    <td><%= address_line.postcode %></td>
-						    <td><%= address_line.prefecture_id%></td>
-						    <td><%= address_line.city %></td>
-						    <td><%= address_line.address %></td>
-						    <td><%= address_line.name %></td>
-						</tr>
+								<td><%= address_line.user.first_name %><%= address_line.user.last_name %></td>
+							    <td><%= address_line.postcode %></td>
+							    <td><%= address_line.prefecture_id%></td>
+							    <td><%= address_line.city %></td>
+							    <td><%= address_line.address %></td>
+							    <td><%= address_line.name %></td>
+							</tr>
+						<%end%>
+						<%= submit_tag "確認画面へ進む" %>
 					<%end%>
 				</table>
 				<button><%= link_to "届け先住所を変更する", address_lines_path(current_user) %></button>
