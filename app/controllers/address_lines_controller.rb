@@ -36,6 +36,6 @@ class AddressLinesController < ApplicationController
 
   private
   def addressline_params
-    params.require(:address_line).permit(:postcode, :prefecture_id, :address,[:city,:_destroy, :id] )
+    params.require(:address_line).permit(:postcode, :prefecture_id, :address,[:city,:_destroy, :id], :name )
   end
 end
