@@ -62,6 +62,7 @@
 						                      <% else %>
 						                        <%= link_to cd_product_path(favorite.cd_product.id) do %>
 						                          <img src="/assets/no_image.jpg", width="250", height="250">
+						                          <% end %>
 						                      <% end %>
 				    					        <p><strong>商品名：</strong><%=favorite.cd_product.name %></p>
 												<p><strong>価格：</strong>￥<%=favorite.cd_product.price %>(税込み)</p>
