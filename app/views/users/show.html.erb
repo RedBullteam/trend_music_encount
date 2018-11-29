@@ -32,32 +32,47 @@
 		        		<% end %>
 					</div>
 					<div class="container">
-						<ul class="list-group">
-							<li  class="list-group-item list-group-item-info">
-								購入済みの商品
-							</li>
-							<% @shopping_bags.each do |shopping_bag| %>
-							<li class="list-group-item">
-								<p><strong>送付先：</strong>
-									<%= shopping_bag.address_line.name %>様
-								〒<%= shopping_bag.address_line.postcode %>
-								<%= shopping_bag.address_line.prefecture_id %>
-								<%= shopping_bag.address_line.city %>
-								<%= shopping_bag.address_line.address %>
-								</p>
-							</li>
-							<% shopping_bag.bag_items.each do |bag_item| %>
-							<li class="list-group-item">
-								<p><strong>購入した商品内容：</strong>
-									商品名：<%= bag_item.cd_product.name %><br>
-									値段：<%= bag_item.purchase_price %>円<br>
-									購入数：<%= bag_item.quantity %>点<br>
-									商品ステータス：<%= bag_item.delivery_status_id %>
-								</p>
-							</li>
-							<% end %>
-							<% end %>
-						</ul>
+						<div class="row">
+							<h2>購入履歴</h2>
+							<table class="table table-striped">
+								<tr>
+									<th>送付先</th>
+									<th>購入者</th>
+									<th>購入日</th>
+									<th>商品情報</th>
+									<th>購入枚数</th>
+									<th>発送ステータス</th>
+									<th>総計</th>
+
+								</tr>
+								<% @shopping_bags.each do |shopping_bag| %>
+								<tr>
+									<td>
+										<%= shopping_bag.address_line.name %>様
+										〒<%= shopping_bag.address_line.postcode %>
+										<%= shopping_bag.address_line.prefecture_id %>
+										<%= shopping_bag.address_line.city %>
+										<%= shopping_bag.address_line.address %>
+									</td>
+									<td>
+										<%= shopping_bag.user.first_name %><%= shopping_bag.user.last_name %>
+									</td>
+									<td><%= shopping_bag.created_at.strftime('%Y年%m月%d日') %></td>
+									
+									<% shopping_bag.bag_items.each do |bag_item| %>
+										<td>
+											<%= bag_item.cd_product.name %>
+											：<%= bag_item.purchase_price %>円
+
+										</td>
+										<td><%= bag_item.quantity %>点</td>
+										<td><%= bag_item.delivery_status_id %></td>
+									<%end%>
+									<td><%= (shopping_bag.sum_total_price).to_i %>円</td>
+								</tr>
+								<%end%>
+							</table>
+						</div>
 					</div>
 					<div class="container">
 						<ul class="list-group">
