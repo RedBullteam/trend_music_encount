@@ -14,6 +14,7 @@ end
 
 index do
 	selectable_column
+	column :id
 	column :name
 	column :title_head_id
 	column :dorama_start_date

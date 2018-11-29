@@ -48,6 +48,16 @@
   	        </tbody>
           </table>
           <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
+
+<!-- ==================form_for での描き方 ====================== -->
+<!--
+          <%#= form_for(CartItem.new) do |f| %>
+            <%#= f.hidden_field :cd_product_id, value: @cd_product.id %>
+            <button type="button" class="btn btn-danger btn-lg"><%#= f.submit "カートに入れる" %></button>
+          <%# end %>
+ -->
+ <!-- ==============================end=============================== -->
+
         <% if user_signed_in? %>
           <button type="button" class="btn btn-warning btn-lg">
            <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
