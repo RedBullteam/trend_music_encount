@@ -14,7 +14,6 @@ class ShoppingCartsController < ApplicationController
  	  	@address_line_id = @address_line.id
   	end
   	def complete
-      #binding.pry
   		shopping_bag = ShoppingBag.new
   		shopping_bag.user_id = current_user.id
   		shopping_bag.address_line_id = params[:shopping_bag][:address_line_id]
@@ -22,7 +21,6 @@ class ShoppingCartsController < ApplicationController
   		shopping_cart = current_user.shopping_cart
   		cart_items = current_user.shopping_cart.cart_items
   		shopping_cart.cart_items.each do |cart_item|
-        binding.pry
 	  		bag_item = BagItem.new
 	  		bag_item.id = cart_item.id
 	  		bag_item.shopping_bag_id = shopping_bag.id
