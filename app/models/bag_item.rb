@@ -8,4 +8,8 @@ class BagItem < ApplicationRecord
     購入済み: false,
     キャンセル: true
   }
+
+  	def total_price
+		(cd_product.price).to_i * quantity
+	end
 end
