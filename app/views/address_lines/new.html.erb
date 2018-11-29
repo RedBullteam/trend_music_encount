@@ -4,19 +4,25 @@
 	<title></title>
 </head>
 <body>
-	<h1>AddressLines#new</h1>
-	<%= form_for(@addressline) do |s| %>
-	<h4>郵便番号</h4>
-	    <%= s.text_field :postcode %>
-	    <%= render 'address_lines/form',s:s %>
-	    <!-- 都道府県を選択するformです -->
-	    <h4>市・町・村</h4>
-	    <%= s.text_field :city %>
-	    <h4>建物名・番地</h4>
-	    <%= s.text_field :address %>
-	    <h4>宛先氏名</h4>
-	    <%= s.text_field :name %>
-	    <%= s.submit '登録' %>
- 	<% end %>
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+	<div class="main-content">
+		<h1>住所追加</h1>
+		<%= form_for(@addressline) do |s| %>
+		<h4>郵便番号</h4>
+		    <%= s.text_field :postcode %>
+		    <%= render 'address_lines/form',s:s %>
+		    <!-- 都道府県を選択するformです -->
+		    <h4>市・町・村</h4>
+		    <%= s.text_field :city %>
+		    <h4>建物名・番地</h4>
+		    <%= s.text_field :address %>
+		    <h4>宛先氏名</h4>
+		    <%= s.text_field :name %>
+		    <%= s.submit '登録' %>
+	 	<% end %>
+ 	</div>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 </body>
 </html> 

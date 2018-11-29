@@ -1,38 +1,45 @@
-<div class="container">
-    <h3>最新CM音楽CD</h3>
-        <% if@cd_products.present? %>
-    <% @cd_products.each_with_index do |cd_product, id| %>
-                <div class="col-xs-4">
-                    <% if cd_product.jacket_image.present? %>
-                        <%= link_to cd_product_path(cd_product.id) do %>
-                            <%= image_tag "#{cd_product.jacket_image}", :size =>'290x290' %>
-                        <% end %>
-                    <% else %>
-                        <%= link_to cd_product_path(cd_product.id) do %>
-                        <img src="/assets/no_image.jpg", width="290", height="290">
-                         <% end %>
-                    <% end %>
-                    <p>CD名：<%= cd_product.name %></p>
-                    <p>アーティスト名：<%= cd_product.artist.name %></p>
-                    <p>リリース日：<%= cd_product.release_date %></p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="<%= "#cm#{id}" %>">CMを見る</button>
-             <div class="modal fade" id="<%= "cm#{id}" %>" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                                    <h4 class="modal-title">CM商品名：<%= cd_product.commodity.commodity %>公開日：<%= cd_product.commodity.upload_date %></h4>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe width="500" height="300" src=<%= cd_product.commodity.video_url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+    <div class="main-content">
+        <div class="container">
+            <h3>最新CM音楽CD</h3>
+                <% if@cd_products.present? %>
+            <% @cd_products.each_with_index do |cd_product, id| %>
+                        <div class="col-xs-4">
+                            <% if cd_product.jacket_image.present? %>
+                                <%= link_to cd_product_path(cd_product.id) do %>
+                                    <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+                                <% end %>
+                            <% else %>
+                                <%= link_to cd_product_path(cd_product.id) do %>
+                                <img src="/assets/no_image.jpg", width="250", height="250">
+                                 <% end %>
+                            <% end %>
+                            <p>CD名：<%= cd_product.name %></p>
+                            <p>アーティスト名：<%= cd_product.artist.name %></p>
+                            <p>リリース日：<%= cd_product.release_date %></p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="<%= "#cm#{id}" %>">CMを見る</button>
+                     <div class="modal fade" id="<%= "cm#{id}" %>" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                            <h4 class="modal-title">CM商品名：<%= cd_product.commodity.commodity %>公開日：<%= cd_product.commodity.upload_date %></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <iframe width="500" height="300" src=<%= cd_product.commodity.video_url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
-                </div>
-            </div>
-        <% end %>
-    <% end %>
- </div>
+                    </div>
+                <% end %>
+            <% end %>
+         </div>
+    </div>
+    <%= render partial: 'cd_products/sidebar' %>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
