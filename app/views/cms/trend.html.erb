@@ -5,7 +5,7 @@
             <h3>最新CM音楽CD</h3>
                 <% if@cd_products.present? %>
             <% @cd_products.each_with_index do |cd_product, id| %>
-                        <div class="col-xs-4">
+                        <div class="col-xs-5">
                             <% if cd_product.jacket_image.present? %>
                                 <%= link_to cd_product_path(cd_product.id) do %>
                                     <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
