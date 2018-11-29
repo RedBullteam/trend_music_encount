@@ -14,13 +14,15 @@ class ShoppingCartsController < ApplicationController
  	  	@address_line_id = @address_line.id
   	end
   	def complete
+      #binding.pry
   		shopping_bag = ShoppingBag.new
   		shopping_bag.user_id = current_user.id
-  		shopping_bag.address_line_id = params[:address_line_id]
+  		shopping_bag.address_line_id = params[:shopping_bag][:address_line_id]
   		shopping_bag.save
   		shopping_cart = current_user.shopping_cart
   		cart_items = current_user.shopping_cart.cart_items
   		shopping_cart.cart_items.each do |cart_item|
+        binding.pry
 	  		bag_item = BagItem.new
 	  		bag_item.id = cart_item.id
 	  		bag_item.shopping_bag_id = shopping_bag.id
@@ -37,6 +39,6 @@ class ShoppingCartsController < ApplicationController
   	private
   	def complete_params
   		params.require(:cart_item).permit(:cd_product_id, :quantity, :shopping_cart_id)
-  		params.require(:address_line).permit(:user_id, :name, :postcode, :prefecture_id, :city, :address)
+  		params.require(:address_line).permit(:id, :user_id, :name, :postcode, :prefecture_id, :city, :address)
   	end
 end

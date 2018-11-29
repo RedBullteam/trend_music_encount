@@ -61,7 +61,7 @@
 				</table>
 			</div>
 			<%= form_for(ShoppingBag.new, url: complete_path) do |f| %>
-				<%= f.hidden_field :address_line_id, value:@address_line_id %>
+				<%= f.hidden_field :address_line_id, value: @address_line_id %>
 				<button><%= f.submit "購入する" %></button>
 			<% end %>
 		</div>
