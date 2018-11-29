@@ -11,6 +11,7 @@
 			<div class="row">
 			<div class="col-xs-6">
 					<div class=profile-box>
+						<%= link_to "topページへ戻る", root_path %>
 						<ul class="list-group">
 							<% @user.address_lines.each do |addressline| %>
 							<li class="list-group-item list-group-item-info" style="text-align: center"><strong>ユーザープロフィール</strong></li>
@@ -36,11 +37,25 @@
 								購入済みの商品
 							</li>
 							<% @shopping_bags.each do |shopping_bag| %>
-							<li class="list-group-item"><strong>送付先：</strong><%= shopping_bag.address_line.name %>
-								<%= shopping_bag.address_line.postcode %>
-								
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<strong>価格：</strong>￥<%= shopping_bag.bag_item.cd_product%>(税込み)</li>
+							<li class="list-group-item">
+								<p><strong>送付先：</strong>
+									<%= shopping_bag.address_line.name %>様
+								〒<%= shopping_bag.address_line.postcode %>
+								<%= shopping_bag.address_line.prefecture_id %>
+								<%= shopping_bag.address_line.city %>
+								<%= shopping_bag.address_line.address %>
+								</p>
+							</li>
+							<% shopping_bag.bag_items.each do |bag_item| %>
+							<li class="list-group-item">
+								<p><strong>購入した商品内容：</strong>
+									商品名：<%= bag_item.cd_product.name %><br>
+									値段：<%= bag_item.purchase_price %>円<br>
+									購入数：<%= bag_item.quantity %>点<br>
+									商品ステータス：<%= bag_item.delivery_status_id %>
+								</p>
+							</li>
+							<% end %>
 							<% end %>
 						</ul>
 					</div>
