@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
 	def create
-  	# binding.pry
+  	#binding.pry
   	cart_item = CartItem.new
   	cart_item.shopping_cart_id = current_user.shopping_cart.id
   	cart_item.cd_product_id = params["cd_product_id"].to_i
