@@ -5,6 +5,9 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+	<div class="main-content">
 	<h1>マイページ</h1>
 	<div class="body">
 		<div class="profile container">
@@ -109,9 +112,13 @@
 			           
         						</div>
 							</div>
-			</div>
+						</div>
+				</div>
+			<%= render partial: 'cd_products/sidebar' %>
 		</div>
 	</div>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 	<script src="jquery-3.2.1.min.js"></script>
 	<script src="skippr.min.js"></script>
 	<script src="script.js"></script>
