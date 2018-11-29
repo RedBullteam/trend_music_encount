@@ -1,3 +1,6 @@
+<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+	<div class="main-content">
 	<!-- 映画CD一覧 -->
 	<h3>最新映画音楽CD</h3>
 		<% if@cd_products.present? %>
@@ -33,4 +36,8 @@
 				</div>
 			<% end %>
 		<% end %>
+	</div>
+	<%= render partial: 'cd_products/sidebar' %>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 

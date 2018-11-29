@@ -8,231 +8,243 @@
     </style>
   </head>
 <body>
-<div class="container">
 
-<% if @doramas.present? %>
-　　<div class="well well-sm">月曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "月曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
+<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix" >
+	<div class="main-content">
+		<% if @doramas.present? %>
+		　　<div class="well well-sm">月曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "月曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
 
-　　<div class="well well-sm">火曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "火曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
+		　　<div class="well well-sm">火曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "火曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
 
-　　<div class="well well-sm">水曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "水曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
-　　<div class="well well-sm">木曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "木曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
+		　　<div class="well well-sm">水曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "水曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
+		　　<div class="well well-sm">木曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "木曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
 
-　　<div class="well well-sm">金曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "金曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
-　　<div class="well well-sm">土曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "土曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
-　　<div class="well well-sm">日曜日</div>
-　　  <% @cds.each_with_index do |cd_product| %>
-　　    <% if cd_product.dorama.week_id == "日曜日" %>
-　　    <table class="table table-bordered">
-　　      <thead>
-　　        <tr>
-　　          <h4><%= cd_product.dorama.name %></h4>
-　　        </tr>
-　　      </thead>
-　　      <tbody>
-　　        <tr>
-　　          <td class="cd_jacket">
-　　              <% if cd_product.jacket_image.present? %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
-　　                <% end %>
-　　              <% else %>
-　　                <%= link_to cd_product_path(cd_product.id) do %>
-　　                  <img src="/assets/no_image.jpg", width="150", height="150">
-　　                <% end %>
-　　              <% end %>
-　　          </td>
-　　          <td>
-　　            <p>CD名:<%= cd_product.name %></p>
-　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
-　　          </td>
-　　        </tr>
-　　      </tbody>
-　　  </table>
-　　<% end %>
-　　<% end %>
-  <% end %>
-</div>
+		　　<div class="well well-sm">金曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "金曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
+		　　<div class="well well-sm">土曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "土曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
+		　　<div class="well well-sm">日曜日</div>
+		　　  <% @cds.each_with_index do |cd_product| %>
+		　　    <% if cd_product.dorama.week_id == "日曜日" %>
+		　　    <table class="table table-bordered">
+		　　      <thead>
+		　　        <tr>
+		　　          <h4><%= cd_product.dorama.name %></h4>
+		　　        </tr>
+		　　      </thead>
+		　　      <tbody>
+		　　        <tr>
+		　　          <td class="cd_jacket">
+		　　              <% if cd_product.jacket_image.present? %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <%= image_tag "#{cd_product.jacket_image}", :size =>'150x150' %>
+		　　                <% end %>
+		　　              <% else %>
+		　　                <%= link_to cd_product_path(cd_product.id) do %>
+		　　                  <img src="/assets/no_image.jpg", width="150", height="150">
+		　　                <% end %>
+		　　              <% end %>
+		　　          </td>
+		　　          <td>
+		　　            <p>CD名:<%= cd_product.name %></p>
+		　　            <p>アーティスト名:<%= cd_product.artist.name %></p>
+						<p>リリース日:<%= cd_product.release_date %></p>
+		　　          </td>
+		　　        </tr>
+		　　      </tbody>
+		　　  </table>
+		　　<% end %>
+		　　<% end %>
+		  <% end %>
+	</div>
+	<%= render partial: 'cd_products/sidebar' %>
+  </div>
+<%= render partial: 'cd_products/footer' %>
 </body>
 </html>
 
