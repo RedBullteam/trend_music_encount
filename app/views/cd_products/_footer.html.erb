@@ -1,0 +1,36 @@
+<div class="footer">
+		<div class="footer-nav">
+			<p>trend music encountについて</p>
+			<ul class="footer-nav-list">
+				<% if user_signed_in? %>
+				<li class="footer-nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+				<% else %>
+				<li class="footer-nav-item"><a href="/users/sign_in">ログイン</a></li>
+				<% end %>
+				<li class="footer-nav-item"><a href="/users/sign_up">新規登録</a></li>
+				<li class="footer-nav-item"><a href="/guide">初めての方はこちら</a></li>
+				<li class="footer-nav-item"><a href="/era_search">あの頃検索</a></li>
+			</ul>
+			<p>検索関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/cd_products/search/artists_search_form">アーティスト検索トップ</a></li>
+				<li class="footer-nav-item"><a href="/cd_products/search/songs_search_form">曲名検索トップ</a></li>
+			</ul>
+			<p>映画関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/movies">映画関連トップ</a></li>
+				<li class="footer-nav-item"><a href="/movies/feature">最新映画情報</a></li>
+			</ul>
+			<p>ＣＭ関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/cms">ＣＭ関連トップ</a></li>
+				<li class="footer-nav-item"><a href="/trend">最新ＣＭ情報</a></li>
+			</ul>
+			<p>ドラマ関連</p>
+			<ul class="footer-nav-list">
+				<li class="footer-nav-item"><a href="/doramas">ドラマ関連トップ</a></li>
+				<li class="footer-nav-item"><a href="/doramas/feature">最新ドラマ情報</a></li>
+			</ul>
+		</div>
+		<p class="footer-text">TREND MUSIC ENCOUNT</p>
+</div>

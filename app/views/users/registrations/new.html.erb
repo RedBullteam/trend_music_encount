@@ -1,89 +1,108 @@
-<h2>新規登録入力フォーム</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <%= render partial: 'cd_products/header' %>
+  <div class="main clearfix" >
+    <div class="main-content">
+      <h2>新規登録入力フォーム</h2>
 
-<%= form_for(resource, as: resource_name, url: {action: "confirm"}) do |f| %>
-  <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: {action: "confirm"}) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, placeholder: "名前(性)" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, placeholder: "名前(名)" %>
-  </div>
+        <div class="field">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name, autofocus: true, placeholder: "名前(性)" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :last_name_kana %><br />
-    <%= f.text_field :last_name_kana, autofocus: true, placeholder: "カナ名前(性)" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :first_name_kana %><br />
-    <%= f.text_field :first_name_kana, autofocus: true, placeholder: "カナ名前(名)" %>
-  </div>
+        <div class="field">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, autofocus: true, placeholder: "名前(名)" %>
+        </div>
 
-   <div class="field">
-    <%= f.label :telephone %><br />
-    <%= f.text_field :telephone, autofocus: true, placeholder: "電話番号" %>
-   </div>
+        <div class="field">
+          <%= f.label :first_name_kana %><br />
+          <%= f.text_field :first_name_kana, autofocus: true, placeholder: "カナ名前(性)" %>
+        </div>
 
-  <%= f.fields_for :address_lines do |s| %>
+        <div class="field">
+          <%= f.label :last_name_kana %><br />
+          <%= f.text_field :last_name_kana, autofocus: true, placeholder: "カナ名前(名)" %>
+        </div>
 
-    <div>
-        <%= s.label "addressname"%><br />
-        <%= s.text_field :name ,placeholder: "例：自宅"  %>
+
+        <div class="field">
+          <%= f.label :telephone %><br />
+          <%= f.text_field :telephone, autofocus: true, placeholder: "電話番号" %>
+        </div>
+
+        <%= f.fields_for :address_lines do |s| %>
+
+          <div>
+            <%= s.label "addressname"%><br />
+            <%= s.text_field :name ,placeholder: "例：自宅"  %>
+          </div>
+
+          <div>
+            <%= s.label :postcode %><br />
+            <%= s.text_field :postcode ,placeholder: "○○○-○○○○"  %>
+          </div>
+
+          <div class="field">
+            <%= s.label :prefecture %><br>
+            <%= s.select :prefecture_id, AddressLine.prefecture_ids.keys, {prompt: '選択してください'}, class: 'form-control btn' %>
+          </div>
+
+          <div>
+            <%= s.label :city %><br />
+            <%= s.text_field :city,:size=>"60" ,placeholder: "例：渋谷区神南１丁目" %>
+          </div>
+
+          <div>
+            <%= s.label :address %><br />
+            <%= s.text_field :address, :size=>"60" ,placeholder: "例：１９−１１パークウェースクエア２４階"  %>
+          </div>
+        <% end %>
+
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, placeholder: "パスワード" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, placeholder: "パスワード再入力" %>
+        </div>
+
+        <br />
+
+        <div class="actions">
+          <%= f.submit "次に進む" %>
+        </div>
+
+        <br />
+
+        <div class="actions">
+          <%= link_to '戻る', root_path %>
+        </div>
+      <% end %>
     </div>
-
-    <div>
-        <%= s.label :postcode %><br />
-        <%= s.text_field :postcode ,placeholder: "○○○-○○○○"  %>
-    </div>
-
-    <div class="field">
-      <%= s.label :prefecture %><br>
-      <%= s.select :prefecture_id, AddressLine.prefecture_ids.keys, {prompt: '選択してください'}, class: 'form-control btn' %>
-    </div>
-
-    <div>
-        <%= s.label :city %><br />
-        <%= s.text_field :city,:size=>"60" ,placeholder: "例：渋谷区神南１丁目" %>
-    </div>
-
-    <div>
-        <%= s.label :address %><br />
-        <%= s.text_field :address, :size=>"60" ,placeholder: "例：１９−１１パークウェースクエア２４階"  %>
-    </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %>
+  <%= render partial: 'cd_products/sidebar' %>
   </div>
+  <%= render partial: 'cd_products/footer' %>
+</body>
+</html>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, placeholder: "パスワード" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, placeholder: "パスワード再入力" %>
-  </div>
-
-  <br />
-
-  <div class="actions">
-    <%= f.submit "次に進む" %>
-  </div>
-
-  <br />
-
-  <div class="actions">
-    <%= link_to '戻る', root_path %>
-  </div>
-<% end %>

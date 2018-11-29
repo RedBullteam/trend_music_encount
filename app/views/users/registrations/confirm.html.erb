@@ -1,88 +1,106 @@
-<%= form_for(resource, as: resource_name, url: {action: "complete"}) do |f| %>
-  <%= devise_error_messages! %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+    <div class="main-content">
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.hidden_field :last_name %>
-    <%= @user.last_name %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: {action: "complete"}) do |f| %>
+        <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.hidden_field :first_name %>
-    <%= @user.first_name %>
-  </div>
+        <div class="field">
+          <h4><%= f.label :first_name %></h4>
+          <%= f.hidden_field :first_name %>
+          <h4><%= @user.first_name %></h4>
+        </div>
 
-  <div class="field">
-    <%= f.label :last_name_kana %>
-    <%= f.hidden_field :last_name_kana %>
-    <%= @user.last_name_kana %>
-  </div>
+        <div class="field">
+          <h4><%= f.label :last_name %><h4>
+          <%= f.hidden_field :last_name %>
+          <h4><%= @user.last_name %></h4>
+        </div>
 
-  <div class="field">
-    <%= f.label :first_name_kana %>
-    <%= f.hidden_field :first_name_kana %>
-    <%= @user.first_name_kana %>
-  </div>
 
-  <div class="field">
-    <%= f.label :telephone %>
-    <%= f.hidden_field :telephone %>
-    <%= @user.telephone %>
-  </div>
+        <div class="field">
+          <h4><%= f.label :first_name_kana %></h4>
+          <%= f.hidden_field :first_name_kana %>
+          <h4><%= @user.first_name_kana %></h4>
+        </div>
 
-  <%= f.fields_for :address_lines do |s| %>
-  	<div>
-      <%= s.label "addressname" %>
-      <%= s.hidden_field :name %>
-      <%= params[:user][:address_lines_attributes][:"0"][:name]%>
+        <div class="field">
+          <h4><%= f.label :last_name_kana %></h4>
+          <%= f.hidden_field :last_name_kana %>
+          <h4><%= @user.last_name_kana %></h4>
+        </div>
+
+
+        <div class="field">
+          <h4><%= f.label :telephone %></h4>
+          <%= f.hidden_field :telephone %>
+          <h4><%= @user.telephone %></h4>
+        </div>
+
+        <%= f.fields_for :address_lines do |s| %>
+        	<div>
+            <h4><%= s.label "addressname" %></h4>
+            <%= s.hidden_field :name %>
+            <h4><%= params[:user][:address_lines_attributes][:"0"][:name]%></h4>
+          </div>
+
+          <div>
+           	<h4><%= s.label :postcode %></h4>
+           	<%= s.hidden_field :postcode %>
+           	<h4><%= params[:user][:address_lines_attributes][:"0"][:postcode]%></h4>
+         	</div>
+
+          <div>
+            <h4><%= s.label :prefecture %></h4>
+            <%= s.hidden_field :prefecture_id %>
+            <h4><%= params[:user][:address_lines_attributes][:"0"][:prefecture_id]%></h4>
+          </div>
+
+         	<div>
+           	<h4><%= s.label :city %></h4>
+           	<%= s.hidden_field :city %>
+           	<h4><%= params[:user][:address_lines_attributes][:"0"][:city]%></h4>
+         	</div>
+
+         	<div>
+           	<h4><%= s.label :address %></h4>
+           	<%= s.hidden_field :address %>
+           	<h4><%= params[:user][:address_lines_attributes][:"0"][:address]%></h4>
+         	</div>
+        <% end %>
+
+        <div class="field">
+          <h4><%= f.label :email %></h4>
+          <%= f.hidden_field :email %>
+          <h4><%= @user.email %></h4>
+        </div>
+
+        <div class="field">
+          <h4><%= f.label :password %></h4>
+          <%= f.hidden_field :password %>
+          <h4><%= @user.password %></h4>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+
+        <br />
+
+        <div class="actions">
+          <%= link_to '戻る', new_user_registration_path %>
+        </div>
+      <% end %>
     </div>
-
-    <div>
-     	<%= s.label :postcode %>
-     	<%= s.hidden_field :postcode %>
-     	<%= params[:user][:address_lines_attributes][:"0"][:postcode]%>
-   	</div>
-
-    <div>
-      <%= s.label :prefecture %>
-      <%= s.hidden_field :prefecture_id %>
-      <%= params[:user][:address_lines_attributes][:"0"][:prefecture_id]%>
-    </div>
-
-   	<div>
-     	<%= s.label :city %>
-     	<%= s.hidden_field :city %>
-     	<%= params[:user][:address_lines_attributes][:"0"][:city]%>
-   	</div>
-
-   	<div>
-     	<%= s.label :address %>
-     	<%= s.hidden_field :address %>
-     	<%= params[:user][:address_lines_attributes][:"0"][:address]%>
-   	</div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.hidden_field :email %>
-    <%= @user.email %>
+  <%= render partial: 'cd_products/sidebar' %>
   </div>
+  <%= render partial: 'cd_products/footer' %>
+</body>
+</html>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.hidden_field :password %>
-    <%= @user.password %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
-  <br />
-
-  <div class="actions">
-    <%= link_to '戻る', new_user_registration_path %>
-  </div>
-
-<% end %>

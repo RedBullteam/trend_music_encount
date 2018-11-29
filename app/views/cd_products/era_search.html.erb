@@ -1,5 +1,7 @@
 <html>
 <head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
 	<style>
 		.era_search_btn {
 		  width: 320px;
@@ -21,22 +23,28 @@
 	</style>
 </head>
 <body>
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+	<div class="main-content">
+		<table class="era_search_table">
+		  <thead>
+		    <div class="well well-sm era_search_title clearfix"><span class="glyphicon glyphicon-headphones"></span> 楽曲の年代を選択</div>
+		  </thead>
+		  <tbody>
+			<tr>
+		      <td class="era_search_td"><%= link_to "1980年代", 'release_era_tag/1', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
+			  <td class="era_search_td"><%= link_to "1990年代", 'release_era_tag/2', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
+			</tr>
+			<tr>
+			  <td class="era_search_td"><%= link_to "2000年代", 'release_era_tag/3', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
+			  <td class="era_search_td"><%= link_to "2010年代", 'release_era_tag/4', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
 
-<table class="era_search_table">
-  <thead>
-    <div class="well well-sm era_search_title"><span class="glyphicon glyphicon-headphones"></span> 楽曲の年代を選択</div>
-  </thead>
-  <tbody>
-	<tr>
-      <td class="era_search_td"><%= link_to "1980年代", 'release_era_tag/1', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
-	  <td class="era_search_td"><%= link_to "1990年代", 'release_era_tag/2', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
-	</tr>
-	<tr>
-	  <td class="era_search_td"><%= link_to "2000年代", 'release_era_tag/3', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
-	  <td class="era_search_td"><%= link_to "2010年代", 'release_era_tag/4', class:"btn btn-lg btn-info era_search_btn glyphicon glyphicon-zoom-in" %></td>
-
-	</tr>
-  </tbody>
-</table>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
+    <%= render partial: 'cd_products/sidebar' %>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 </body>
 </html>

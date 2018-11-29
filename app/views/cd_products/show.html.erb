@@ -8,230 +8,235 @@
   </head>
   <body>
 <!-- CD詳細 -->
-  <div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-4">
-          <% if @cd_product.jacket_image.present? %>
-                    <%= image_tag "#{@cd_product.jacket_image}", :size =>'300x300' %>
-                <% else %>
-                    <img src="/assets/no_image.jpg", width="300", height="300">
-                <% end %>
-        </div>
-        <div class="col-md-6">
-          <table class="table table-striped">
-  	          <thead>
-              <tr>
-                <h4>CD情報</h4>
-              </tr>
-              </thead>
-  	          <tbody>
-  	  	        <tr>
-  	  	          <td>タイトル</td>
-  	  	          <td><p><%= @cd_product.name %><p></td>
-  	  	          <td></td>
-  	  	        </tr>
-  	  	        <tr>
-  	  	          <td>アーティスト</td>
-  	  	          <td><%= @cd_product.artist.name %></td>
-  	  	          <td></td>
-  	  	        </tr>
-  	            <tr>
-  	  	          <td>価格（税込）</td>
-  	  	          <td>￥<%= @cd_product.price %></td>
-  	  	          <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
-                      <% else %>
-                      <% @cd_product.stock_number >= 1  %>在庫あり
-                      <% end %>
-                  </td>
-  	  	        </tr>
-  	        </tbody>
-          </table>
-          <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
-
-<!-- ==================form_for での描き方 ====================== -->
-<!--
-          <%#= form_for(CartItem.new) do |f| %>
-            <%#= f.hidden_field :cd_product_id, value: @cd_product.id %>
-            <button type="button" class="btn btn-danger btn-lg"><%#= f.submit "カートに入れる" %></button>
-          <%# end %>
- -->
- <!-- ==============================end=============================== -->
-
-        <% if user_signed_in? %>
-          <button type="button" class="btn btn-warning btn-lg">
-           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
-            <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
-            <% else %>
-            <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
-            <% end %>
-            </button>
-        <% else %>
-        <button type="button" class="btn btn-warning btn-lg">お気に入り</button>
-        <% end %>
-
-          <table class="table table-bordered">
-              <thead>
-             <tr>
-              <h4>商品情報</h4>
-              </tr>
-            </thead>
-              <tbody>
-          	  	<tr>
-          	  	  <td>発売日</td>
-          	  	  <td><%= @cd_product.release_date %></td>
-          	  	</tr>
-           	  	<tr>
-          	  	  <td>レーベル</td>
-          	  	  <td><%= @cd_product.label.name %></td>
-          	  	</tr>
-          	  </tbody>
-          </table>
-          </div>
-        <div class="col-md-1"></div>
-    </div>
-
-
-
-    <h4>収録曲</h4>
-      <% @discs.each do |disc| %>
-        <table class="table table-hover">
-                <thead>
-                  <tr>
-                  <p>Disc<%= disc.disc %></p>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @songs.each do |song| %>
-                    <% if song.disc_id == disc.id %>
-                      <tr>
-                        <td><%= song.track_number_id %></td>
-                        <td><%= song.name %></td>
-                        <td>
-                          <% selected_genre = Genre.find_by(id: song.genre_id) %>
-                          <%= selected_genre.name %>
-                        </td>
-                      </tr>
+  <%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+              <% if @cd_product.jacket_image.present? %>
+                        <%= image_tag "#{@cd_product.jacket_image}", :size =>'300x300' %>
                     <% else %>
+                        <img src="/assets/no_image.jpg", width="300", height="300">
                     <% end %>
-                  <% end %>
+            </div>
+            <div class="col-md-6">
+              <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <h4>CD情報</h4>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>タイトル</td>
+                      <td><p><%= @cd_product.name %><p></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>アーティスト</td>
+                      <td><%= @cd_product.artist.name %></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>価格（税込）</td>
+                      <td>￥<%= @cd_product.price %></td>
+                      <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
+                          <% else %>
+                          <% @cd_product.stock_number >= 1  %>在庫あり
+                          <% end %>
+                      </td>
+                    </tr>
                 </tbody>
               </table>
-         <% end %>
-    <!-- CD詳細ここまで -->
+              <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
 
-    <!-- 映画、ドラマ、CM情報 -->
-              <div class="well well-sm">アーティスト関連情報</div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <% if  @cd_product.movie.present? %>
-                      <%= image_tag "#{@cd_product.movie.movie_image}", :size =>'250x250' %>
-                      <% else %>
-                      <% end %>
+    <!-- ==================form_for での描き方 ====================== -->
+    <!--
+              <%#= form_for(CartItem.new) do |f| %>
+                <%#= f.hidden_field :cd_product_id, value: @cd_product.id %>
+                <button type="button" class="btn btn-danger btn-lg"><%#= f.submit "カートに入れる" %></button>
+              <%# end %>
+     -->
+     <!-- ==============================end=============================== -->
 
-                      <% if  @cd_product.dorama.present? %>
-                      <%= image_tag "#{@cd_product.dorama.dorama_image}", :size =>'250x250' %>
-                      <% else %>
-                      <% end %>
+            <% if user_signed_in? %>
+              <button type="button" class="btn btn-warning btn-lg">
+               <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
+                <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
+                <% else %>
+                <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
+                <% end %>
+                </button>
+            <% else %>
+            <button type="button" class="btn btn-warning btn-lg">お気に入り</button>
+            <% end %>
 
-                      <% if  @cd_product.commodity.present? %>
-                       <iframe width="300" height="180" src=<%= @cd_product.commodity.video_url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
-                      <% end %>
-
-                    </div>
-                  <div class="col-md-8">
-                    <table class="table">
-
-                    <!-- 映画詳細-->
-                    <% if  @cd_product.movie.present? %>
-                      <thead>
-                        <tr>
-                          <th>
-                            映画名:<%= @cd_product.movie.movie_name %>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            映画公開日:<%= @cd_product.movie.movie_release %>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <% else %>
-                      <% end %>
-
-                    <!-- ドラマ詳細-->
-                      <% if  @cd_product.dorama.present? %>
-                      <thead>
-                        <tr>
-                          <th>
-                            ドラマ名ー<%= @cd_product.dorama.name %>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>放送開始日:<%= @cd_product.dorama.dorama_start_date %></td>
-                        </tr>
-                        <tr>
-                          <td>放送曜日:<%= @cd_product.dorama.week_id %></td>
-                        </tr>
-                      </tbody>
-                      <% else %>
-                      <% end %>
-
-　　　　　　　　　　　　　<!-- CM詳細 -->
-                      <% if  @cd_product.commodity.present? %>
-                      <thead>
-                        <tr>
-                          <th>
-                            商品名:<%= @cd_product.commodity.commodity %>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            動画公開日:<%= @cd_product.commodity.upload_date %>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <% else %>
-                      <% end %>
-
-                    </table>
-                  </div>
-              </div>
-    <!-- 映画、ドラマ、CM情報ここまで -->
-
-    <!-- 関連楽曲 -->
-              <div class="well well-sm">このアーティストの関連楽曲</div>
-                <table>
+              <table class="table table-bordered">
+                  <thead>
+                 <tr>
+                  <h4>商品情報</h4>
+                  </tr>
+                </thead>
                   <tbody>
-                	<tr>
-                    <% @cds.each do |cd_product| %>
-                    <td class="cd_position">
-                      <% if cd_product.jacket_image.present? %>
-                        <%= link_to cd_product_path(cd_product.id) do %>
-                          <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
-                        <% end %>
-                      <% else %>
-                        <%= link_to cd_product_path(cd_product.id) do %>
-                          <img src="/assets/no_image.jpg", width="250", height="250">
+                    <tr>
+                      <td>発売日</td>
+                      <td><%= @cd_product.release_date %></td>
+                    </tr>
+                    <tr>
+                      <td>レーベル</td>
+                      <td><%= @cd_product.label.name %></td>
+                    </tr>
+                  </tbody>
+              </table>
+              </div>
+            <div class="col-md-1"></div>
+        </div>
+
+
+
+        <h4>収録曲</h4>
+          <% @discs.each do |disc| %>
+            <table class="table table-hover">
+                    <thead>
+                      <tr>
+                      <p>Disc<%= disc.disc %></p>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @songs.each do |song| %>
+                        <% if song.disc_id == disc.id %>
+                          <tr>
+                            <td><%= song.track_number_id %></td>
+                            <td><%= song.name %></td>
+                            <td>
+                              <% selected_genre = Genre.find_by(id: song.genre_id) %>
+                              <%= selected_genre.name %>
+                            </td>
+                          </tr>
+                        <% else %>
                         <% end %>
                       <% end %>
-    					        <p><%= cd_product.name %></p>
-    				        </td>
-                    <% end %>
-                	</tr>
-                  </tbody>
-                </table>
-                <%= paginate @cds %>
-     <!-- 関連楽曲ここまで -->
-        </div>
+                    </tbody>
+                  </table>
+             <% end %>
+        <!-- CD詳細ここまで -->
+
+        <!-- 映画、ドラマ、CM情報 -->
+                  <div class="well well-sm">アーティスト関連情報</div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <% if  @cd_product.movie.present? %>
+                          <%= image_tag "#{@cd_product.movie.movie_image}", :size =>'250x250' %>
+                          <% else %>
+                          <% end %>
+
+                          <% if  @cd_product.dorama.present? %>
+                          <%= image_tag "#{@cd_product.dorama.dorama_image}", :size =>'250x250' %>
+                          <% else %>
+                          <% end %>
+
+                          <% if  @cd_product.commodity.present? %>
+                           <iframe width="300" height="180" src=<%= @cd_product.commodity.video_url %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
+                          <% end %>
+
+                        </div>
+                      <div class="col-md-8">
+                        <table class="table">
+
+                        <!-- 映画詳細-->
+                        <% if  @cd_product.movie.present? %>
+                          <thead>
+                            <tr>
+                              <th>
+                                映画名:<%= @cd_product.movie.movie_name %>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                映画公開日:<%= @cd_product.movie.movie_release %>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <% else %>
+                          <% end %>
+
+                        <!-- ドラマ詳細-->
+                          <% if  @cd_product.dorama.present? %>
+                          <thead>
+                            <tr>
+                              <th>
+                                ドラマ名ー<%= @cd_product.dorama.name %>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>放送開始日:<%= @cd_product.dorama.dorama_start_date %></td>
+                            </tr>
+                            <tr>
+                              <td>放送曜日:<%= @cd_product.dorama.week_id %></td>
+                            </tr>
+                          </tbody>
+                          <% else %>
+                          <% end %>
+
+    　　　　　　　　　　　　　<!-- CM詳細 -->
+                          <% if  @cd_product.commodity.present? %>
+                          <thead>
+                            <tr>
+                              <th>
+                                商品名:<%= @cd_product.commodity.commodity %>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                動画公開日:<%= @cd_product.commodity.upload_date %>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <% else %>
+                          <% end %>
+
+                        </table>
+                      </div>
+                  </div>
+        <!-- 映画、ドラマ、CM情報ここまで -->
+
+        <!-- 関連楽曲 -->
+                  <div class="well well-sm">このアーティストの関連楽曲</div>
+                    <table>
+                      <tbody>
+                      <tr>
+                        <% @cds.each do |cd_product| %>
+                        <td class="cd_position">
+                          <% if cd_product.jacket_image.present? %>
+                            <%= link_to cd_product_path(cd_product.id) do %>
+                              <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+                            <% end %>
+                          <% else %>
+                            <%= link_to cd_product_path(cd_product.id) do %>
+                              <img src="/assets/no_image.jpg", width="250", height="250">
+                            <% end %>
+                          <% end %>
+                          <p><%= cd_product.name %></p>
+                        </td>
+                        <% end %>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <%= paginate @cds %>
+         <!-- 関連楽曲ここまで -->
+            </div>
+            <%= render partial: 'cd_products/sidebar' %>
+          </div>
       </div>
     </div>
-  </body>
+  <%= render partial: 'cd_products/footer' %>
+</body>
 </html>

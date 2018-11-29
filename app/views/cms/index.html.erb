@@ -2,38 +2,45 @@
 <head>
 </head>
 <body>
-	<!-- 商品名検索 -->
-	<%= render partial: 'cms/commodity_name_search' %>
-	<!-- 会社名検索 -->
-	<%= render partial: 'cms/company_name_search' %>
-	<!-- タイトル部分 -->
-	<div class="jumbotron" style="background-image: url(/assets/cm_top.jpeg);background-size: cover;">
-		<h1 style="color:white">CM音楽トップ</h1>
-		<p style="color:white"><%= link_to "最新CM情報はコチラ", trend_path %></p>
-	</div>
-	<!-- CMCD一覧 -->
-	<h3>CM音楽CD一覧</h3>
-	<% if@cd_products.present? %>
-		<% @cd_products.each_with_index do |cd_product, i| %>
-			<div class="col-xs-4">
-				<% if cd_product.jacket_image.present? %>
-					<%= link_to cd_product_path(cd_product.id) do %>
-						<%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix" style="height: 1600px">
+	<div class="main-content">
+		<!-- 商品名検索 -->
+		<%= render partial: 'cms/commodity_name_search' %>
+		<!-- 会社名検索 -->
+		<%= render partial: 'cms/company_name_search' %>
+		<!-- タイトル部分 -->
+		<div class="jumbotron" style="background-image: url(/assets/cm_top.jpeg);background-size: cover;">
+			<h1 style="color:white">CM音楽トップ</h1>
+			<p style="color:white"><%= link_to "最新CM情報はコチラ", trend_path %></p>
+		</div>
+		<!-- CMCD一覧 -->
+		<h3>CM音楽CD一覧</h3>
+		<% if@cd_products.present? %>
+			<% @cd_products.each_with_index do |cd_product, i| %>
+				<div class="col-xs-4">
+					<% if cd_product.jacket_image.present? %>
+						<%= link_to cd_product_path(cd_product.id) do %>
+							<%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+						<% end %>
+					<% else %>
+						<%= link_to cd_product_path(cd_product.id) do %>
+							<img src="/assets/no_image.jpg", width="250", height="250">
+						<% end %>
 					<% end %>
-				<% else %>
-					<%= link_to cd_product_path(cd_product.id) do %>
-						<img src="/assets/no_image.jpg", width="250", height="250">
-					<% end %>
-				<% end %>
-				<p>CD名：<%= cd_product.name %></p>
-				<p>アーティスト名：<%= cd_product.artist.name %></p>
-				<p>リリース日：<%= cd_product.release_date %></p>
-				<p>商品名：<%= cd_product.commodity.commodity %></p>
-				<p>会社名：<%= cd_product.commodity.company.company %></p>
-			</div>
+					<p>CD名：<%= cd_product.name %></p>
+					<p>アーティスト名：<%= cd_product.artist.name %></p>
+					<p>リリース日：<%= cd_product.release_date %></p>
+					<p>商品名：<%= cd_product.commodity.commodity %></p>
+					<p>会社名：<%= cd_product.commodity.company.company %></p>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
-	<div class="col-xs-12"><%= paginate @cd_products %><div class="col-xs-12">
+		<div class="col-xs-12"><%= paginate @cd_products %></div class="col-xs-12">
+	</div>
+	<%= render partial: 'cd_products/sidebar' %>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 </body>
 </html>
 

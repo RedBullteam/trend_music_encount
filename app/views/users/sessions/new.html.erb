@@ -1,24 +1,39 @@
-<h2>ログイン</h2>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>trend_music_encount</title>
+</head>
+<body>
+  <%= render partial: 'cd_products/header' %>
+  <div class="main clearfix" style="height: 300px">
+    <%= render partial: 'cd_products/sidebar' %>
+    <div>
+      <h2>ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+
+        <br />
+
+        <div class="actions">
+          <%= link_to '戻る', root_path %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-
-  <br />
-
-  <div class="actions">
-    <%= link_to '戻る', root_path %>
-  </div>
-<% end %>
+  <%= render partial: 'cd_products/footer' %>
+</body>
+</html>

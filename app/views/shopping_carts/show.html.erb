@@ -6,7 +6,9 @@
 	<title>カートの中身</title>
 </head>
 <body>
-	<div class="container">
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
+	<div class="main-content">
       	<div class="row">
 			<h1>ショッピングカート</h1>
 
@@ -75,9 +77,10 @@
 				</table>
 				<button><%= link_to "届け先住所を変更する", address_lines_path(current_user) %></button>
 			</div>
-			
 		</div>
 	</div>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 
 </body>
 </html>

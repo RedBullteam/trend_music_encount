@@ -1,62 +1,42 @@
 <html>
   <head>
-    <style>
-    .cd_position {
-      padding-right: 10px;
-    }
-    .cd_position:last-child {
-     padding-right: 0px;
-    }
-    </style>
   </head>
 <body>
-<div class="container">
- <% @release_era_tags.each do |release_era_tag| %>
-   <button class= "btn btn-lg btn-info era_search_btn">
-
-  	  <%= link_to release_era_tag.name,  release_era_tag_path(release_era_tag) %>
-  	  	<% @cd_products.each do |cd_product| %>
-  		<% end %>
-  </button>
-
-<% end %>
-<div class="well well-sm"><%= @release_era_tag.name %>年代の楽曲</div>
-	<% if @cd_products.present? %>
-		<table>
-			<tbody>
-				<tr>
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix" style="height: 1600px;">
+	<div class="main-content">
+		 <% @release_era_tags.each do |release_era_tag| %>
+		   <button class= "btn btn-lg btn-info era_search_btn">
+		  	  <%= link_to release_era_tag.name,  release_era_tag_path(release_era_tag) %>
+		  	  	<% @cd_products.each do |cd_product| %>
+		  		<% end %>
+		  </button>
+			<% end %>
+			<div class="well well-sm"><%= @release_era_tag.name %>年代の楽曲</div>
+				<% if @cd_products.present? %>
 					<% @cd_products.each_with_index do |cd_product, i| %>
-						<% if  i % 3 ==0 %>
-						  	<tr>
-						<% end %>
-						<td class="cd_position">
-			              <% if cd_product.jacket_image.present? %>
-                            <%= link_to cd_product_path(cd_product.id) do %>
-                              <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
-                            <% end %>
-                          <% else %>
-                            <%= link_to cd_product_path(cd_product.id) do %>
-                              <img src="/assets/no_image.jpg", width="250", height="250">
-                            <% end %>
-                          <% end %>
-			              <p><%= cd_product.name %></p>
-			              <p><%= cd_product.artist.name %></p>
-			              <p><%= cd_product.release_date %></p>
-			            </td>
-						<% if (i + 1) % 3 == 0 %>
-						  	</tr>
-						<% end %>
-						<% if (i == @cd_products.size - 1) && ((i + 1) % 3 == 2)%>
-							</tr>
-						<% end %>
+						<div class="col-xs-4">
+						    <% if cd_product.jacket_image.present? %>
+			                    <%= link_to cd_product_path(cd_product.id) do %>
+			                        <%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+			                    <% end %>
+			                 <% else %>
+			                    <%= link_to cd_product_path(cd_product.id) do %>
+			                         <img src="/assets/no_image.jpg", width="250", height="250">
+			                     <% end %>
+			                 <% end %>
+						     <p><%= cd_product.name %></p>
+						     <p><%= cd_product.artist.name %></p>
+						     <p><%= cd_product.release_date %></p>
+						</div>
 					<% end %>
-			</tbody>
-		</table>
-		<%= paginate @cd_products %>
-	<% end %>
-
-
-</div>
+					<div class="col-xs-12"><%= paginate @cd_products %></div>
+				<% end %>
+			</div>
+		<%= render partial: 'cd_products/sidebar' %>
+	</div>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 </body>
 </html>
 

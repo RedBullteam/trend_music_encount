@@ -1,0 +1,11 @@
+<div class="sidebar">
+			<% if user_signed_in? %>
+				<button class="side-columns"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
+			<%else%>
+				<button class="side-columns"><a href="/users/sign_in">ログイン</a></button>
+			<%end%>
+
+			<button class="side-columns"><a href="/users/sign_up">新規登録</a></button>
+			<button class="side-columns"><a href="/guide">初めての方はこちら</a></button>
+			<button class="side-columns"><a href="/era_search">あの頃検索</a></button>
+</div>

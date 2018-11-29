@@ -1,0 +1,29 @@
+<div class="header clear-fix" style = "margin-bottom: 10px">
+		<h1 class="header-top">
+			Trend Music Encount
+		</h1>
+		<nav>
+			<ul class="nav-list">
+				<li class="nav-list-item"><a href="/">HOME</a></li>
+				<li class="nav-list-item"><a href="/movies">映画</a></li>
+				<li class="nav-list-item"><a href="/cms">ＣＭ</a></li>
+				<li class="nav-list-item"><a href="/doramas">ドラマ</a></li>
+				<li class="nav-list-item"><a href="/cd_products/search/songs_search_form">曲検索</a></li>
+				<li class="nav-list-item"><a href="/cd_products/search/artists_search_form">アーティスト検索</a></li>
+				<% if user_signed_in? %>
+                  <li class="nav-list-item"><%= link_to 'マイページ', user_path(current_user.id) %></a></li>
+                <% end %>
+			</ul>
+		</nav>
+		<div class="header-bottom">
+			 <% if  user = current_user %>
+				<button class="square_btn">
+					<%=link_to "ショッピングカート", shopping_cart_path(current_user.shopping_cart.id) %>
+				</button>
+			<% else %>
+				<div class="balloonoya square_btn" onclick="showBalloon()">ショッピングカート
+					<span class="balloon1" id="makeImg">ログインすると閲覧できます</span>
+				</div>
+			<%end%>
+		</div>
+</div>
