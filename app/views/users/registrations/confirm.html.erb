@@ -6,16 +6,10 @@
 <body>
   <%= render partial: 'cd_products/header' %>
   <div class="main clearfix">
-    <div class="main-content" style="height: 900px;">
+    <div class="main-content">
 
       <%= form_for(resource, as: resource_name, url: {action: "complete"}) do |f| %>
         <%= devise_error_messages! %>
-
-        <div class="field">
-          <h4><%= f.label :last_name %><h4>
-          <%= f.hidden_field :last_name %>
-          <h4><%= @user.last_name %></h4>
-        </div>
 
         <div class="field">
           <h4><%= f.label :first_name %></h4>
@@ -24,16 +18,24 @@
         </div>
 
         <div class="field">
-          <h4><%= f.label :last_name_kana %></h4>
-          <%= f.hidden_field :last_name_kana %>
-          <h4><%= @user.last_name_kana %></h4>
+          <h4><%= f.label :last_name %><h4>
+          <%= f.hidden_field :last_name %>
+          <h4><%= @user.last_name %></h4>
         </div>
+
 
         <div class="field">
           <h4><%= f.label :first_name_kana %></h4>
           <%= f.hidden_field :first_name_kana %>
           <h4><%= @user.first_name_kana %></h4>
         </div>
+
+        <div class="field">
+          <h4><%= f.label :last_name_kana %></h4>
+          <%= f.hidden_field :last_name_kana %>
+          <h4><%= @user.last_name_kana %></h4>
+        </div>
+
 
         <div class="field">
           <h4><%= f.label :telephone %></h4>

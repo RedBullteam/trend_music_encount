@@ -8,8 +8,8 @@
   </head>
   <body>
 <!-- CD詳細 -->
-<%= render partial: 'cd_products/header' %>
-  <div class="main clearfix" style="height: 1700px">
+  <%= render partial: 'cd_products/header' %>
+  <div class="main clearfix">
     <div class="main-content">
         <div class="row">
             <div class="col-md-1"></div>
@@ -22,34 +22,44 @@
             </div>
             <div class="col-md-6">
               <table class="table table-striped">
-      	          <thead>
+                  <thead>
                   <tr>
                     <h4>CD情報</h4>
                   </tr>
                   </thead>
-      	          <tbody>
-      	  	        <tr>
-      	  	          <td>タイトル</td>
-      	  	          <td><p><%= @cd_product.name %><p></td>
-      	  	          <td></td>
-      	  	        </tr>
-      	  	        <tr>
-      	  	          <td>アーティスト</td>
-      	  	          <td><%= @cd_product.artist.name %></td>
-      	  	          <td></td>
-      	  	        </tr>
-      	            <tr>
-      	  	          <td>価格（税込）</td>
-      	  	          <td>￥<%= @cd_product.price %></td>
-      	  	          <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
+                  <tbody>
+                    <tr>
+                      <td>タイトル</td>
+                      <td><p><%= @cd_product.name %><p></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>アーティスト</td>
+                      <td><%= @cd_product.artist.name %></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>価格（税込）</td>
+                      <td>￥<%= @cd_product.price %></td>
+                      <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
                           <% else %>
                           <% @cd_product.stock_number >= 1  %>在庫あり
                           <% end %>
                       </td>
-      	  	        </tr>
-      	        </tbody>
+                    </tr>
+                </tbody>
               </table>
               <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
+
+    <!-- ==================form_for での描き方 ====================== -->
+    <!--
+              <%#= form_for(CartItem.new) do |f| %>
+                <%#= f.hidden_field :cd_product_id, value: @cd_product.id %>
+                <button type="button" class="btn btn-danger btn-lg"><%#= f.submit "カートに入れる" %></button>
+              <%# end %>
+     -->
+     <!-- ==============================end=============================== -->
+
             <% if user_signed_in? %>
               <button type="button" class="btn btn-warning btn-lg">
                <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
@@ -57,51 +67,7 @@
                 <% else %>
                 <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
                 <% end %>
-        </div>
-        <div class="col-md-6">
-          <table class="table table-striped">
-  	          <thead>
-              <tr>
-                <h4>CD情報</h4>
-              </tr>
-              </thead>
-  	          <tbody>
-  	  	        <tr>
-  	  	          <td>タイトル</td>
-  	  	          <td><p><%= @cd_product.name %><p></td>
-  	  	          <td></td>
-  	  	        </tr>
-  	  	        <tr>
-  	  	          <td>アーティスト</td>
-  	  	          <td><%= @cd_product.artist.name %></td>
-  	  	          <td></td>
-  	  	        </tr>
-  	            <tr>
-  	  	          <td>価格（税込）</td>
-  	  	          <td>￥<%= @cd_product.price %></td>
-  	  	          <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
-                      <% else %>
-                      <% @cd_product.stock_number >= 1  %>在庫あり
-                      <% end %>
-                  </td>
-  	  	        </tr>
-  	        </tbody>
-          </table>
-          <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
-
-<!-- ==================form_for での描き方 ====================== -->
-<!--
-          <%#= form_for(CartItem.new) do |f| %>
-            <%#= f.hidden_field :cd_product_id, value: @cd_product.id %>
-            <button type="button" class="btn btn-danger btn-lg"><%#= f.submit "カートに入れる" %></button>
-          <%# end %>
- -->
- <!-- ==============================end=============================== -->
-
-        <% if user_signed_in? %>
-          <button type="button" class="btn btn-warning btn-lg">
-           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
-            <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
+                </button>
             <% else %>
             <button type="button" class="btn btn-warning btn-lg">お気に入り</button>
             <% end %>
@@ -113,15 +79,15 @@
                   </tr>
                 </thead>
                   <tbody>
-              	  	<tr>
-              	  	  <td>発売日</td>
-              	  	  <td><%= @cd_product.release_date %></td>
-              	  	</tr>
-               	  	<tr>
-              	  	  <td>レーベル</td>
-              	  	  <td><%= @cd_product.label.name %></td>
-              	  	</tr>
-              	  </tbody>
+                    <tr>
+                      <td>発売日</td>
+                      <td><%= @cd_product.release_date %></td>
+                    </tr>
+                    <tr>
+                      <td>レーベル</td>
+                      <td><%= @cd_product.label.name %></td>
+                    </tr>
+                  </tbody>
               </table>
               </div>
             <div class="col-md-1"></div>
@@ -246,7 +212,7 @@
                   <div class="well well-sm">このアーティストの関連楽曲</div>
                     <table>
                       <tbody>
-                    	<tr>
+                      <tr>
                         <% @cds.each do |cd_product| %>
                         <td class="cd_position">
                           <% if cd_product.jacket_image.present? %>
@@ -258,10 +224,10 @@
                               <img src="/assets/no_image.jpg", width="250", height="250">
                             <% end %>
                           <% end %>
-        					        <p><%= cd_product.name %></p>
-        				        </td>
+                          <p><%= cd_product.name %></p>
+                        </td>
                         <% end %>
-                    	</tr>
+                      </tr>
                       </tbody>
                     </table>
                     <%= paginate @cds %>
@@ -269,7 +235,7 @@
             </div>
             <%= render partial: 'cd_products/sidebar' %>
           </div>
-        </div>
+      </div>
     </div>
   <%= render partial: 'cd_products/footer' %>
 </body>

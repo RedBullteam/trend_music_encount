@@ -3,7 +3,7 @@
 </head>
 <body>
 	<%= render partial: 'cd_products/header' %>
-  <div class="main clearfix" style="height: 1800px">
+  <div class="main clearfix">
 		<div class="main-content">
 		  	<% if @path.is('movies#title_search') %>
 		  		<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>

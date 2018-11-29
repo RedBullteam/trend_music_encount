@@ -6,31 +6,34 @@
 <body>
   <%= render partial: 'cd_products/header' %>
   <div class="main clearfix" >
-    <div class="main-content" style="height: 900px;">
+    <div class="main-content">
       <h2>新規登録入力フォーム</h2>
 
       <%= form_for(resource, as: resource_name, url: {action: "confirm"}) do |f| %>
       <%= devise_error_messages! %>
 
-        <div class="field">
-          <%= f.label :last_name %><br />
-          <%= f.text_field :last_name, autofocus: true, placeholder: "名前(性)" %>
-        </div>
 
         <div class="field">
           <%= f.label :first_name %><br />
-          <%= f.text_field :first_name, autofocus: true, placeholder: "名前(名)" %>
+          <%= f.text_field :first_name, autofocus: true, placeholder: "名前(性)" %>
         </div>
 
+
         <div class="field">
-          <%= f.label :last_name_kana %><br />
-          <%= f.text_field :last_name_kana, autofocus: true, placeholder: "カナ名前(性)" %>
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, autofocus: true, placeholder: "名前(名)" %>
         </div>
 
         <div class="field">
           <%= f.label :first_name_kana %><br />
-          <%= f.text_field :first_name_kana, autofocus: true, placeholder: "カナ名前(名)" %>
+          <%= f.text_field :first_name_kana, autofocus: true, placeholder: "カナ名前(性)" %>
         </div>
+
+        <div class="field">
+          <%= f.label :last_name_kana %><br />
+          <%= f.text_field :last_name_kana, autofocus: true, placeholder: "カナ名前(名)" %>
+        </div>
+
 
         <div class="field">
           <%= f.label :telephone %><br />
