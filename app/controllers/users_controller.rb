@@ -7,6 +7,7 @@ before_action :login_check, except: :complete
   def show
     @user = User.active
     @favorites = current_user.favorites
+    @shopping_bags = current_user.shopping_bags
   end
 
   def edit

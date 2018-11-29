@@ -30,6 +30,20 @@
 		        		<p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success " %></p>
 		        		<% end %>
 					</div>
+					<div class="bag_items-box">
+						<ul class="list-group">
+							<li  class="list-group-item list-group-item-info">
+								購入済みの商品
+							</li>
+							<% @shopping_bags.each do |shopping_bag| %>
+							<li class="list-group-item"><strong>送付先：</strong><%= shopping_bag.address_line.name %>
+								<%= shopping_bag.address_line.postcode %>
+								
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<strong>価格：</strong>￥<%= shopping_bag.bag_item.cd_product%>(税込み)</li>
+						</ul>
+						<% end %>
+					</div>
 					<div class="favorit-box">
 						<ul class="list-group">
 							<li  class="list-group-item list-group-item-info">お気に入り商品リスト</li>
