@@ -5,9 +5,6 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<%= render partial: 'cd_products/header' %>
-  <div class="main clearfix">
-	<div class="main-content">
 	<h1>マイページ</h1>
 	<div class="body">
 		<div class="profile container">
@@ -38,17 +35,14 @@
 						<div class="row">
 							<h2>購入履歴</h2>
 							<table class="table table-striped">
+								<% @shopping_bags.each do |shopping_bag| %>
 								<tr>
 									<th>送付先</th>
 									<th>購入者</th>
 									<th>購入日</th>
-									<th>商品情報</th>
-									<th>購入枚数</th>
-									<th>発送ステータス</th>
-									<th>総計</th>
+									<th></th>
 
 								</tr>
-								<% @shopping_bags.each do |shopping_bag| %>
 								<tr>
 									<td>
 										<%= shopping_bag.address_line.name %>様
@@ -61,8 +55,16 @@
 										<%= shopping_bag.user.first_name %><%= shopping_bag.user.last_name %>
 									</td>
 									<td><%= shopping_bag.created_at.strftime('%Y年%m月%d日') %></td>
-									
+								</tr>
+								<tr>
+									<th>商品情報</th>
+									<th>購入枚数</th>
+									<th>発送ステータス</th>
+									<th>総計</th>
+								</tr>
+								
 									<% shopping_bag.bag_items.each do |bag_item| %>
+									<tr>
 										<td>
 											<%= bag_item.cd_product.name %>
 											：<%= bag_item.purchase_price %>円
@@ -70,6 +72,7 @@
 										</td>
 										<td><%= bag_item.quantity %>点</td>
 										<td><%= bag_item.delivery_status_id %></td>
+									
 									<%end%>
 									<td><%= (shopping_bag.sum_total_price).to_i %>円</td>
 								</tr>
@@ -112,13 +115,9 @@
 			           
         						</div>
 							</div>
-						</div>
-				</div>
-			<%= render partial: 'cd_products/sidebar' %>
+			</div>
 		</div>
 	</div>
-  </div>
-  <%= render partial: 'cd_products/footer' %>
 	<script src="jquery-3.2.1.min.js"></script>
 	<script src="skippr.min.js"></script>
 	<script src="script.js"></script>
