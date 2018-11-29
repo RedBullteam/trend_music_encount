@@ -7,7 +7,6 @@ include Search
     @movies = CdProduct.where("movie_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(3)
     @commodities = CdProduct.where("commodity_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(3)
     @doramas = CdProduct.where("dorama_id not ?", nil).where(sale_status_id: 2).order(release_date: :desc).limit(3)
-
   end
 
   def show
