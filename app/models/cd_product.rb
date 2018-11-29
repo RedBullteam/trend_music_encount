@@ -8,6 +8,7 @@ class CdProduct < ApplicationRecord
 	has_many :discs, dependent: :destroy, primary_key: "id", foreign_key: "cd_product_id"
 	has_many :favorites, dependent: :destroy
 	has_many :users,through: :favorites
+	has_many :cart_items, dependent: :destroy
     enum sale_status_id: {
 		準備中:1, 販売中:2
     }

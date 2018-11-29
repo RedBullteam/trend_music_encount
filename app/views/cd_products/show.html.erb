@@ -57,7 +57,51 @@
                 <% else %>
                 <%= link_to "お気に入り解除",cd_product_add_path(@cd_product),method: :delete %>
                 <% end %>
-                </button>
+        </div>
+        <div class="col-md-6">
+          <table class="table table-striped">
+  	          <thead>
+              <tr>
+                <h4>CD情報</h4>
+              </tr>
+              </thead>
+  	          <tbody>
+  	  	        <tr>
+  	  	          <td>タイトル</td>
+  	  	          <td><p><%= @cd_product.name %><p></td>
+  	  	          <td></td>
+  	  	        </tr>
+  	  	        <tr>
+  	  	          <td>アーティスト</td>
+  	  	          <td><%= @cd_product.artist.name %></td>
+  	  	          <td></td>
+  	  	        </tr>
+  	            <tr>
+  	  	          <td>価格（税込）</td>
+  	  	          <td>￥<%= @cd_product.price %></td>
+  	  	          <td><% if @cd_product.stock_number == 0 then %>SOLDOUT
+                      <% else %>
+                      <% @cd_product.stock_number >= 1  %>在庫あり
+                      <% end %>
+                  </td>
+  	  	        </tr>
+  	        </tbody>
+          </table>
+          <button type="button" class="btn btn-danger btn-lg"><%= link_to "カートに入れる", cart_items_path(cd_product_id: @cd_product.id), method: :post %></button>
+
+<!-- ==================form_for での描き方 ====================== -->
+<!--
+          <%#= form_for(CartItem.new) do |f| %>
+            <%#= f.hidden_field :cd_product_id, value: @cd_product.id %>
+            <button type="button" class="btn btn-danger btn-lg"><%#= f.submit "カートに入れる" %></button>
+          <%# end %>
+ -->
+ <!-- ==============================end=============================== -->
+
+        <% if user_signed_in? %>
+          <button type="button" class="btn btn-warning btn-lg">
+           <% if !Favorite.exists?(user_id:current_user.id,cd_product_id:@cd_product.id) %>
+            <%= link_to "お気に入り",cd_product_add_path(@cd_product),method: :post %>
             <% else %>
             <button type="button" class="btn btn-warning btn-lg">お気に入り</button>
             <% end %>

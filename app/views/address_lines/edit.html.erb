@@ -20,6 +20,10 @@
         <label>建物名・番地</label>
         <%= s.text_field :address ,placeholder: ""  %>
     </div>
+    <div>
+        <label>宛先氏名</label>
+        <%= s.text_field :name ,placeholder: ""  %>
+    </div>
 
  <%= s.submit "変更を保存", class:"btn" %>
 <% end %>

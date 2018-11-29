@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<link rel="stylesheet" href="skippr.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Users#show</h1>
-	<p>Find me in app/views/users/show.html.erb</p>
+	<h1>マイページ</h1>
 	<div class="body">
 		<div class="profile container">
 			<div class="row">
@@ -30,16 +30,59 @@
 		        		<p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success " %></p>
 		        		<% end %>
 					</div>
-					<div class="favorit-box">
+					<div class="container">
+						<ul class="list-group">
+							<li  class="list-group-item list-group-item-info">
+								購入済みの商品
+							</li>
+							<% @shopping_bags.each do |shopping_bag| %>
+							<li class="list-group-item"><strong>送付先：</strong><%= shopping_bag.address_line.name %>
+								<%= shopping_bag.address_line.postcode %>
+								
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<strong>価格：</strong>￥<%= shopping_bag.bag_item.cd_product%>(税込み)</li>
+							<% end %>
+						</ul>
+					</div>
+					<div class="container">
 						<ul class="list-group">
 							<li  class="list-group-item list-group-item-info">お気に入り商品リスト</li>
-							<% @favorites.each do |favorite| %>
-							<li class="list-group-item"><strong>商品名：</strong><%=favorite.cd_product.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>価格：</strong>￥<%=favorite.cd_product.price %>(税込み)</li>
 						</ul>
-						<% end %>
-					</div>
+							<div class="main-visual">
+        						<div class="theTarget">
+          							<% @favorites.each_with_index do |favorite,i| %>
+          							<% if i % 4 == 0 %>
+          								<div class="slide">
+          							<% end %>
+						                    <div class="col-xs-3">
+						                      <% if favorite.cd_product.jacket_image.present? %>
+						                      <%= link_to cd_product_path(favorite.cd_product.id) do %>
+						                          <%= image_tag "#{favorite.cd_product.jacket_image}", :size =>'200x200' %>
+						                          <% end %>
+						                      <% else %>
+						                        <%= link_to cd_product_path(favorite.cd_product.id) do %>
+						                          <img src="/assets/no_image.jpg", width="250", height="250">
+						                          <% end %>
+						                      <% end %>
+				    					        <p><strong>商品名：</strong><%=favorite.cd_product.name %></p>
+												<p><strong>価格：</strong>￥<%=favorite.cd_product.price %>(税込み)</p>
+												<p><strong>アーティスト名：</strong><%= favorite.cd_product.artist.name %></p>
+												<p><strong>リリース日：</strong><%= favorite.cd_product.release_date %></p>
+				    				        </div>
+				    				 <% if (i + 1) % 4 == 0 %>
+				    				 	</div>
+				    				 <% end %>
+				    				 <% if (i == @favorites.size - 1) && ((i + 1) % 4 != 0)%>
+				    				 	</div>
+				    				 <% end %>
+				    				<% end %>
+			           
+        						</div>
+							</div>
 			</div>
 		</div>
 	</div>
-</body>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="skippr.min.js"></script>
+	<script src="script.js"></script>
 </html>
