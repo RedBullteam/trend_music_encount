@@ -7,35 +7,7 @@
 	<title>trend_music_encount</title>
 </head>
 <body>
-	<div class="header">
-		<h1 class="header-top">
-			Trend Music Encount
-		</h1>
-		<nav>
-			<ul class="nav-list">
-				<li class="nav-list-item"><a href="/">HOME</a></li>
-				<li class="nav-list-item"><a href="/movies">映画</a></li>
-				<li class="nav-list-item"><a href="/cms">ＣＭ</a></li>
-				<li class="nav-list-item"><a href="/doramas">ドラマ</a></li>
-				<li class="nav-list-item"><a href="/cd_products/search/songs_search_form">曲検索</a></li>
-				<li class="nav-list-item"><a href="/cd_products/search/artists_search_form">アーティスト検索</a></li>
-				<% if user_signed_in? %>
-                  <li class="nav-list-item"><%= link_to 'マイページ', user_path(current_user.id) %></a></li>
-                <% end %>
-			</ul>
-		</nav>
-		<div class="header-bottom">
-			 <% if  user = current_user %>
-				<button class="square_btn">
-					<%=link_to "ショッピングカート", shopping_cart_path(current_user.shopping_cart.id) %>
-				</button>
-			<% else %>
-				<div class="balloonoya square_btn" onclick="showBalloon()">ショッピングカート
-					<span class="balloon1" id="makeImg">ログインすると閲覧できます</span>
-				</div>
-			<%end%>
-		</div>
-	</div>
+	<%= render partial: 'cd_products/header' %>
 
 	<div class="main-visual">
         <div class="theTarget">
@@ -154,54 +126,9 @@
 			  <%= link_to "もっと見る",doramas_path %>
 			</div>
 		</div>
-		<div class="sidebar">
-			<% if user_signed_in? %>
-				<button class="side-columns"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></button>
-			<%else%>
-				<button class="side-columns"><a href="/users/sign_in">ログイン</a></button>
-			<%end%>
-
-			<button class="side-columns"><a href="/users/sign_up">新規登録</a></button>
-			<button class="side-columns"><a href="/guide">初めての方はこちら</a></button>
-			<button class="side-columns"><a href="/era_search">あの頃検索</a></button>
-		</div>
+		<%= render partial: 'cd_products/sidebar' %>
 	</div>
-	<div class="footer">
-		<div class="footer-nav">
-			<p>trend music encountについて</p>
-			<ul class="footer-nav-list">
-				<% if user_signed_in? %>
-				<li class="footer-nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-				<% else %>
-				<li class="footer-nav-item"><a href="/users/sign_in">ログイン</a></li>
-				<% end %>
-				<li class="footer-nav-item"><a href="/users/sign_up">新規登録</a></li>
-				<li class="footer-nav-item"><a href="/guide">初めての方はこちら</a></li>
-				<li class="footer-nav-item"><a href="/era_search">あの頃検索</a></li>
-			</ul>
-			<p>検索関連</p>
-			<ul class="footer-nav-list">
-				<li class="footer-nav-item"><a href="/cd_products/search/artists_search_form">アーティスト検索トップ</a></li>
-				<li class="footer-nav-item"><a href="/cd_products/search/songs_search_form">曲名検索トップ</a></li>
-			</ul>
-			<p>映画関連</p>
-			<ul class="footer-nav-list">
-				<li class="footer-nav-item"><a href="/movies">映画関連トップ</a></li>
-				<li class="footer-nav-item"><a href="/movies/feature">最新映画情報</a></li>
-			</ul>
-			<p>ＣＭ関連</p>
-			<ul class="footer-nav-list">
-				<li class="footer-nav-item"><a href="/cms">ＣＭ関連トップ</a></li>
-				<li class="footer-nav-item"><a href="/trend">最新ＣＭ情報</a></li>
-			</ul>
-			<p>ドラマ関連</p>
-			<ul class="footer-nav-list">
-				<li class="footer-nav-item"><a href="/doramas">ドラマ関連トップ</a></li>
-				<li class="footer-nav-item"><a href="/doramas/feature">最新ドラマ情報</a></li>
-			</ul>
-		</div>
-		<p class="footer-text">TREND MUSIC ENCOUNT</p>
-	</div>
+		<%= render partial: 'cd_products/footer' %>
 
 	<script src="jquery-3.2.1.min.js"></script>
 	<script src="skippr.min.js"></script>

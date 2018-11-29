@@ -2,35 +2,42 @@
 <head>
 </head>
 <body>
+	<%= render partial: 'cd_products/header' %>
+  <div class="main clearfix" style="height: 1600px">
+	<div class="main-content">
 	<!-- 頭文字検索 -->
-	<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>
-	<!-- タイトル部分 -->
-	<div class="jumbotron" style="background-image: url(/assets/movie_top.jpeg);background-size: cover;">
-		<h1 style="color:white">映画音楽トップ</h1>
-		<p style="color:white"><%= link_to "最新映画情報はコチラ", movie_feature_path %></p>
-	</div>
-	<!-- 映画CD一覧 -->
-	<h3>映画音楽CD一覧</h3>
-	<% if@cd_products.present? %>
-		<% @cd_products.each_with_index do |cd_product, i| %>
-			<div class="col-xs-4">
-				<% if cd_product.jacket_image.present? %>
-					<%= link_to cd_product_path(cd_product.id) do %>
-						<%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+		<%= render partial: 'movies/movie_title_search', locals: { movies: @movies } %>
+		<!-- タイトル部分 -->
+		<div class="jumbotron" style="background-image: url(/assets/movie_top.jpeg);background-size: cover;">
+			<h1 style="color:white">映画音楽トップ</h1>
+			<p style="color:white"><%= link_to "最新映画情報はコチラ", movie_feature_path %></p>
+		</div>
+		<!-- 映画CD一覧 -->
+		<h3>映画音楽CD一覧</h3>
+		<% if@cd_products.present? %>
+			<% @cd_products.each_with_index do |cd_product, i| %>
+				<div class="col-xs-4">
+					<% if cd_product.jacket_image.present? %>
+						<%= link_to cd_product_path(cd_product.id) do %>
+							<%= image_tag "#{cd_product.jacket_image}", :size =>'250x250' %>
+						<% end %>
+					<% else %>
+						<%= link_to cd_product_path(cd_product.id) do %>
+							<img src="/assets/no_image.jpg", width="250", height="250">
+						<% end %>
 					<% end %>
-				<% else %>
-					<%= link_to cd_product_path(cd_product.id) do %>
-						<img src="/assets/no_image.jpg", width="250", height="250">
-					<% end %>
-				<% end %>
-				<p>CD名：<%= cd_product.name %></p>
-				<p>アーティスト名：<%= cd_product.artist.name %></p>
-				<p>リリース日：<%= cd_product.release_date %></p>
-				<p>映画名：<%= cd_product.movie.movie_name %></p>
-			</div>
+					<p>CD名：<%= cd_product.name %></p>
+					<p>アーティスト名：<%= cd_product.artist.name %></p>
+					<p>リリース日：<%= cd_product.release_date %></p>
+					<p>映画名：<%= cd_product.movie.movie_name %></p>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
-	<div class="col-xs-12"><%= paginate @cd_products %><div class="col-xs-12">
+		<div class="col-xs-12"><%= paginate @cd_products %></div class="col-xs-12">
+	</div>
+	<%= render partial: 'cd_products/sidebar' %>
+  </div>
+  <%= render partial: 'cd_products/footer' %>
 </body>
 </html>
 
