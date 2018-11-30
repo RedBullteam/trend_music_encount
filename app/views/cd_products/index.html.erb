@@ -8,6 +8,11 @@
 </head>
 <body>
 	<%= render partial: 'cd_products/header' %>
+  <% if  user = current_user %>
+        <p>ようこそ<%= @user.first_name %>様</p>
+    <%else%>
+        <p>ようこそゲスト様</p>
+  <%end%>
 
 	<div class="main-visual">
         <div class="theTarget">
@@ -151,7 +156,7 @@
 	</div>
 		<%= render partial: 'cd_products/footer' %>
 
-	<script src="jquery-3.2.1.min.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
 	<script src="skippr.min.js"></script>
 	<script src="script.js"></script>
 	<script>
